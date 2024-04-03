@@ -8,7 +8,7 @@ namespace Business.Concrete;
 
 public class ProductManager : IProductService
 {
-    IProductDal _productDal;
+    private readonly IProductDal _productDal;
 
     public ProductManager(IProductDal productDal)
     {
@@ -36,12 +36,6 @@ public class ProductManager : IProductService
     public IDataResult<List<Product>> GetAll()
     {
         var result = _productDal.GetAll().ToList();
-        return new SuccessDataResult<List<Product>>(result);
-    }
-
-    public IDataResult<List<Product>> GetAllByCustomer(int customerId)
-    {
-        var result = _productDal.GetAll(p => p.CustomerId == customerId).ToList());
         return new SuccessDataResult<List<Product>>(result);
     }
 
