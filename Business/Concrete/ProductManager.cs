@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidator;
 using Core.Utilities.Results;
+using Core.Utilities.Validation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -17,12 +19,16 @@ public class ProductManager : IProductService
 
     public IResult Add(Product product)
     {
+        ValidationTool<Product>.Validate(new ProductValidator(), product);
+
         _productDal.Add(product);
         return new SuccessResult(Messages.ProductAdded);
     }
 
     public IResult Update(Product product)
     {
+        ValidationTool<Product>.Validate(new ProductValidator(), product);
+
         _productDal.Update(product);
         return new SuccessResult(Messages.ProductUpdated);
     }

@@ -2,7 +2,7 @@
 
 namespace Core.Utilities.Results;
 
-public interface IDataResult<out T> : IEntity
+public interface IDataResult<out T> : IResult
 {
     public T Data { get; }
 }

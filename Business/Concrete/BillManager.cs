@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidator;
 using Core.Utilities.Results;
+using Core.Utilities.Validation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -16,12 +18,16 @@ public class BillManager : IBillService
 
     public IResult Add(Bill bill)
     {
+        ValidationTool<Bill>.Validate(new BillValidator(), bill);
+
         _billDal.Add(bill);
         return new SuccessResult(Messages.BillAdded);
     }
 
     public IResult Update(Bill bill)
     {
+        ValidationTool<Bill>.Validate(new BillValidator(), bill);
+
         _billDal.Update(bill);
         return new SuccessResult(Messages.BillUpdated);
     }

@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidator;
 using Core.Utilities.Results;
+using Core.Utilities.Validation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -17,12 +19,16 @@ public class SaleManager : ISaleService
 
     public IResult Add(Sale sale)
     {
+        ValidationTool<Sale>.Validate(new SaleValidator(), sale);
+
         _saleDal.Add(sale);
         return new SuccessResult(Messages.SaleAdded);
     }
 
     public IResult Update(Sale sale)
     {
+        ValidationTool<Sale>.Validate(new SaleValidator(), sale);
+
         _saleDal.Update(sale);
         return new SuccessResult(Messages.SaleUpdated);
     }

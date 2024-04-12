@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidator;
 using Core.Utilities.Results;
+using Core.Utilities.Validation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -18,12 +20,16 @@ public class CustomerManager : ICustomerService
 
     public IResult Add(Customer customer)
     {
+        ValidationTool<Customer>.Validate(new CustomerValidator(), customer);
+
         _customerDal.Add(customer);
         return new SuccessResult(Messages.ProductAdded);
     }
 
     public IResult Update(Customer customer)
     {
+        ValidationTool<Customer>.Validate(new CustomerValidator(), customer);
+
         _customerDal.Update(customer);
         return new SuccessResult(Messages.ProductUpdated);
     }
@@ -36,11 +42,13 @@ public class CustomerManager : ICustomerService
 
     public IDataResult<Customer> Get(int id)
     {
-        throw new NotImplementedException();
+        var result = _customerDal.Get(p => p.CustomerId == id);
+        return new SuccessDataResult<Customer>(result);
     }
 
     public IDataResult<List<Customer>> GetAll()
     {
-        throw new NotImplementedException();
+        var result = _customerDal.GetAll().ToList();
+        return new SuccessDataResult<List<Customer>>(result);
     }
 }
