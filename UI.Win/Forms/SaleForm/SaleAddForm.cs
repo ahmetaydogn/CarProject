@@ -1,46 +1,72 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DevExpress.XtraDataLayout;
 using DevExpress.XtraEditors;
 using Entities.Concrete;
 using FluentValidation;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
+using UI.Win.Forms.BillForms;
+using UI.Win.Forms.CarForms;
 using UI.Win.Forms.CustomerForm;
-using UI.Win.UserControls;
+using UI.Win.Show;
 using UI.Win.Utilities;
 
-namespace UI.Win.Forms.CarForms;
+namespace UI.Win.Forms.SaleForm;
 
-public partial class CarAddForm : BaseEditForm
+public partial class SaleAddForm : BaseEditForm
 {
-    public CarAddForm()
+    public SaleAddForm()
     {
         InitializeComponent();
     }
-
-    public CarAddForm(int id, EventType _eventType) : this()
+    public SaleAddForm(int id, EventType _eventType, decimal sellPrice) : this()
     {
-        var result = productService.GetById(id);
+        var result = saleService.GetById(id);
         if (result.IsSuccess)
         {
-            OldProduct = result.Data;
+            OldSale = result.Data;
             eventType = _eventType;
+            productPrice = sellPrice;
             FillGaps();
         }
     }
 
-    IProductService productService = new ProductManager(new EfProductDal());
-    Product OldProduct;
+    ISaleService saleService = new SaleManager(new EfSaleDal());
+    Sale OldSale;
+    decimal productPrice;
     EventType eventType = EventType.EntityInsert;
+
+
+    private void btnProduct_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+    {
+        var frm = (CarListForm)ShowListForms<CarListForm>.ShowDialogListForm();
+        if (frm.DialogResult == DialogResult.OK)
+        {
+            btnProduct.EditValue = frm.returnProductId;
+            productPrice = frm.returnProductPrice;
+            calcPrice.Value = spnQuantity.Value * productPrice;
+        }
+    }
+
+    private void btnCustomer_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+    {
+        var frm = (CustomerListForm)ShowListForms<CustomerListForm>.ShowDialogListForm();
+        if (frm.DialogResult == DialogResult.OK)
+            btnCustomer.EditValue = frm.returnCustomerId;
+    }
+
+    private void spnQuantity_ValueChanged(object sender, EventArgs e)
+    {
+        calcPrice.Value = spnQuantity.Value * productPrice;
+    }
 
 
     public override void Save()
     {
         try
         {
-            if (eventType == EventType.EntityUpdate && OldProduct != null)
+            if (eventType == EventType.EntityUpdate && OldSale != null)
             {
                 SendEntityToUpdate();
             }
@@ -67,7 +93,7 @@ public partial class CarAddForm : BaseEditForm
             {
                 SendEntityToAdd();
             }
-        } 
+        }
         catch (ValidationException e)
         {
             Messages.ErrorMessage(e.Message);
@@ -82,7 +108,7 @@ public partial class CarAddForm : BaseEditForm
         }
         else
         {
-            var result = productService.Delete(OldProduct);
+            var result = saleService.Delete(OldSale);
             if (result.IsSuccess)
             {
                 Messages.SuccessMessage(result.Message);
@@ -99,17 +125,15 @@ public partial class CarAddForm : BaseEditForm
     {
         if (eventType == EventType.EntityUpdate)
         {
-            txtProductName.Text = OldProduct.ProductName;
-            txtProductModel.Text = OldProduct.ProductModel;
-            txtProductKM.Text = OldProduct.ProductKM;
-            txtProductColor.Text = OldProduct.ProductColor;
-            spnProductMarketPrice.Value = OldProduct.MarketPrice;
-            spnProductSellPrice.Value = OldProduct.SellPrice;
-            spnProductVAT.Value = OldProduct.VAT;
-            spnProductVATPrice.Value = OldProduct.VATPrice;
-            spnProductQuantity.Value = OldProduct.Quantity;
-            txtDescription.Text = OldProduct.ProductDescription;
-            tgsProductSituation.IsOn = OldProduct.ProductSituation == "Sifir" ? false : true;
+            btnProduct.EditValue = OldSale.ProductId;
+            btnCustomer.EditValue = OldSale.CustomerId;
+            calcPrice.Value = OldSale.Price;
+            cmbPaymentMethod.Text = OldSale.PaymentMethod;
+            spnQuantity.Value = OldSale.Quantity;
+            txtBillNo.Text = OldSale.BillNumber;
+
+            //btnProduct.DataContext = productService.GetAll().Data;
+            //btnCustomer.DataContext = customerService.GetAll().Data;
         }
         else
             Messages.ItMustBeEntityUpdate();
@@ -124,6 +148,9 @@ public partial class CarAddForm : BaseEditForm
                 case SpinEdit sedit:
                     sedit.Value = 0;
                     break;
+                case ButtonEdit bedit:
+                    bedit.EditValue = null;
+                    break;
                 case MemoEdit medit:
                     medit.Text = null;
                     break;
@@ -135,13 +162,13 @@ public partial class CarAddForm : BaseEditForm
                     break;
             }
         }
-        OldProduct = null;
+        OldSale = null;
         eventType = EventType.EntityInsert;
     }
 
     public override void SendEntityToAdd()
     {
-        var result = productService.Add(CreateProduct());
+        var result = saleService.Add(CreateSale());
 
         if (result.IsSuccess)
         {
@@ -152,10 +179,10 @@ public partial class CarAddForm : BaseEditForm
 
     public override void SendEntityToUpdate()
     {
-        Product newProduct = CreateProduct();
-        newProduct.ProductId = OldProduct.ProductId;
+        Sale newSale = CreateSale();
+        newSale.SaleId = OldSale.SaleId;
 
-        var result = productService.Update(newProduct);
+        var result = saleService.Update(newSale);
         if (result.IsSuccess)
         {
             Messages.SuccessMessage(result.Message);
@@ -163,31 +190,27 @@ public partial class CarAddForm : BaseEditForm
         }
     }
 
-    private Product CreateProduct()
+    private Sale CreateSale()
     {
-        Product p = new Product
+        Sale s = new Sale
         {
-            ProductName = txtProductName.Text,
-            ProductModel = txtProductModel.Text,
-            ProductKM = txtProductKM.Text,
-            ProductColor = txtProductColor.Text,
-            MarketPrice = spnProductMarketPrice.Value,
-            SellPrice = spnProductSellPrice.Value,
-            VAT = Convert.ToByte(spnProductVAT.Value),
-            VATPrice = spnProductVATPrice.Value,
-            Quantity = Convert.ToInt16(spnProductQuantity.Value),
-            ProductSituation = tgsProductSituation.IsOn == true ? "İkinci El" : "Sifir",
-            ProductDescription = txtDescription.Text
+            CustomerId = Convert.ToInt32(btnCustomer.EditValue),
+            ProductId = Convert.ToInt32(btnProduct.EditValue),
+            SaleDate = DateTime.Now,
+            PaymentMethod = cmbPaymentMethod.Text,
+            Price = calcPrice.Value,
+            Quantity = Convert.ToInt16(spnQuantity.Value),
+            BillNumber = txtBillNo.Text,
         };
 
-        return p;
+        return s;
     }
 
     private void Closing()
     {
-        if (Application.OpenForms["CarListForm"] != null)
+        if (Application.OpenForms["SaleListForm"] != null)
         {
-            CarListForm listForm = (CarListForm)Application.OpenForms["CarListForm"];
+            SaleListForm listForm = (SaleListForm)Application.OpenForms["SaleListForm"];
             listForm.FillGrid();
         }
 

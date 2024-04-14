@@ -30,7 +30,6 @@
         {
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridProduct = new DevExpress.XtraGrid.Views.Grid.GridView();
-            gridProductId = new DevExpress.XtraGrid.Columns.GridColumn();
             gridProductName = new DevExpress.XtraGrid.Columns.GridColumn();
             gridProductModel = new DevExpress.XtraGrid.Columns.GridColumn();
             gridProductKM = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,27 +47,18 @@
             gridControl1.Location = new Point(0, 0);
             gridControl1.MainView = gridProduct;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new Size(1151, 614);
+            gridControl1.Size = new Size(1082, 603);
             gridControl1.TabIndex = 0;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridProduct });
+            gridControl1.KeyPress += gridControl1_KeyPress;
             // 
             // gridProduct
             // 
-            gridProduct.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridProductId, gridProductName, gridProductModel, gridProductKM, gridProductColor, gridProductSituation, gridMarketPrice, gridSellPrice });
+            gridProduct.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridProductName, gridProductModel, gridProductKM, gridProductColor, gridProductSituation, gridMarketPrice, gridSellPrice });
             gridProduct.GridControl = gridControl1;
             gridProduct.Name = "gridProduct";
             gridProduct.OptionsBehavior.Editable = false;
             gridProduct.DoubleClick += gridProduct_DoubleClick;
-            // 
-            // gridProductId
-            // 
-            gridProductId.Caption = "ID";
-            gridProductId.FieldName = "ProductId";
-            gridProductId.MinWidth = 25;
-            gridProductId.Name = "gridProductId";
-            gridProductId.Visible = true;
-            gridProductId.VisibleIndex = 0;
-            gridProductId.Width = 60;
             // 
             // gridProductName
             // 
@@ -77,7 +67,7 @@
             gridProductName.MinWidth = 25;
             gridProductName.Name = "gridProductName";
             gridProductName.Visible = true;
-            gridProductName.VisibleIndex = 1;
+            gridProductName.VisibleIndex = 0;
             gridProductName.Width = 220;
             // 
             // gridProductModel
@@ -87,7 +77,7 @@
             gridProductModel.MinWidth = 25;
             gridProductModel.Name = "gridProductModel";
             gridProductModel.Visible = true;
-            gridProductModel.VisibleIndex = 2;
+            gridProductModel.VisibleIndex = 1;
             gridProductModel.Width = 120;
             // 
             // gridProductKM
@@ -97,7 +87,7 @@
             gridProductKM.MinWidth = 25;
             gridProductKM.Name = "gridProductKM";
             gridProductKM.Visible = true;
-            gridProductKM.VisibleIndex = 3;
+            gridProductKM.VisibleIndex = 2;
             gridProductKM.Width = 100;
             // 
             // gridProductColor
@@ -107,7 +97,7 @@
             gridProductColor.MinWidth = 25;
             gridProductColor.Name = "gridProductColor";
             gridProductColor.Visible = true;
-            gridProductColor.VisibleIndex = 4;
+            gridProductColor.VisibleIndex = 3;
             gridProductColor.Width = 100;
             // 
             // gridProductSituation
@@ -117,7 +107,7 @@
             gridProductSituation.MinWidth = 25;
             gridProductSituation.Name = "gridProductSituation";
             gridProductSituation.Visible = true;
-            gridProductSituation.VisibleIndex = 5;
+            gridProductSituation.VisibleIndex = 4;
             gridProductSituation.Width = 150;
             // 
             // gridMarketPrice
@@ -129,7 +119,7 @@
             gridMarketPrice.MinWidth = 25;
             gridMarketPrice.Name = "gridMarketPrice";
             gridMarketPrice.Visible = true;
-            gridMarketPrice.VisibleIndex = 6;
+            gridMarketPrice.VisibleIndex = 5;
             gridMarketPrice.Width = 150;
             // 
             // gridSellPrice
@@ -139,14 +129,14 @@
             gridSellPrice.MinWidth = 25;
             gridSellPrice.Name = "gridSellPrice";
             gridSellPrice.Visible = true;
-            gridSellPrice.VisibleIndex = 7;
+            gridSellPrice.VisibleIndex = 6;
             gridSellPrice.Width = 150;
             // 
             // CarListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1151, 614);
+            ClientSize = new Size(1082, 603);
             Controls.Add(gridControl1);
             Name = "CarListForm";
             Text = "CarListForm";
@@ -159,7 +149,6 @@
 
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridProduct;
-        private DevExpress.XtraGrid.Columns.GridColumn gridProductId;
         private DevExpress.XtraGrid.Columns.GridColumn gridProductName;
         private DevExpress.XtraGrid.Columns.GridColumn gridProductModel;
         private DevExpress.XtraGrid.Columns.GridColumn gridProductKM;

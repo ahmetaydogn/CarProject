@@ -1,6 +1,8 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using UI.Win.Forms.CarForms;
 using UI.Win.Show;
+using UI.Win.UserControls;
 
 namespace UI.Win.Forms.BaseForm;
 
@@ -44,7 +46,6 @@ public partial class BaseEditForm : Form
     }
 
     public virtual void FillGaps() { }
-
     public virtual void ClearData() { }
 
     public virtual void DeleteEntity() { }

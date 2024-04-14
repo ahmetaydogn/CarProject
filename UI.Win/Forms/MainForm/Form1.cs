@@ -1,6 +1,8 @@
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors.Repository;
 using UI.Win.Forms.CarForms;
+using UI.Win.Forms.CustomerForm;
+using UI.Win.Forms.SaleForm;
 using UI.Win.Show;
 
 namespace UI.Win
@@ -32,6 +34,16 @@ namespace UI.Win
                 ShowListForms<CarListForm>.ShowListForm();
             else if (e.Item == btnCarAdd)
                 ShowEditForms<CarAddForm>.ShowDialogEditForm();
+            else if (e.Item == btnCustomerList)
+                ShowListForms<CustomerListForm>.ShowListForm();
+            else if (e.Item == btnCustomerAdd)
+                ShowEditForms<CustomerAddForm>.ShowDialogEditForm();
+            //else if (e.Item == btnBillList)
+            //    ShowListForms<>
+            else if (e.Item == btnSaleList)
+                ShowListForms<SaleListForm>.ShowListForm();
+            else if (e.Item == btnSaleAdd)
+                ShowEditForms<SaleAddForm>.ShowDialogEditForm();
         }
     }
 }

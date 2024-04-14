@@ -455,8 +455,6 @@
         }
 
         #endregion
-
-        private UserControls.MyDataLayoutControl myDataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraEditors.TextEdit txtProductName;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
@@ -480,5 +478,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private UserControls.MyDataLayoutControl myDataLayoutControl1;
     }
 }

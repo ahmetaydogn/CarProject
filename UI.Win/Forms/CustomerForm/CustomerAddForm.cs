@@ -1,38 +1,37 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DevExpress.XtraDataLayout;
 using DevExpress.XtraEditors;
 using Entities.Concrete;
 using FluentValidation;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
-using UI.Win.Forms.CustomerForm;
-using UI.Win.UserControls;
+using UI.Win.Forms.CarForms;
 using UI.Win.Utilities;
 
-namespace UI.Win.Forms.CarForms;
+namespace UI.Win.Forms.CustomerForm;
 
-public partial class CarAddForm : BaseEditForm
+public partial class CustomerAddForm : BaseEditForm
 {
-    public CarAddForm()
+    public CustomerAddForm()
     {
         InitializeComponent();
     }
 
-    public CarAddForm(int id, EventType _eventType) : this()
+    public CustomerAddForm(int id, EventType _eventType) : this()
     {
-        var result = productService.GetById(id);
+        var result = customerService.Get(id);
         if (result.IsSuccess)
         {
-            OldProduct = result.Data;
+            OldCustomer = result.Data;
             eventType = _eventType;
             FillGaps();
         }
     }
 
-    IProductService productService = new ProductManager(new EfProductDal());
-    Product OldProduct;
+
+    ICustomerService customerService = new CustomerManager(new EfCustomerDal());
+    Customer OldCustomer;
     EventType eventType = EventType.EntityInsert;
 
 
@@ -40,7 +39,7 @@ public partial class CarAddForm : BaseEditForm
     {
         try
         {
-            if (eventType == EventType.EntityUpdate && OldProduct != null)
+            if (eventType == EventType.EntityUpdate && OldCustomer != null)
             {
                 SendEntityToUpdate();
             }
@@ -67,7 +66,7 @@ public partial class CarAddForm : BaseEditForm
             {
                 SendEntityToAdd();
             }
-        } 
+        }
         catch (ValidationException e)
         {
             Messages.ErrorMessage(e.Message);
@@ -82,7 +81,7 @@ public partial class CarAddForm : BaseEditForm
         }
         else
         {
-            var result = productService.Delete(OldProduct);
+            var result = customerService.Delete(OldCustomer);
             if (result.IsSuccess)
             {
                 Messages.SuccessMessage(result.Message);
@@ -99,17 +98,11 @@ public partial class CarAddForm : BaseEditForm
     {
         if (eventType == EventType.EntityUpdate)
         {
-            txtProductName.Text = OldProduct.ProductName;
-            txtProductModel.Text = OldProduct.ProductModel;
-            txtProductKM.Text = OldProduct.ProductKM;
-            txtProductColor.Text = OldProduct.ProductColor;
-            spnProductMarketPrice.Value = OldProduct.MarketPrice;
-            spnProductSellPrice.Value = OldProduct.SellPrice;
-            spnProductVAT.Value = OldProduct.VAT;
-            spnProductVATPrice.Value = OldProduct.VATPrice;
-            spnProductQuantity.Value = OldProduct.Quantity;
-            txtDescription.Text = OldProduct.ProductDescription;
-            tgsProductSituation.IsOn = OldProduct.ProductSituation == "Sifir" ? false : true;
+            txtCustomerName.Text = OldCustomer.CustomerName;
+            txtCustomerSurname.Text = OldCustomer.CustomerSurname;
+            txtCustomerPhone.Text = OldCustomer.CustomerPhone;
+            txtTaxNo.Text = OldCustomer.CustomerTaxNo;
+            txtAddress.Text = OldCustomer.CustomerAddress;
         }
         else
             Messages.ItMustBeEntityUpdate();
@@ -135,13 +128,13 @@ public partial class CarAddForm : BaseEditForm
                     break;
             }
         }
-        OldProduct = null;
+        OldCustomer = null;
         eventType = EventType.EntityInsert;
     }
 
     public override void SendEntityToAdd()
     {
-        var result = productService.Add(CreateProduct());
+        var result = customerService.Add(CreateCustomer());
 
         if (result.IsSuccess)
         {
@@ -152,10 +145,10 @@ public partial class CarAddForm : BaseEditForm
 
     public override void SendEntityToUpdate()
     {
-        Product newProduct = CreateProduct();
-        newProduct.ProductId = OldProduct.ProductId;
+        Customer newCustomer = CreateCustomer();
+        newCustomer.CustomerId = OldCustomer.CustomerId;
 
-        var result = productService.Update(newProduct);
+        var result = customerService.Update(newCustomer);
         if (result.IsSuccess)
         {
             Messages.SuccessMessage(result.Message);
@@ -163,31 +156,25 @@ public partial class CarAddForm : BaseEditForm
         }
     }
 
-    private Product CreateProduct()
+    private Customer CreateCustomer()
     {
-        Product p = new Product
+        Customer c = new Customer
         {
-            ProductName = txtProductName.Text,
-            ProductModel = txtProductModel.Text,
-            ProductKM = txtProductKM.Text,
-            ProductColor = txtProductColor.Text,
-            MarketPrice = spnProductMarketPrice.Value,
-            SellPrice = spnProductSellPrice.Value,
-            VAT = Convert.ToByte(spnProductVAT.Value),
-            VATPrice = spnProductVATPrice.Value,
-            Quantity = Convert.ToInt16(spnProductQuantity.Value),
-            ProductSituation = tgsProductSituation.IsOn == true ? "İkinci El" : "Sifir",
-            ProductDescription = txtDescription.Text
+            CustomerName = txtCustomerName.Text,
+            CustomerSurname = txtCustomerSurname.Text,
+            CustomerPhone = txtCustomerPhone.Text,
+            CustomerTaxNo = txtTaxNo.Text,
+            CustomerAddress = txtAddress.Text,
         };
 
-        return p;
+        return c;
     }
 
     private void Closing()
     {
-        if (Application.OpenForms["CarListForm"] != null)
+        if (Application.OpenForms["CustomerListForm"] != null)
         {
-            CarListForm listForm = (CarListForm)Application.OpenForms["CarListForm"];
+            CustomerListForm listForm = (CustomerListForm)Application.OpenForms["CustomerListForm"];
             listForm.FillGrid();
         }
 
