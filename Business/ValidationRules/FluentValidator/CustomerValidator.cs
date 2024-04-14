@@ -18,6 +18,6 @@ public class CustomerValidator : AbstractValidator<Customer>
 
     private bool CreatedByTenLetter(string arg)
     {
-        return arg.Length == 100 ? false : true;
+        return arg.Length == 10 ? true : false;
     }
 }

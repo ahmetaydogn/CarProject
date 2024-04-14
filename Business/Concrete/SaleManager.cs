@@ -5,6 +5,7 @@ using Core.Utilities.Results;
 using Core.Utilities.Validation;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete;
 
@@ -61,5 +62,34 @@ public class SaleManager : ISaleService
     {
         var result = _saleDal.Get(p => p.SaleId == id);
         return new SuccessDataResult<Sale>(result);
+    }
+
+    public IDataResult<List<SaleDto>> GetAllAsDto(List<Product> products, List<Customer> customers)
+    {
+        var sales = GetAll();
+
+        var query = from sale in sales.Data
+                    join customer in customers
+                    on sale.CustomerId equals customer.CustomerId
+                    join product in products
+                    on sale.ProductId equals product.ProductId
+                    select new SaleDto
+                    {
+                        SaleId = sale.SaleId,
+                        CustomerId = customer.CustomerId,
+                        ProductId = product.ProductId,
+                        CustomerFullName = customer.CustomerName + " " + customer.CustomerSurname,
+                        CustomerPhone = customer.CustomerPhone,
+                        ProductName = product.ProductName,
+                        ProductModel = product.ProductModel,
+                        SaleDate = sale.SaleDate,
+                        Quantity = sale.Quantity,
+                        Price = sale.Price,
+                        Profit = sale.Price - (product.MarketPrice + product.VATPrice),
+                        PaymentMethod = sale.PaymentMethod,
+                        BillNumber = sale.BillNumber,
+                    };
+
+        return new SuccessDataResult<List<SaleDto>>(query.ToList());
     }
 }

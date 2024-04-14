@@ -51,4 +51,9 @@ public class CustomerManager : ICustomerService
         var result = _customerDal.GetAll().ToList();
         return new SuccessDataResult<List<Customer>>(result);
     }
+
+    public IDataResult<Customer> UniqueTaxNo(string taxNo)
+    {
+        throw new NotImplementedException();
+    }
 }

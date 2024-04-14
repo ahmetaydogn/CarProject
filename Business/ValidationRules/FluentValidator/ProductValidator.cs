@@ -9,7 +9,7 @@ public class ProductValidator : AbstractValidator<Product>
     {
         RuleFor(p => p.ProductName).NotEmpty().WithMessage(ValidationMessages.ProductNameEmpty);
         RuleFor(p => p.ProductName).Length(3, 50).WithMessage(ValidationMessages.ProductNameLength);
-
+        
         RuleFor(p => p.MarketPrice).GreaterThanOrEqualTo(1).WithMessage(ValidationMessages.ProductMarketPriceGreater);
         RuleFor(p => p.SellPrice).GreaterThanOrEqualTo(1).WithMessage(ValidationMessages.ProductSellPriceGreater);
 

@@ -10,4 +10,5 @@ public interface ICustomerService
     IResult Delete(Customer customer);
     IDataResult<List<Customer>> GetAll();
     IDataResult<Customer> Get(int id);
+    IDataResult<Customer> UniqueTaxNo(string taxNo);
 }

@@ -23,4 +23,12 @@ public static class ValidationMessages
 
     // Bill Validator
     public static string BillPriceGreater = "Fatura fiyatı 1'e eşit veya büyük olmalıdır.";
+
+    // Sale Validator
+    public static string SaleCustomerCantBeEmpty = "Cari boş bırakılamaz.";
+    public static string SaleProductCantBeEmpty = "Ürün boş bırakılamaz";
+    public static string SaleQuantityCantBeEmpty = "Miktar boş bırakılamaz";
+    public static string SaleQuantityGreaterThan = "Miktar 1'e eşit veya büyük olmalıdır.";
+    public static string SalePriceGreaterThan = "Tutar 1'e eşit veya büyük olmalıdır.";
+    public static string SalePaymentMethodCantBeEmpty = "Ödeme Yöntemi boş bırakılamaz";
 }
