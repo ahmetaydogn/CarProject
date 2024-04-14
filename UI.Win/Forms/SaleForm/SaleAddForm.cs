@@ -20,6 +20,7 @@ public partial class SaleAddForm : BaseEditForm
     {
         InitializeComponent();
     }
+
     public SaleAddForm(int id, EventType _eventType, decimal sellPrice) : this()
     {
         var result = saleService.GetById(id);
@@ -28,10 +29,34 @@ public partial class SaleAddForm : BaseEditForm
             OldSale = result.Data;
             eventType = _eventType;
             productPrice = sellPrice;
+            btnBill.Enabled = false;
             FillGaps();
         }
     }
 
+    public SaleAddForm(int id, EventType _eventType, decimal sellPrice, string _billNumber) : this()
+    {
+        var result = saleService.GetById(id);
+        if (result.IsSuccess)
+        {
+            OldSale = result.Data;
+            eventType = _eventType;
+            productPrice = sellPrice;
+            billNumber = _billNumber;
+            btnBill.EditValue = billNumber;
+            btnBill.Enabled = false;
+            FillGaps();
+        }
+    }
+
+    public SaleAddForm(string _billNumber) : this()
+    {
+        billNumber = _billNumber;
+        btnBill.EditValue = billNumber;
+        btnBill.Enabled = false;
+    }
+
+    string billNumber;
     ISaleService saleService = new SaleManager(new EfSaleDal());
     Sale OldSale;
     decimal productPrice;
@@ -40,7 +65,7 @@ public partial class SaleAddForm : BaseEditForm
 
     private void btnProduct_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
     {
-        var frm = (CarListForm)ShowListForms<CarListForm>.ShowDialogListForm();
+        var frm = (CarDialogListForm)ShowListForms<CarDialogListForm>.ShowDialogListForm();
         if (frm.DialogResult == DialogResult.OK)
         {
             btnProduct.EditValue = frm.returnProductId;
@@ -51,9 +76,19 @@ public partial class SaleAddForm : BaseEditForm
 
     private void btnCustomer_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
     {
-        var frm = (CustomerListForm)ShowListForms<CustomerListForm>.ShowDialogListForm();
+        var frm = (CustomerDialogListForm)ShowListForms<CustomerDialogListForm>.ShowDialogListForm();
         if (frm.DialogResult == DialogResult.OK)
             btnCustomer.EditValue = frm.returnCustomerId;
+    }
+
+    private void btnBill_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+    {
+        if (btnBill.Enabled)
+        {
+            var frm = (BillDialogListForm)ShowListForms<BillDialogListForm>.ShowDialogListForm();
+            if (frm.DialogResult == DialogResult.OK)
+                btnBill.EditValue = frm.returnBillId;
+        }
     }
 
     private void spnQuantity_ValueChanged(object sender, EventArgs e)
@@ -125,18 +160,25 @@ public partial class SaleAddForm : BaseEditForm
     {
         if (eventType == EventType.EntityUpdate)
         {
+
             btnProduct.EditValue = OldSale.ProductId;
             btnCustomer.EditValue = OldSale.CustomerId;
             calcPrice.Value = OldSale.Price;
             cmbPaymentMethod.Text = OldSale.PaymentMethod;
             spnQuantity.Value = OldSale.Quantity;
-            txtBillNo.Text = OldSale.BillNumber;
+            btnBill.EditValue = OldSale.BillNumber;
 
             //btnProduct.DataContext = productService.GetAll().Data;
             //btnCustomer.DataContext = customerService.GetAll().Data;
         }
         else
             Messages.ItMustBeEntityUpdate();
+
+        if (billNumber != null)
+        {
+            btnBill.EditValue = billNumber;
+            btnBill.ReadOnly = true;
+        }
     }
 
     public override void ClearData()
@@ -164,6 +206,12 @@ public partial class SaleAddForm : BaseEditForm
         }
         OldSale = null;
         eventType = EventType.EntityInsert;
+
+        if (billNumber != null)
+        {
+            btnBill.EditValue = billNumber;
+            btnBill.ReadOnly = true;
+        }
     }
 
     public override void SendEntityToAdd()
@@ -200,7 +248,7 @@ public partial class SaleAddForm : BaseEditForm
             PaymentMethod = cmbPaymentMethod.Text,
             Price = calcPrice.Value,
             Quantity = Convert.ToInt16(spnQuantity.Value),
-            BillNumber = txtBillNo.Text,
+            BillNumber = btnBill.Text,
         };
 
         return s;

@@ -1,6 +1,6 @@
 ﻿namespace UI.Win.Forms.BillForms
 {
-    partial class BillListForm
+    partial class BillDialogListForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,19 +33,27 @@
             gridBillId = new DevExpress.XtraGrid.Columns.GridColumn();
             gridDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             gridPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridBill).BeginInit();
             SuspendLayout();
             // 
+            // ribbonControl1
+            // 
+            ribbonControl1.ExpandCollapseItem.Id = 0;
+            ribbonControl1.Size = new Size(1232, 126);
+            ribbonControl1.Toolbar.ShowCustomizeItem = false;
+            // 
             // gridControl1
             // 
             gridControl1.Dock = DockStyle.Fill;
-            gridControl1.Location = new Point(0, 0);
+            gridControl1.Location = new Point(0, 126);
             gridControl1.MainView = gridBill;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new Size(800, 450);
-            gridControl1.TabIndex = 0;
+            gridControl1.Size = new Size(1232, 577);
+            gridControl1.TabIndex = 1;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridBill });
+            gridControl1.KeyPress += gridControl1_KeyPress;
             // 
             // gridBill
             // 
@@ -85,17 +93,22 @@
             gridPrice.VisibleIndex = 2;
             gridPrice.Width = 94;
             // 
-            // BillListForm
+            // BillDialogListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1232, 703);
             Controls.Add(gridControl1);
-            Name = "BillListForm";
-            Text = "BillListForm";
+            Name = "BillDialogListForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "BillDialogListForm";
+            Controls.SetChildIndex(ribbonControl1, 0);
+            Controls.SetChildIndex(gridControl1, 0);
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridBill).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

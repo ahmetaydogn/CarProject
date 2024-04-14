@@ -38,7 +38,7 @@
             DevExpress.XtraLayout.RowDefinition rowDefinition5 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition6 = new DevExpress.XtraLayout.RowDefinition();
             myDataLayoutControl1 = new UserControls.MyDataLayoutControl();
-            txtBillNo = new DevExpress.XtraEditors.TextEdit();
+            btnBill = new DevExpress.XtraEditors.ButtonEdit();
             cmbPaymentMethod = new DevExpress.XtraEditors.ComboBoxEdit();
             calcPrice = new DevExpress.XtraEditors.CalcEdit();
             spnQuantity = new DevExpress.XtraEditors.SpinEdit();
@@ -54,7 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).BeginInit();
             myDataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)txtBillNo.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnBill.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cmbPaymentMethod.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)calcPrice.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spnQuantity.Properties).BeginInit();
@@ -77,7 +77,7 @@
             // 
             // myDataLayoutControl1
             // 
-            myDataLayoutControl1.Controls.Add(txtBillNo);
+            myDataLayoutControl1.Controls.Add(btnBill);
             myDataLayoutControl1.Controls.Add(cmbPaymentMethod);
             myDataLayoutControl1.Controls.Add(calcPrice);
             myDataLayoutControl1.Controls.Add(spnQuantity);
@@ -92,15 +92,17 @@
             myDataLayoutControl1.TabIndex = 1;
             myDataLayoutControl1.Text = "myDataLayoutControl1";
             // 
-            // txtBillNo
+            // btnBill
             // 
-            txtBillNo.Location = new Point(97, 132);
-            txtBillNo.MenuManager = ribbonControl1;
-            txtBillNo.Name = "txtBillNo";
-            txtBillNo.Properties.MaxLength = 6;
-            txtBillNo.Size = new Size(151, 22);
-            txtBillNo.StyleController = myDataLayoutControl1;
-            txtBillNo.TabIndex = 9;
+            btnBill.Location = new Point(97, 132);
+            btnBill.MenuManager = ribbonControl1;
+            btnBill.Name = "btnBill";
+            btnBill.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton() });
+            btnBill.Properties.ReadOnly = true;
+            btnBill.Size = new Size(151, 22);
+            btnBill.StyleController = myDataLayoutControl1;
+            btnBill.TabIndex = 10;
+            btnBill.ButtonClick += btnBill_ButtonClick;
             // 
             // cmbPaymentMethod
             // 
@@ -143,6 +145,7 @@
             btnCustomer.MenuManager = ribbonControl1;
             btnCustomer.Name = "btnCustomer";
             btnCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton() });
+            btnCustomer.Properties.ReadOnly = true;
             btnCustomer.Size = new Size(151, 22);
             btnCustomer.StyleController = myDataLayoutControl1;
             btnCustomer.TabIndex = 5;
@@ -154,6 +157,7 @@
             btnProduct.MenuManager = ribbonControl1;
             btnProduct.Name = "btnProduct";
             btnProduct.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton() });
+            btnProduct.Properties.ReadOnly = true;
             btnProduct.Size = new Size(151, 22);
             btnProduct.StyleController = myDataLayoutControl1;
             btnProduct.TabIndex = 4;
@@ -250,7 +254,7 @@
             // 
             // layoutControlItem6
             // 
-            layoutControlItem6.Control = txtBillNo;
+            layoutControlItem6.Control = btnBill;
             layoutControlItem6.Location = new Point(0, 120);
             layoutControlItem6.Name = "layoutControlItem6";
             layoutControlItem6.OptionsTableLayoutItem.RowIndex = 5;
@@ -273,7 +277,7 @@
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).EndInit();
             myDataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)txtBillNo.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnBill.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)cmbPaymentMethod.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)calcPrice.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)spnQuantity.Properties).EndInit();
@@ -304,7 +308,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.ComboBoxEdit cmbPaymentMethod;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraEditors.TextEdit txtBillNo;
+        private DevExpress.XtraEditors.ButtonEdit btnBill;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

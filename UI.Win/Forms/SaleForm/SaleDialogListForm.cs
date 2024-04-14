@@ -2,23 +2,45 @@
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using UI.Win.Enums;
+using UI.Win.Forms.BaseForm;
 using UI.Win.Forms.CarForms;
 using UI.Win.Show;
 
 namespace UI.Win.Forms.SaleForm;
 
-public partial class SaleListForm : Form
+public partial class SaleDialogListForm : BaseDialogListForm
 {
-    public SaleListForm()
+    public SaleDialogListForm()
     {
         InitializeComponent();
         FillGrid();
     }
 
     ISaleService saleService = new SaleManager(new EfSaleDal());
-    ICustomerService customerService = new CustomerManager(new EfCustomerDal());
     IProductService productService = new ProductManager(new EfProductDal());
+    ICustomerService customerService = new CustomerManager(new EfCustomerDal());
+    public int returnSaleId;
 
+
+    // RibbonControl's Code
+    public override void AddEntity()
+    {
+        ShowEditForms<SaleAddForm>.ShowDialogEditForm();
+    }
+
+    public override void RefreshGridControl()
+    {
+        FillGrid();
+    }
+
+    public override void SelectEntity()
+    {
+        SelectFocusedEntity();
+    }
+
+
+
+    // GridControl's Code
     public void FillGrid()
     {
         var customerList = customerService.GetAll();
@@ -31,11 +53,23 @@ public partial class SaleListForm : Form
         }
     }
 
-    private void gridControl1_DoubleClick(object sender, EventArgs e)
+    private void gridSale_DoubleClick(object sender, EventArgs e)
     {
         int saleId = Convert.ToInt32(gridSale.GetFocusedRowCellValue("SaleId"));
-        int productId = Convert.ToInt32(gridSale.GetFocusedRowCellValue("ProductId"));
-        
+        int productId = saleService.GetById(saleId).Data.ProductId;
         ShowEditForms<SaleAddForm>.ShowDialogEditForm(saleId, EventType.EntityUpdate, productService.GetById(productId).Data.SellPrice);
+    }
+
+    private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        SelectFocusedEntity();
+    }
+
+
+    // Other Functions
+    private void SelectFocusedEntity()
+    {
+        returnSaleId = Convert.ToInt32(gridSale.GetFocusedRowCellValue("SaleId"));
+        this.DialogResult = DialogResult.OK;
     }
 }

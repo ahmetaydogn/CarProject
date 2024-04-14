@@ -1,20 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
+using UI.Win.Enums;
+using UI.Win.Show;
 
-namespace UI.Win.Forms.BillForms
+namespace UI.Win.Forms.BillForms;
+
+public partial class BillListForm : Form
 {
-    public partial class BillListForm : Form
+    public BillListForm()
     {
-        public BillListForm()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        FillGrid();
+    }
+
+    IBillService billService = new BillManager(new EfBillDal());
+
+    public void FillGrid()
+    {
+        var result = billService.GetAll();
+        if (result.IsSuccess)
+            gridControl1.DataSource = result.Data;
+    }
+
+    private void gridBill_DoubleClick(object sender, EventArgs e)
+    {
+        string billId = gridBill.GetFocusedRowCellValue("BillId").ToString();
+        ShowListForms<BillSaleListForm>.ShowDialogListForm(billId);
     }
 }
