@@ -12,4 +12,7 @@ public class CarProjectContext : DbContext
     }
 
     public DbSet<Product> Products { get; set; }
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Bill> Bills { get; set; }
+    public DbSet<Sale> Sales { get; set; }
 }
