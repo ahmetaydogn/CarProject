@@ -1,6 +1,6 @@
 ﻿namespace UI.Win.Forms.CustomerForm
 {
-    partial class CustomerListForm
+    partial class CustomerDialogListForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,20 +35,27 @@
             gridCustomerPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             gridCustomerAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             gridTaxNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridCustomer).BeginInit();
             SuspendLayout();
             // 
+            // ribbonControl1
+            // 
+            ribbonControl1.ExpandCollapseItem.Id = 0;
+            ribbonControl1.Size = new Size(1232, 126);
+            ribbonControl1.Toolbar.ShowCustomizeItem = false;
+            // 
             // gridControl1
             // 
             gridControl1.Dock = DockStyle.Fill;
-            gridControl1.Location = new Point(0, 0);
+            gridControl1.Location = new Point(0, 126);
             gridControl1.MainView = gridCustomer;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new Size(1082, 603);
-            gridControl1.TabIndex = 0;
+            gridControl1.Size = new Size(1232, 577);
+            gridControl1.TabIndex = 1;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridCustomer });
-            gridControl1.DoubleClick += gridControl1_DoubleClick;
+            gridControl1.KeyPress += gridControl1_KeyPress_1;
             // 
             // gridCustomer
             // 
@@ -56,6 +63,7 @@
             gridCustomer.GridControl = gridControl1;
             gridCustomer.Name = "gridCustomer";
             gridCustomer.OptionsBehavior.Editable = false;
+            gridCustomer.DoubleClick += gridCustomer_DoubleClick;
             // 
             // gridCustomerName
             // 
@@ -109,17 +117,21 @@
             gridTaxNo.VisibleIndex = 3;
             gridTaxNo.Width = 94;
             // 
-            // CustomerListForm
+            // CustomerDialogListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1082, 603);
+            ClientSize = new Size(1232, 703);
             Controls.Add(gridControl1);
-            Name = "CustomerListForm";
-            Text = "CustomerListForm";
+            Name = "CustomerDialogListForm";
+            Text = "CustomerDialogListForm";
+            Controls.SetChildIndex(ribbonControl1, 0);
+            Controls.SetChildIndex(gridControl1, 0);
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridCustomer).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

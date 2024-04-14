@@ -1,6 +1,6 @@
 ﻿namespace UI.Win.Forms.CarForms
 {
-    partial class CarListForm
+    partial class CarDialogListForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,19 +37,27 @@
             gridProductSituation = new DevExpress.XtraGrid.Columns.GridColumn();
             gridMarketPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             gridSellPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridProduct).BeginInit();
             SuspendLayout();
             // 
+            // ribbonControl1
+            // 
+            ribbonControl1.ExpandCollapseItem.Id = 0;
+            ribbonControl1.Size = new Size(1232, 126);
+            ribbonControl1.Toolbar.ShowCustomizeItem = false;
+            // 
             // gridControl1
             // 
             gridControl1.Dock = DockStyle.Fill;
-            gridControl1.Location = new Point(0, 0);
+            gridControl1.Location = new Point(0, 126);
             gridControl1.MainView = gridProduct;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new Size(1082, 603);
-            gridControl1.TabIndex = 0;
+            gridControl1.Size = new Size(1232, 577);
+            gridControl1.TabIndex = 1;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridProduct });
+            gridControl1.KeyPress += gridControl1_KeyPress_1;
             // 
             // gridProduct
             // 
@@ -131,17 +139,21 @@
             gridSellPrice.VisibleIndex = 6;
             gridSellPrice.Width = 150;
             // 
-            // CarListForm
+            // CarDialogListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1082, 603);
+            ClientSize = new Size(1232, 703);
             Controls.Add(gridControl1);
-            Name = "CarListForm";
-            Text = "CarListForm";
+            Name = "CarDialogListForm";
+            Text = "CarDialogListForm";
+            Controls.SetChildIndex(ribbonControl1, 0);
+            Controls.SetChildIndex(gridControl1, 0);
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridProduct).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

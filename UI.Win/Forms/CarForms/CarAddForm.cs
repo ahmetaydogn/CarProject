@@ -1,14 +1,11 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DevExpress.XtraDataLayout;
 using DevExpress.XtraEditors;
 using Entities.Concrete;
 using FluentValidation;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
-using UI.Win.Forms.CustomerForm;
-using UI.Win.UserControls;
 using UI.Win.Utilities;
 
 namespace UI.Win.Forms.CarForms;

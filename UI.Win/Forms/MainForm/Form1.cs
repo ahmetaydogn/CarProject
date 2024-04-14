@@ -1,5 +1,6 @@
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors.Repository;
+using UI.Win.Forms.BillForms;
 using UI.Win.Forms.CarForms;
 using UI.Win.Forms.CustomerForm;
 using UI.Win.Forms.SaleForm;
@@ -17,9 +18,9 @@ namespace UI.Win
 
         private void EventsLoad()
         {
-            foreach(var item in ribbonControl.Items)
+            foreach (var item in ribbonControl.Items)
             {
-                switch(item)
+                switch (item)
                 {
                     case BarButtonItem btn:
                         btn.ItemClick += ButtonsClick;
@@ -38,8 +39,10 @@ namespace UI.Win
                 ShowListForms<CustomerListForm>.ShowListForm();
             else if (e.Item == btnCustomerAdd)
                 ShowEditForms<CustomerAddForm>.ShowDialogEditForm();
-            //else if (e.Item == btnBillList)
-            //    ShowListForms<>
+            else if (e.Item == btnBillList)
+                ShowListForms<BillListForm>.ShowListForm();
+            else if (e.Item == btnBillAdd)
+                ShowEditForms<BillAddForm>.ShowDialogEditForm();
             else if (e.Item == btnSaleList)
                 ShowListForms<SaleListForm>.ShowListForm();
             else if (e.Item == btnSaleAdd)

@@ -8,7 +8,6 @@ namespace UI.Win.Forms.CarForms;
 
 public partial class CarListForm : Form
 {
-
     public CarListForm()
     {
         InitializeComponent();
@@ -16,8 +15,6 @@ public partial class CarListForm : Form
     }
 
     IProductService productService = new ProductManager(new EfProductDal());
-    public int returnProductId;
-    public decimal returnProductPrice;
 
     public void FillGrid()
     {
@@ -30,12 +27,5 @@ public partial class CarListForm : Form
     {
         int productId = Convert.ToInt32(gridProduct.GetFocusedRowCellValue("ProductId"));
         ShowEditForms<CarAddForm>.ShowDialogEditForm(productId, EventType.EntityUpdate);
-    }
-
-    private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        returnProductId = Convert.ToInt32(gridProduct.GetFocusedRowCellValue("ProductId"));
-        returnProductPrice = productService.GetById(returnProductId).Data.SellPrice;
-        this.DialogResult = DialogResult.OK;
     }
 }

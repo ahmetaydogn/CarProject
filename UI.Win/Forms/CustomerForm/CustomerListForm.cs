@@ -14,8 +14,6 @@ public partial class CustomerListForm : Form
         FillGrid();
     }
 
-
-    public int returnCustomerId;
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
 
     public void FillGrid()
@@ -29,11 +27,5 @@ public partial class CustomerListForm : Form
     {
         int customerId = Convert.ToInt32(gridCustomer.GetFocusedRowCellValue("CustomerId"));
         ShowEditForms<CustomerAddForm>.ShowDialogEditForm(customerId, EventType.EntityUpdate);
-    }
-
-    private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        returnCustomerId = Convert.ToInt32(gridCustomer.GetFocusedRowCellValue("CustomerId"));
-        this.DialogResult = DialogResult.OK;
     }
 }

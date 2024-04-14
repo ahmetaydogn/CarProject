@@ -42,10 +42,10 @@
             DevExpress.XtraLayout.RowDefinition rowDefinition9 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition10 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition11 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition12 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition13 = new DevExpress.XtraLayout.RowDefinition();
             myDataLayoutControl1 = new UserControls.MyDataLayoutControl();
             spnProductQuantity = new DevExpress.XtraEditors.SpinEdit();
-            spnProductVATPrice = new DevExpress.XtraEditors.SpinEdit();
-            spnProductVAT = new DevExpress.XtraEditors.SpinEdit();
             spnProductSellPrice = new DevExpress.XtraEditors.SpinEdit();
             spnProductMarketPrice = new DevExpress.XtraEditors.SpinEdit();
             tgsProductSituation = new DevExpress.XtraEditors.ToggleSwitch();
@@ -63,15 +63,19 @@
             layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            cmbExciseDuty = new DevExpress.XtraEditors.ComboBoxEdit();
+            layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            calcExciseDutyPrice = new DevExpress.XtraEditors.CalcEdit();
+            layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            calcVATPrice = new DevExpress.XtraEditors.CalcEdit();
+            layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            cmbVAT = new DevExpress.XtraEditors.ComboBoxEdit();
+            layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).BeginInit();
             myDataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)spnProductQuantity.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)spnProductVATPrice.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)spnProductVAT.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spnProductSellPrice.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spnProductMarketPrice.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tgsProductSituation.Properties).BeginInit();
@@ -89,9 +93,15 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem12).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cmbExciseDuty.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem13).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)calcExciseDutyPrice.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)calcVATPrice.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cmbVAT.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
             SuspendLayout();
             // 
             // ribbonControl1
@@ -102,9 +112,11 @@
             // 
             // myDataLayoutControl1
             // 
+            myDataLayoutControl1.Controls.Add(cmbVAT);
+            myDataLayoutControl1.Controls.Add(calcVATPrice);
+            myDataLayoutControl1.Controls.Add(calcExciseDutyPrice);
+            myDataLayoutControl1.Controls.Add(cmbExciseDuty);
             myDataLayoutControl1.Controls.Add(spnProductQuantity);
-            myDataLayoutControl1.Controls.Add(spnProductVATPrice);
-            myDataLayoutControl1.Controls.Add(spnProductVAT);
             myDataLayoutControl1.Controls.Add(spnProductSellPrice);
             myDataLayoutControl1.Controls.Add(spnProductMarketPrice);
             myDataLayoutControl1.Controls.Add(tgsProductSituation);
@@ -125,7 +137,7 @@
             // spnProductQuantity
             // 
             spnProductQuantity.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            spnProductQuantity.Location = new Point(97, 204);
+            spnProductQuantity.Location = new Point(97, 252);
             spnProductQuantity.MenuManager = ribbonControl1;
             spnProductQuantity.Name = "spnProductQuantity";
             spnProductQuantity.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -134,31 +146,6 @@
             spnProductQuantity.Size = new Size(151, 22);
             spnProductQuantity.StyleController = myDataLayoutControl1;
             spnProductQuantity.TabIndex = 20;
-            // 
-            // spnProductVATPrice
-            // 
-            spnProductVATPrice.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            spnProductVATPrice.Location = new Point(97, 180);
-            spnProductVATPrice.MenuManager = ribbonControl1;
-            spnProductVATPrice.Name = "spnProductVATPrice";
-            spnProductVATPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            spnProductVATPrice.Properties.SpinStyle = DevExpress.XtraEditors.Controls.SpinStyles.Horizontal;
-            spnProductVATPrice.Size = new Size(151, 22);
-            spnProductVATPrice.StyleController = myDataLayoutControl1;
-            spnProductVATPrice.TabIndex = 19;
-            // 
-            // spnProductVAT
-            // 
-            spnProductVAT.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            spnProductVAT.Location = new Point(97, 156);
-            spnProductVAT.MenuManager = ribbonControl1;
-            spnProductVAT.Name = "spnProductVAT";
-            spnProductVAT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            spnProductVAT.Properties.MaskSettings.Set("mask", "d");
-            spnProductVAT.Properties.SpinStyle = DevExpress.XtraEditors.Controls.SpinStyles.Horizontal;
-            spnProductVAT.Size = new Size(151, 22);
-            spnProductVAT.StyleController = myDataLayoutControl1;
-            spnProductVAT.TabIndex = 18;
             // 
             // spnProductSellPrice
             // 
@@ -200,10 +187,10 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(97, 248);
+            txtDescription.Location = new Point(97, 300);
             txtDescription.MenuManager = ribbonControl1;
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(619, 117);
+            txtDescription.Size = new Size(619, 65);
             txtDescription.StyleController = myDataLayoutControl1;
             txtDescription.TabIndex = 14;
             // 
@@ -247,7 +234,7 @@
             // 
             Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             Root.GroupBordersVisible = false;
-            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlItem2, layoutControlItem3, layoutControlItem4, layoutControlItem11, layoutControlItem10, layoutControlItem12, layoutControlItem5, layoutControlItem6, layoutControlItem7, layoutControlItem8 });
+            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlItem2, layoutControlItem3, layoutControlItem4, layoutControlItem11, layoutControlItem10, layoutControlItem12, layoutControlItem5, layoutControlItem8, layoutControlItem13, layoutControlItem9, layoutControlItem7, layoutControlItem6 });
             Root.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table;
             Root.Name = "Root";
             columnDefinition1.SizeType = SizeType.Absolute;
@@ -275,11 +262,15 @@
             rowDefinition8.SizeType = SizeType.Absolute;
             rowDefinition9.Height = 24D;
             rowDefinition9.SizeType = SizeType.Absolute;
-            rowDefinition10.Height = 20D;
-            rowDefinition10.SizeType = SizeType.AutoSize;
-            rowDefinition11.Height = 100D;
-            rowDefinition11.SizeType = SizeType.Percent;
-            Root.OptionsTableLayoutGroup.RowDefinitions.AddRange(new DevExpress.XtraLayout.RowDefinition[] { rowDefinition1, rowDefinition2, rowDefinition3, rowDefinition4, rowDefinition5, rowDefinition6, rowDefinition7, rowDefinition8, rowDefinition9, rowDefinition10, rowDefinition11 });
+            rowDefinition10.Height = 24D;
+            rowDefinition10.SizeType = SizeType.Absolute;
+            rowDefinition11.Height = 24D;
+            rowDefinition11.SizeType = SizeType.Absolute;
+            rowDefinition12.Height = 24D;
+            rowDefinition12.SizeType = SizeType.Absolute;
+            rowDefinition13.Height = 100D;
+            rowDefinition13.SizeType = SizeType.Percent;
+            Root.OptionsTableLayoutGroup.RowDefinitions.AddRange(new DevExpress.XtraLayout.RowDefinition[] { rowDefinition1, rowDefinition2, rowDefinition3, rowDefinition4, rowDefinition5, rowDefinition6, rowDefinition7, rowDefinition8, rowDefinition9, rowDefinition10, rowDefinition11, rowDefinition12, rowDefinition13 });
             Root.Size = new Size(728, 377);
             Root.TextVisible = false;
             // 
@@ -334,11 +325,11 @@
             // layoutControlItem11
             // 
             layoutControlItem11.Control = txtDescription;
-            layoutControlItem11.Location = new Point(0, 236);
+            layoutControlItem11.Location = new Point(0, 288);
             layoutControlItem11.Name = "layoutControlItem11";
             layoutControlItem11.OptionsTableLayoutItem.ColumnSpan = 3;
-            layoutControlItem11.OptionsTableLayoutItem.RowIndex = 10;
-            layoutControlItem11.Size = new Size(708, 121);
+            layoutControlItem11.OptionsTableLayoutItem.RowIndex = 12;
+            layoutControlItem11.Size = new Size(708, 69);
             layoutControlItem11.Text = "Açıklama";
             layoutControlItem11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem11.TextSize = new Size(80, 16);
@@ -378,9 +369,101 @@
             layoutControlItem5.TextSize = new Size(80, 20);
             layoutControlItem5.TextToControlDistance = 5;
             // 
+            // layoutControlItem8
+            // 
+            layoutControlItem8.Control = spnProductQuantity;
+            layoutControlItem8.Location = new Point(0, 240);
+            layoutControlItem8.Name = "layoutControlItem8";
+            layoutControlItem8.OptionsTableLayoutItem.RowIndex = 10;
+            layoutControlItem8.Size = new Size(240, 24);
+            layoutControlItem8.Text = "Miktar";
+            layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            layoutControlItem8.TextSize = new Size(80, 20);
+            layoutControlItem8.TextToControlDistance = 5;
+            // 
+            // cmbExciseDuty
+            // 
+            cmbExciseDuty.Location = new Point(97, 204);
+            cmbExciseDuty.MenuManager = ribbonControl1;
+            cmbExciseDuty.Name = "cmbExciseDuty";
+            cmbExciseDuty.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            cmbExciseDuty.Properties.Items.AddRange(new object[] { "%45 Ötv", "%50 Ötv", "%60 Ötv", "%70 Ötv", "%80 Ötv" });
+            cmbExciseDuty.Size = new Size(151, 22);
+            cmbExciseDuty.StyleController = myDataLayoutControl1;
+            cmbExciseDuty.TabIndex = 23;
+            // 
+            // layoutControlItem13
+            // 
+            layoutControlItem13.Control = cmbExciseDuty;
+            layoutControlItem13.Location = new Point(0, 192);
+            layoutControlItem13.Name = "layoutControlItem13";
+            layoutControlItem13.OptionsTableLayoutItem.RowIndex = 8;
+            layoutControlItem13.Size = new Size(240, 24);
+            layoutControlItem13.Text = "ÖTV Oranı";
+            layoutControlItem13.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            layoutControlItem13.TextSize = new Size(80, 16);
+            layoutControlItem13.TextToControlDistance = 5;
+            // 
+            // calcExciseDutyPrice
+            // 
+            calcExciseDutyPrice.Location = new Point(97, 228);
+            calcExciseDutyPrice.MenuManager = ribbonControl1;
+            calcExciseDutyPrice.Name = "calcExciseDutyPrice";
+            calcExciseDutyPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            calcExciseDutyPrice.Properties.ReadOnly = true;
+            calcExciseDutyPrice.Size = new Size(151, 22);
+            calcExciseDutyPrice.StyleController = myDataLayoutControl1;
+            calcExciseDutyPrice.TabIndex = 24;
+            // 
+            // layoutControlItem9
+            // 
+            layoutControlItem9.Control = calcExciseDutyPrice;
+            layoutControlItem9.Location = new Point(0, 216);
+            layoutControlItem9.Name = "layoutControlItem9";
+            layoutControlItem9.OptionsTableLayoutItem.RowIndex = 9;
+            layoutControlItem9.Size = new Size(240, 24);
+            layoutControlItem9.Text = "ÖTV Tutarı";
+            layoutControlItem9.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            layoutControlItem9.TextSize = new Size(80, 16);
+            layoutControlItem9.TextToControlDistance = 5;
+            // 
+            // calcVATPrice
+            // 
+            calcVATPrice.Location = new Point(97, 180);
+            calcVATPrice.MenuManager = ribbonControl1;
+            calcVATPrice.Name = "calcVATPrice";
+            calcVATPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            calcVATPrice.Properties.ReadOnly = true;
+            calcVATPrice.Size = new Size(151, 22);
+            calcVATPrice.StyleController = myDataLayoutControl1;
+            calcVATPrice.TabIndex = 25;
+            // 
+            // layoutControlItem7
+            // 
+            layoutControlItem7.Control = calcVATPrice;
+            layoutControlItem7.Location = new Point(0, 168);
+            layoutControlItem7.Name = "layoutControlItem7";
+            layoutControlItem7.OptionsTableLayoutItem.RowIndex = 7;
+            layoutControlItem7.Size = new Size(240, 24);
+            layoutControlItem7.Text = "KDV Tutarı";
+            layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            layoutControlItem7.TextSize = new Size(80, 16);
+            layoutControlItem7.TextToControlDistance = 5;
+            // 
+            // cmbVAT
+            // 
+            cmbVAT.Location = new Point(97, 156);
+            cmbVAT.MenuManager = ribbonControl1;
+            cmbVAT.Name = "cmbVAT";
+            cmbVAT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            cmbVAT.Properties.Items.AddRange(new object[] { "%10 Kdv", "%20 Kdv" });
+            cmbVAT.Size = new Size(151, 22);
+            cmbVAT.StyleController = myDataLayoutControl1;
+            cmbVAT.TabIndex = 26;
+            // 
             // layoutControlItem6
             // 
-            layoutControlItem6.Control = spnProductVAT;
+            layoutControlItem6.Control = cmbVAT;
             layoutControlItem6.Location = new Point(0, 144);
             layoutControlItem6.Name = "layoutControlItem6";
             layoutControlItem6.OptionsTableLayoutItem.RowIndex = 6;
@@ -389,30 +472,6 @@
             layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem6.TextSize = new Size(80, 20);
             layoutControlItem6.TextToControlDistance = 5;
-            // 
-            // layoutControlItem7
-            // 
-            layoutControlItem7.Control = spnProductVATPrice;
-            layoutControlItem7.Location = new Point(0, 168);
-            layoutControlItem7.Name = "layoutControlItem7";
-            layoutControlItem7.OptionsTableLayoutItem.RowIndex = 7;
-            layoutControlItem7.Size = new Size(240, 24);
-            layoutControlItem7.Text = "KDV Fiyat";
-            layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            layoutControlItem7.TextSize = new Size(80, 20);
-            layoutControlItem7.TextToControlDistance = 5;
-            // 
-            // layoutControlItem8
-            // 
-            layoutControlItem8.Control = spnProductQuantity;
-            layoutControlItem8.Location = new Point(0, 192);
-            layoutControlItem8.Name = "layoutControlItem8";
-            layoutControlItem8.OptionsTableLayoutItem.RowIndex = 8;
-            layoutControlItem8.Size = new Size(240, 24);
-            layoutControlItem8.Text = "Miktar";
-            layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            layoutControlItem8.TextSize = new Size(80, 20);
-            layoutControlItem8.TextToControlDistance = 5;
             // 
             // CarAddForm
             // 
@@ -428,8 +487,6 @@
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).EndInit();
             myDataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)spnProductQuantity.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)spnProductVATPrice.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)spnProductVAT.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)spnProductSellPrice.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)spnProductMarketPrice.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)tgsProductSituation.Properties).EndInit();
@@ -447,9 +504,15 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem10).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem12).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cmbExciseDuty.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem13).EndInit();
+            ((System.ComponentModel.ISupportInitialize)calcExciseDutyPrice.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)calcVATPrice.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cmbVAT.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -471,13 +534,17 @@
         private DevExpress.XtraEditors.SpinEdit spnProductMarketPrice;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private DevExpress.XtraEditors.SpinEdit spnProductQuantity;
-        private DevExpress.XtraEditors.SpinEdit spnProductVATPrice;
-        private DevExpress.XtraEditors.SpinEdit spnProductVAT;
         private DevExpress.XtraEditors.SpinEdit spnProductSellPrice;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private UserControls.MyDataLayoutControl myDataLayoutControl1;
+        private DevExpress.XtraEditors.CalcEdit calcVATPrice;
+        private DevExpress.XtraEditors.CalcEdit calcExciseDutyPrice;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbExciseDuty;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbVAT;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }
