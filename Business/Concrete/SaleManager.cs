@@ -48,13 +48,19 @@ public class SaleManager : ISaleService
 
     public IDataResult<List<Sale>> GetAllByCustomer(int customerId)
     {
-        var result = _saleDal.GetAll(p => p.CustomerId == customerId).ToList();
+        var result = _saleDal.GetAll(s => s.CustomerId == customerId).ToList();
         return new SuccessDataResult<List<Sale>>(result);
     }
 
     public IDataResult<List<Sale>> GetAllByProduct(int productId)
     {
-        var result = _saleDal.GetAll(p => p.ProductId == productId).ToList();
+        var result = _saleDal.GetAll(s => s.ProductId == productId).ToList();
+        return new SuccessDataResult<List<Sale>>(result);
+    }
+
+    public IDataResult<List<Sale>> GetAllByBillNumber(string billNumber)
+    {
+        var result = _saleDal.GetAll(s => s.BillNumber == billNumber).ToList();
         return new SuccessDataResult<List<Sale>>(result);
     }
 

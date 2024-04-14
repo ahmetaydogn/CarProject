@@ -13,5 +13,6 @@ public interface ISaleService
     IDataResult<List<Sale>> GetAllByProduct(int productId);
     IDataResult<List<Sale>> GetAllByCustomer(int customerId);
     IDataResult<Sale> GetById(int id);
+    IDataResult<List<Sale>> GetAllByBillNumber(string billNumber);
     IDataResult<List<SaleDto>> GetAllAsDto(List<Product> products, List<Customer> customers);
 }

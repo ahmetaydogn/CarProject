@@ -5,6 +5,7 @@ using Core.Utilities.Results;
 using Core.Utilities.Validation;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete;
 
@@ -44,15 +45,46 @@ public class BillManager : IBillService
         return new SuccessDataResult<List<Bill>>(result);
     }
 
-    public IDataResult<List<Bill>> GetAllBySale(int saleId)
+    public IDataResult<List<string>> GetBillIDs()
     {
-        var result = _billDal.GetAll(p => p.SaleId == saleId).ToList();
-        return new SuccessDataResult<List<Bill>>(result);
+        var result = _billDal.GetAll().Select(b => b.BillId).ToList();
+        return new SuccessDataResult<List<string>>(result);
     }
 
-    public IDataResult<Bill> GetById(int id)
+    public IDataResult<Bill> GetByBillNumber(string number)
     {
-        var result = _billDal.Get(p => p.BillId == id);
+        var result = _billDal.Get(b => b.BillId == number);
         return new SuccessDataResult<Bill>(result);
+    }
+
+    public IDataResult<List<BillDto>> GetAllAsDto(string billNumber, ISaleService saleService, List<Product> products, List<Customer> customers)
+    {
+        var sales = saleService.GetAllByBillNumber(billNumber);
+        var bill = GetByBillNumber(billNumber).Data;
+
+        var query = from sale in sales.Data
+                    join customer in customers
+                    on sale.CustomerId equals customer.CustomerId
+                    join product in products
+                    on sale.ProductId equals product.ProductId
+                    select new BillDto
+                    {
+                        BillId = bill.BillId,
+                        SaleId = sale.SaleId,
+                        ProductId = product.ProductId,
+                        CustomerId = customer.CustomerId,
+                        SaleCustomerFullName = customer.CustomerName + " " + customer.CustomerSurname,
+                        SaleCustomerPhone = customer.CustomerPhone,
+                        SaleProductName = product.ProductName,
+                        Quantity = sale.Quantity,
+                        MarketPrice = product.MarketPrice,
+                        SellPrice = product.SellPrice,
+                        VATPrice = product.VATPrice,
+                        SumPrice = sale.Quantity * product.SellPrice,
+                        PaymentMethod = sale.PaymentMethod,
+                        SaleDate = sale.SaleDate
+                    };
+
+        return new SuccessDataResult<List<BillDto>>(query.ToList());
     }
 }

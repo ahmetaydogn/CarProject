@@ -17,5 +17,13 @@ public class AutofacBusinessModule : Module
         // Customers
         builder.RegisterType<CustomerManager>().As<ICustomerService>();
         builder.RegisterType<EfCustomerDal>().As<ICustomerDal>();
+
+        // Sales
+        builder.RegisterType<SaleManager>().As<ISaleService>();
+        builder.RegisterType<EfSaleDal>().As<ISaleDal>();
+
+        // Bills
+        builder.RegisterType<BillManager>().As<IBillService>();
+        builder.RegisterType<EfBillDal>().As<IBillDal>();
     }
 }
