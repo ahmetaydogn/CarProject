@@ -10,6 +10,7 @@ public  class Sale : IEntity
     public int ProductId { get; set; }
     public short Quantity { get; set; }
     public decimal Price { get; set; }
+    public decimal Profit { get; set; }
     public string PaymentMethod { get; set; }
     public string BillNumber { get; set; }
 }

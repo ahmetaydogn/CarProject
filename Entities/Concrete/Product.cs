@@ -16,4 +16,6 @@ public class Product : IEntity
     public short Quantity { get; set; }
     public byte VAT { get; set; }
     public decimal VATPrice { get; set; }
+    public byte ExciseDuty { get; set; }
+    public decimal ExciseDutyPrice { get; set; }
 }
