@@ -51,45 +51,45 @@
             gridPaymentMethod = new DevExpress.XtraGrid.Columns.GridColumn();
             gridSaleDate = new DevExpress.XtraGrid.Columns.GridColumn();
             myDataLayoutControl1 = new UserControls.MyDataLayoutControl();
-            Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            txtAllMarketPrice = new DevExpress.XtraEditors.TextEdit();
-            layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            txtAllSellPrice = new DevExpress.XtraEditors.TextEdit();
-            layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            txtAllVATPrice = new DevExpress.XtraEditors.TextEdit();
-            layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            txtOtherTaxPrice = new DevExpress.XtraEditors.TextEdit();
-            layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            txtAllTAX = new DevExpress.XtraEditors.TextEdit();
-            layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            txtDescription = new DevExpress.XtraEditors.MemoEdit();
-            layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            txtAllProfit = new DevExpress.XtraEditors.TextEdit();
-            layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             dateBillDate = new DevExpress.XtraEditors.DateEdit();
+            txtAllProfit = new DevExpress.XtraEditors.TextEdit();
+            txtDescription = new DevExpress.XtraEditors.MemoEdit();
+            txtAllTAX = new DevExpress.XtraEditors.TextEdit();
+            txtExciseTaxPrice = new DevExpress.XtraEditors.TextEdit();
+            txtAllVATPrice = new DevExpress.XtraEditors.TextEdit();
+            txtAllSellPrice = new DevExpress.XtraEditors.TextEdit();
+            txtAllMarketPrice = new DevExpress.XtraEditors.TextEdit();
+            Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridBillSale).BeginInit();
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).BeginInit();
             myDataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)Root).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllMarketPrice.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllSellPrice.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllVATPrice.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtOtherTaxPrice.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllTAX.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtDescription.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllProfit.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateBillDate.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateBillDate.Properties.CalendarTimeProperties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllProfit.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtDescription.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllTAX.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtExciseTaxPrice.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllVATPrice.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllSellPrice.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllMarketPrice.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Root).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem8).BeginInit();
             SuspendLayout();
             // 
@@ -215,7 +215,7 @@
             myDataLayoutControl1.Controls.Add(txtAllProfit);
             myDataLayoutControl1.Controls.Add(txtDescription);
             myDataLayoutControl1.Controls.Add(txtAllTAX);
-            myDataLayoutControl1.Controls.Add(txtOtherTaxPrice);
+            myDataLayoutControl1.Controls.Add(txtExciseTaxPrice);
             myDataLayoutControl1.Controls.Add(txtAllVATPrice);
             myDataLayoutControl1.Controls.Add(txtAllSellPrice);
             myDataLayoutControl1.Controls.Add(txtAllMarketPrice);
@@ -227,6 +227,89 @@
             myDataLayoutControl1.Size = new Size(341, 577);
             myDataLayoutControl1.TabIndex = 2;
             myDataLayoutControl1.Text = "myDataLayoutControl1";
+            // 
+            // dateBillDate
+            // 
+            dateBillDate.EditValue = null;
+            dateBillDate.Location = new Point(142, 204);
+            dateBillDate.MenuManager = ribbonControl1;
+            dateBillDate.Name = "dateBillDate";
+            dateBillDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            dateBillDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            dateBillDate.Properties.ReadOnly = true;
+            dateBillDate.Size = new Size(187, 22);
+            dateBillDate.StyleController = myDataLayoutControl1;
+            dateBillDate.TabIndex = 11;
+            // 
+            // txtAllProfit
+            // 
+            txtAllProfit.Location = new Point(142, 156);
+            txtAllProfit.MenuManager = ribbonControl1;
+            txtAllProfit.Name = "txtAllProfit";
+            txtAllProfit.Properties.ReadOnly = true;
+            txtAllProfit.Size = new Size(187, 22);
+            txtAllProfit.StyleController = myDataLayoutControl1;
+            txtAllProfit.TabIndex = 10;
+            // 
+            // txtDescription
+            // 
+            txtDescription.Location = new Point(142, 228);
+            txtDescription.MenuManager = ribbonControl1;
+            txtDescription.Name = "txtDescription";
+            txtDescription.Properties.ReadOnly = true;
+            txtDescription.Size = new Size(187, 337);
+            txtDescription.StyleController = myDataLayoutControl1;
+            txtDescription.TabIndex = 9;
+            // 
+            // txtAllTAX
+            // 
+            txtAllTAX.Location = new Point(142, 108);
+            txtAllTAX.MenuManager = ribbonControl1;
+            txtAllTAX.Name = "txtAllTAX";
+            txtAllTAX.Properties.ReadOnly = true;
+            txtAllTAX.Size = new Size(187, 22);
+            txtAllTAX.StyleController = myDataLayoutControl1;
+            txtAllTAX.TabIndex = 8;
+            // 
+            // txtExciseTaxPrice
+            // 
+            txtExciseTaxPrice.Location = new Point(142, 84);
+            txtExciseTaxPrice.MenuManager = ribbonControl1;
+            txtExciseTaxPrice.Name = "txtExciseTaxPrice";
+            txtExciseTaxPrice.Properties.ReadOnly = true;
+            txtExciseTaxPrice.Size = new Size(187, 22);
+            txtExciseTaxPrice.StyleController = myDataLayoutControl1;
+            txtExciseTaxPrice.TabIndex = 7;
+            // 
+            // txtAllVATPrice
+            // 
+            txtAllVATPrice.Location = new Point(142, 60);
+            txtAllVATPrice.MenuManager = ribbonControl1;
+            txtAllVATPrice.Name = "txtAllVATPrice";
+            txtAllVATPrice.Properties.ReadOnly = true;
+            txtAllVATPrice.Size = new Size(187, 22);
+            txtAllVATPrice.StyleController = myDataLayoutControl1;
+            txtAllVATPrice.TabIndex = 6;
+            // 
+            // txtAllSellPrice
+            // 
+            txtAllSellPrice.Location = new Point(142, 36);
+            txtAllSellPrice.MenuManager = ribbonControl1;
+            txtAllSellPrice.Name = "txtAllSellPrice";
+            txtAllSellPrice.Properties.ReadOnly = true;
+            txtAllSellPrice.Size = new Size(187, 22);
+            txtAllSellPrice.StyleController = myDataLayoutControl1;
+            txtAllSellPrice.TabIndex = 5;
+            // 
+            // txtAllMarketPrice
+            // 
+            txtAllMarketPrice.Location = new Point(142, 12);
+            txtAllMarketPrice.MenuManager = ribbonControl1;
+            txtAllMarketPrice.Name = "txtAllMarketPrice";
+            txtAllMarketPrice.Properties.ReadOnly = true;
+            txtAllMarketPrice.Size = new Size(187, 22);
+            txtAllMarketPrice.StyleController = myDataLayoutControl1;
+            txtAllMarketPrice.TabIndex = 4;
             // 
             // Root
             // 
@@ -262,16 +345,6 @@
             Root.Size = new Size(341, 577);
             Root.TextVisible = false;
             // 
-            // txtAllMarketPrice
-            // 
-            txtAllMarketPrice.Location = new Point(142, 12);
-            txtAllMarketPrice.MenuManager = ribbonControl1;
-            txtAllMarketPrice.Name = "txtAllMarketPrice";
-            txtAllMarketPrice.Properties.ReadOnly = true;
-            txtAllMarketPrice.Size = new Size(187, 22);
-            txtAllMarketPrice.StyleController = myDataLayoutControl1;
-            txtAllMarketPrice.TabIndex = 4;
-            // 
             // layoutControlItem1
             // 
             layoutControlItem1.AppearanceItemCaption.FontStyleDelta = FontStyle.Bold;
@@ -286,16 +359,6 @@
             layoutControlItem1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem1.TextSize = new Size(125, 20);
             layoutControlItem1.TextToControlDistance = 5;
-            // 
-            // txtAllSellPrice
-            // 
-            txtAllSellPrice.Location = new Point(142, 36);
-            txtAllSellPrice.MenuManager = ribbonControl1;
-            txtAllSellPrice.Name = "txtAllSellPrice";
-            txtAllSellPrice.Properties.ReadOnly = true;
-            txtAllSellPrice.Size = new Size(187, 22);
-            txtAllSellPrice.StyleController = myDataLayoutControl1;
-            txtAllSellPrice.TabIndex = 5;
             // 
             // layoutControlItem2
             // 
@@ -313,16 +376,6 @@
             layoutControlItem2.TextSize = new Size(125, 20);
             layoutControlItem2.TextToControlDistance = 5;
             // 
-            // txtAllVATPrice
-            // 
-            txtAllVATPrice.Location = new Point(142, 60);
-            txtAllVATPrice.MenuManager = ribbonControl1;
-            txtAllVATPrice.Name = "txtAllVATPrice";
-            txtAllVATPrice.Properties.ReadOnly = true;
-            txtAllVATPrice.Size = new Size(187, 22);
-            txtAllVATPrice.StyleController = myDataLayoutControl1;
-            txtAllVATPrice.TabIndex = 6;
-            // 
             // layoutControlItem3
             // 
             layoutControlItem3.AppearanceItemCaption.FontStyleDelta = FontStyle.Bold;
@@ -339,23 +392,13 @@
             layoutControlItem3.TextSize = new Size(125, 20);
             layoutControlItem3.TextToControlDistance = 5;
             // 
-            // txtOtherTaxPrice
-            // 
-            txtOtherTaxPrice.Location = new Point(142, 84);
-            txtOtherTaxPrice.MenuManager = ribbonControl1;
-            txtOtherTaxPrice.Name = "txtOtherTaxPrice";
-            txtOtherTaxPrice.Properties.ReadOnly = true;
-            txtOtherTaxPrice.Size = new Size(187, 22);
-            txtOtherTaxPrice.StyleController = myDataLayoutControl1;
-            txtOtherTaxPrice.TabIndex = 7;
-            // 
             // layoutControlItem4
             // 
             layoutControlItem4.AppearanceItemCaption.FontStyleDelta = FontStyle.Bold;
             layoutControlItem4.AppearanceItemCaption.ForeColor = Color.Maroon;
             layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem4.AppearanceItemCaption.Options.UseForeColor = true;
-            layoutControlItem4.Control = txtOtherTaxPrice;
+            layoutControlItem4.Control = txtExciseTaxPrice;
             layoutControlItem4.Location = new Point(0, 72);
             layoutControlItem4.Name = "layoutControlItem4";
             layoutControlItem4.OptionsTableLayoutItem.RowIndex = 3;
@@ -364,16 +407,6 @@
             layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem4.TextSize = new Size(125, 20);
             layoutControlItem4.TextToControlDistance = 5;
-            // 
-            // txtAllTAX
-            // 
-            txtAllTAX.Location = new Point(142, 108);
-            txtAllTAX.MenuManager = ribbonControl1;
-            txtAllTAX.Name = "txtAllTAX";
-            txtAllTAX.Properties.ReadOnly = true;
-            txtAllTAX.Size = new Size(187, 22);
-            txtAllTAX.StyleController = myDataLayoutControl1;
-            txtAllTAX.TabIndex = 8;
             // 
             // layoutControlItem5
             // 
@@ -391,16 +424,6 @@
             layoutControlItem5.TextSize = new Size(125, 20);
             layoutControlItem5.TextToControlDistance = 5;
             // 
-            // txtDescription
-            // 
-            txtDescription.Location = new Point(142, 228);
-            txtDescription.MenuManager = ribbonControl1;
-            txtDescription.Name = "txtDescription";
-            txtDescription.Properties.ReadOnly = true;
-            txtDescription.Size = new Size(187, 337);
-            txtDescription.StyleController = myDataLayoutControl1;
-            txtDescription.TabIndex = 9;
-            // 
             // layoutControlItem6
             // 
             layoutControlItem6.AppearanceItemCaption.FontStyleDelta = FontStyle.Bold;
@@ -417,16 +440,6 @@
             layoutControlItem6.TextSize = new Size(125, 20);
             layoutControlItem6.TextToControlDistance = 5;
             // 
-            // txtAllProfit
-            // 
-            txtAllProfit.Location = new Point(142, 156);
-            txtAllProfit.MenuManager = ribbonControl1;
-            txtAllProfit.Name = "txtAllProfit";
-            txtAllProfit.Properties.ReadOnly = true;
-            txtAllProfit.Size = new Size(187, 22);
-            txtAllProfit.StyleController = myDataLayoutControl1;
-            txtAllProfit.TabIndex = 10;
-            // 
             // layoutControlItem7
             // 
             layoutControlItem7.AppearanceItemCaption.FontStyleDelta = FontStyle.Bold;
@@ -442,19 +455,6 @@
             layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem7.TextSize = new Size(125, 20);
             layoutControlItem7.TextToControlDistance = 5;
-            // 
-            // dateBillDate
-            // 
-            dateBillDate.EditValue = null;
-            dateBillDate.Location = new Point(142, 204);
-            dateBillDate.MenuManager = ribbonControl1;
-            dateBillDate.Name = "dateBillDate";
-            dateBillDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            dateBillDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            dateBillDate.Properties.ReadOnly = true;
-            dateBillDate.Size = new Size(187, 22);
-            dateBillDate.StyleController = myDataLayoutControl1;
-            dateBillDate.TabIndex = 11;
             // 
             // layoutControlItem8
             // 
@@ -490,23 +490,23 @@
             ((System.ComponentModel.ISupportInitialize)gridBillSale).EndInit();
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).EndInit();
             myDataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)Root).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllMarketPrice.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllSellPrice.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllVATPrice.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtOtherTaxPrice.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllTAX.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtDescription.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtAllProfit.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateBillDate.Properties.CalendarTimeProperties).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateBillDate.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllProfit.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtDescription.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllTAX.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtExciseTaxPrice.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllVATPrice.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllSellPrice.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtAllMarketPrice.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Root).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem8).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -531,7 +531,7 @@
         private DevExpress.XtraEditors.TextEdit txtAllProfit;
         private DevExpress.XtraEditors.MemoEdit txtDescription;
         private DevExpress.XtraEditors.TextEdit txtAllTAX;
-        private DevExpress.XtraEditors.TextEdit txtOtherTaxPrice;
+        private DevExpress.XtraEditors.TextEdit txtExciseTaxPrice;
         private DevExpress.XtraEditors.TextEdit txtAllVATPrice;
         private DevExpress.XtraEditors.TextEdit txtAllSellPrice;
         private DevExpress.XtraEditors.TextEdit txtAllMarketPrice;

@@ -4,6 +4,7 @@ using DataAccess.Concrete.EntityFramework;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
 using UI.Win.Forms.CarForms;
+using UI.Win.Forms.SaleForm;
 using UI.Win.Show;
 
 namespace UI.Win.Forms.BillForms;
@@ -23,7 +24,7 @@ public partial class BillDialogListForm : BaseDialogListForm
     // RibbonControl's Code
     public override void AddEntity()
     {
-        ShowEditForms<BillAddForm>.ShowDialogEditForm();
+        ShowEditForms<SaleAddForm>.ShowDialogEditForm();
     }
 
     public override void RefreshGridControl()

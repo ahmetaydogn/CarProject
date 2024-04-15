@@ -21,7 +21,7 @@ public partial class BillAddForm : BaseEditForm
         FillGaps();
     }
 
-    public BillAddForm(string billNumber, EventType _eventType)
+    public BillAddForm(string billNumber, EventType _eventType) : this()
     {
         InitializeComponent();
         var result = billService.GetByBillNumber(billNumber);
@@ -56,7 +56,6 @@ public partial class BillAddForm : BaseEditForm
 
     public override void Save()
     {
-
         try
         {
             if (eventType == EventType.EntityUpdate && OldBill != null)
