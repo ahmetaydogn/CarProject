@@ -4,7 +4,9 @@ public class BillDto : IDto
 {
     public string BillId { get; set; }
     public int SaleId { get; set; }
-    public int ProductId { get; set; }
+    public int? ProductId { get; set; }
+    public int? SubProductId { get; set; }
+    public decimal Profit { get; set; }
     public int CustomerId { get; set; }
     public string SaleCustomerFullName { get; set; }
     public string SaleCustomerPhone { get; set; }
