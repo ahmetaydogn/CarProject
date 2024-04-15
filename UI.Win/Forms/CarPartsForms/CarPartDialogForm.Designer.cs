@@ -1,6 +1,6 @@
 ﻿namespace UI.Win.Forms.CarPartsForms
 {
-    partial class CarPartListForm
+    partial class CarPartDialogListForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,19 +37,27 @@
             gridVATPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             gridSubProductDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             gridProfit = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridCarPart).BeginInit();
             SuspendLayout();
             // 
+            // ribbonControl1
+            // 
+            ribbonControl1.ExpandCollapseItem.Id = 0;
+            ribbonControl1.Size = new Size(800, 126);
+            ribbonControl1.Toolbar.ShowCustomizeItem = false;
+            // 
             // gridControl1
             // 
             gridControl1.Dock = DockStyle.Fill;
-            gridControl1.Location = new Point(0, 0);
+            gridControl1.Location = new Point(0, 126);
             gridControl1.MainView = gridCarPart;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new Size(800, 450);
-            gridControl1.TabIndex = 0;
+            gridControl1.Size = new Size(800, 324);
+            gridControl1.TabIndex = 1;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridCarPart });
+            gridControl1.KeyPress += gridControl1_KeyPress;
             // 
             // gridCarPart
             // 
@@ -129,17 +137,21 @@
             gridProfit.VisibleIndex = 6;
             gridProfit.Width = 94;
             // 
-            // CarPartListForm
+            // CarPartDialogListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(gridControl1);
-            Name = "CarPartListForm";
-            Text = "CarPartListForm";
+            Name = "CarPartDialogListForm";
+            Text = "CarPartDialogForm";
+            Controls.SetChildIndex(ribbonControl1, 0);
+            Controls.SetChildIndex(gridControl1, 0);
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridCarPart).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

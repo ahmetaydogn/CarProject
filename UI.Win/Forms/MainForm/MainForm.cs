@@ -2,15 +2,16 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors.Repository;
 using UI.Win.Forms.BillForms;
 using UI.Win.Forms.CarForms;
+using UI.Win.Forms.CarPartsForms;
 using UI.Win.Forms.CustomerForm;
 using UI.Win.Forms.SaleForm;
 using UI.Win.Show;
 
 namespace UI.Win
 {
-    public partial class Form1 : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             EventsLoad();
@@ -47,6 +48,10 @@ namespace UI.Win
                 ShowListForms<SaleListForm>.ShowListForm();
             else if (e.Item == btnSaleAdd)
                 ShowEditForms<SaleAddForm>.ShowDialogEditForm();
+            else if (e.Item == btnSubProductList)
+                ShowListForms<CarPartListForm>.ShowListForm();
+            else if (e.Item == btnSubProductAdd)
+                ShowEditForms<CarPartsAddForm>.ShowDialogEditForm();
         }
     }
 }

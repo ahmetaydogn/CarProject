@@ -12,6 +12,7 @@ public partial class CarPartListForm : Form
     public CarPartListForm()
     {
         InitializeComponent();
+        FillGrid();
     }
 
     ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
@@ -25,7 +26,7 @@ public partial class CarPartListForm : Form
 
     private void gridCarPart_DoubleClick(object sender, EventArgs e)
     {
-        int productId = Convert.ToInt32(gridCarPart.GetFocusedRowCellValue("ProductId"));
-        ShowEditForms<CarAddForm>.ShowDialogEditForm(productId, EventType.EntityUpdate);
+        int subProductId = Convert.ToInt32(gridCarPart.GetFocusedRowCellValue("SubProductId"));
+        ShowEditForms<CarPartsAddForm>.ShowDialogEditForm(subProductId, EventType.EntityUpdate);
     }
 }

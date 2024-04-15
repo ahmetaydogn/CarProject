@@ -101,7 +101,11 @@
             txtTaxNo.Location = new Point(97, 84);
             txtTaxNo.MenuManager = ribbonControl1;
             txtTaxNo.Name = "txtTaxNo";
+            txtTaxNo.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.SimpleMaskManager));
+            txtTaxNo.Properties.MaskSettings.Set("mask", "0000000000");
+            txtTaxNo.Properties.MaskSettings.Set("placeholder", '9');
             txtTaxNo.Properties.MaxLength = 10;
+            txtTaxNo.Properties.UseMaskAsDisplayFormat = true;
             txtTaxNo.Size = new Size(151, 22);
             txtTaxNo.StyleController = myDataLayoutControl1;
             txtTaxNo.TabIndex = 7;
@@ -111,6 +115,9 @@
             txtCustomerPhone.Location = new Point(97, 60);
             txtCustomerPhone.MenuManager = ribbonControl1;
             txtCustomerPhone.Name = "txtCustomerPhone";
+            txtCustomerPhone.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.SimpleMaskManager));
+            txtCustomerPhone.Properties.MaskSettings.Set("mask", "(000) 000-0000");
+            txtCustomerPhone.Properties.UseMaskAsDisplayFormat = true;
             txtCustomerPhone.Size = new Size(151, 22);
             txtCustomerPhone.StyleController = myDataLayoutControl1;
             txtCustomerPhone.TabIndex = 6;

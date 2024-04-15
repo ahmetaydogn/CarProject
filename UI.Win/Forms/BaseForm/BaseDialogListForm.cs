@@ -45,4 +45,9 @@ public partial class BaseDialogListForm : Form
     {
         btnSelect.Visibility = BarItemVisibility.Never;
     }
+
+    public void HideAddButton()
+    {
+        btnAdd.Visibility = BarItemVisibility.Never;
+    }
 }

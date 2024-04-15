@@ -6,7 +6,6 @@ using Entities.Concrete;
 using FluentValidation;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
-using UI.Win.Forms.CarForms;
 using UI.Win.Utilities;
 
 namespace UI.Win.Forms.CarPartsForms;
@@ -101,7 +100,6 @@ public partial class CarPartsAddForm : BaseEditForm
             spnMarketPrice.Value = OldSubProduct.MarketPrice;
             spnSellPrice.Value = OldSubProduct.SellPrice;
             cmbVAT.Text = OldSubProduct.VAT;
-            spnQuantity.Value = OldSubProduct.Quantity;
             txtDescription.Text = OldSubProduct.SubProductDescription;
         }
         else
@@ -115,7 +113,10 @@ public partial class CarPartsAddForm : BaseEditForm
             switch (component)
             {
                 case SpinEdit sedit:
-                    sedit.Value = 0;
+                    sedit.Value = 1;
+                    break;
+                case CalcEdit cedit:
+                    cedit.Value = 1;
                     break;
                 case MemoEdit medit:
                     medit.Text = null;
@@ -163,7 +164,6 @@ public partial class CarPartsAddForm : BaseEditForm
             SubProductName = txtSubProductName.Text,
             MarketPrice = spnMarketPrice.Value,
             SellPrice = spnSellPrice.Value,
-            Quantity = Convert.ToInt16(spnQuantity.Value),
             VAT = cmbVAT.Text,
             VATPrice = calcVATPrice.Value,
             SubProductDescription = txtDescription.Text,

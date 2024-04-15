@@ -1,6 +1,6 @@
 ﻿namespace UI.Win
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             btnHome = new DevExpress.XtraBars.BarButtonItem();
             btnCarList = new DevExpress.XtraBars.BarButtonItem();
@@ -62,7 +62,6 @@
             ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -119,14 +118,14 @@
             // 
             btnSubProductList.Caption = "Araç Parça Listesi";
             btnSubProductList.Id = 6;
-            btnSubProductList.ImageOptions.LargeImage = (Image)resources.GetObject("btnCarIstatistics.ImageOptions.LargeImage");
+            btnSubProductList.ImageOptions.LargeImage = (Image)resources.GetObject("btnSubProductList.ImageOptions.LargeImage");
             btnSubProductList.Name = "btnSubProductList";
             // 
             // btnSubProductAdd
             // 
             btnSubProductAdd.Caption = "Araç Parçası Ekle";
             btnSubProductAdd.Id = 7;
-            btnSubProductAdd.ImageOptions.LargeImage = (Image)resources.GetObject("btnCarReport.ImageOptions.LargeImage");
+            btnSubProductAdd.ImageOptions.LargeImage = (Image)resources.GetObject("btnSubProductAdd.ImageOptions.LargeImage");
             btnSubProductAdd.Name = "btnSubProductAdd";
             // 
             // btnCustomerList
@@ -293,7 +292,7 @@
             // 
             // ribbonPage3
             // 
-            ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup3, ribbonPageGroup9, ribbonPageGroup13 });
+            ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup3, ribbonPageGroup13 });
             ribbonPage3.Name = "ribbonPage3";
             ribbonPage3.Text = "Cariler & Faturalar";
             // 
@@ -302,11 +301,6 @@
             ribbonPageGroup3.ItemLinks.Add(btnCustomerList);
             ribbonPageGroup3.ItemLinks.Add(btnCustomerAdd);
             ribbonPageGroup3.Name = "ribbonPageGroup3";
-            // 
-            // ribbonPageGroup9
-            // 
-            ribbonPageGroup9.ItemLinks.Add(btnCustomerIstatistics);
-            ribbonPageGroup9.Name = "ribbonPageGroup9";
             // 
             // ribbonPageGroup13
             // 
@@ -437,7 +431,6 @@
         private DevExpress.XtraBars.BarButtonItem btnCustomerList;
         private DevExpress.XtraBars.BarButtonItem btnCustomerAdd;
         private DevExpress.XtraBars.BarButtonItem btnCustomerIstatistics;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarButtonItem btnPersonList;
         private DevExpress.XtraBars.BarButtonItem btnPersonAdd;
         private DevExpress.XtraBars.BarButtonItem btnPersonIstatistics;
