@@ -6,6 +6,7 @@ public static class Messages
     public static string ProductAdded = "Ürün başarıyla eklendi.";
     public static string ProductUpdated = "Ürün başarıyla güncellendi.";
     public static string ProductDeleted = "Ürün başarıyla silindi.";
+    public static string StockChanged = "Stok değiştirildi";
 
     // Customers
     public static string CustomerAdded = "Müşteri başarıyla eklendi.";

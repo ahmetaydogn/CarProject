@@ -70,11 +70,11 @@ public class SaleManager : ISaleService
         return new SuccessDataResult<Sale>(result);
     }
 
-    public IDataResult<List<SaleDto>> GetAllAsDto(List<Product> products, List<Customer> customers)
+    public IDataResult<List<SaleDto>> GetAllAsDto(List<Product> products, List<Customer> customers, List<SubProduct> subProducts)
     {
         var sales = GetAll();
 
-        var query = from sale in sales.Data
+        var productQuery = from sale in sales.Data
                     join customer in customers
                     on sale.CustomerId equals customer.CustomerId
                     join product in products
@@ -83,11 +83,11 @@ public class SaleManager : ISaleService
                     {
                         SaleId = sale.SaleId,
                         CustomerId = customer.CustomerId,
+                        SubProductId = null,
                         ProductId = product.ProductId,
                         CustomerFullName = customer.CustomerName + " " + customer.CustomerSurname,
                         CustomerPhone = customer.CustomerPhone,
                         ProductName = product.ProductName,
-                        ProductModel = product.ProductModel,
                         SaleDate = sale.SaleDate,
                         Quantity = sale.Quantity,
                         Price = sale.Price,
@@ -96,6 +96,29 @@ public class SaleManager : ISaleService
                         BillNumber = sale.BillNumber,
                     };
 
-        return new SuccessDataResult<List<SaleDto>>(query.ToList());
+        var subProductQuery = from sale in sales.Data
+                    join customer in customers
+                    on sale.CustomerId equals customer.CustomerId
+                    join subproduct in subProducts
+                    on sale.SubProductId equals subproduct.SubProductId
+                    select new SaleDto
+                    {
+                        SaleId = sale.SaleId,
+                        CustomerId = customer.CustomerId,
+                        SubProductId = subproduct.SubProductId,
+                        ProductId = null,
+                        CustomerFullName = customer.CustomerName + " " + customer.CustomerSurname,
+                        CustomerPhone = customer.CustomerPhone,
+                        ProductName = subproduct.SubProductName,
+                        SaleDate = sale.SaleDate,
+                        Quantity = sale.Quantity,
+                        Price = sale.Price,
+                        Profit = sale.Price - (subproduct.MarketPrice + subproduct.VATPrice),
+                        PaymentMethod = sale.PaymentMethod,
+                        BillNumber = sale.BillNumber,
+                    };
+
+        var mergedList = productQuery.ToList().Union(subProductQuery.ToList());
+        return new SuccessDataResult<List<SaleDto>>(mergedList.ToList());
     }
 }

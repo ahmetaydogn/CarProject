@@ -57,12 +57,12 @@ public class BillManager : IBillService
         return new SuccessDataResult<Bill>(result);
     }
 
-    public IDataResult<List<BillDto>> GetAllAsDto(string billNumber, ISaleService saleService, List<Product> products, List<Customer> customers)
+    public IDataResult<List<BillDto>> GetAllAsDto(string billNumber, ISaleService saleService, List<Product> products, List<Customer> customers, List<SubProduct> subProducts)
     {
         var sales = saleService.GetAllByBillNumber(billNumber);
         var bill = GetByBillNumber(billNumber).Data;
 
-        var query = from sale in sales.Data
+        var productQuery = from sale in sales.Data
                     join customer in customers
                     on sale.CustomerId equals customer.CustomerId
                     join product in products
@@ -72,6 +72,8 @@ public class BillManager : IBillService
                         BillId = bill.BillId,
                         SaleId = sale.SaleId,
                         ProductId = product.ProductId,
+                        SubProductId = null,
+                        Profit = product.Profit,
                         CustomerId = customer.CustomerId,
                         SaleCustomerFullName = customer.CustomerName + " " + customer.CustomerSurname,
                         SaleCustomerPhone = customer.CustomerPhone,
@@ -85,6 +87,34 @@ public class BillManager : IBillService
                         SaleDate = sale.SaleDate
                     };
 
-        return new SuccessDataResult<List<BillDto>>(query.ToList());
+
+        var subProductQuery = from sale in sales.Data
+                           join customer in customers
+                           on sale.CustomerId equals customer.CustomerId
+                           join subproduct in subProducts
+                           on sale.SubProductId equals subproduct.SubProductId
+                           select new BillDto
+                           {
+                               BillId = bill.BillId,
+                               SaleId = sale.SaleId,
+                               ProductId = null,
+                               SubProductId = subproduct.SubProductId,
+                               Profit = subproduct.Profit,
+                               CustomerId = customer.CustomerId,
+                               SaleCustomerFullName = customer.CustomerName + " " + customer.CustomerSurname,
+                               SaleCustomerPhone = customer.CustomerPhone,
+                               SaleProductName = subproduct.SubProductName,
+                               Quantity = sale.Quantity,
+                               MarketPrice = subproduct.MarketPrice,
+                               SellPrice = subproduct.SellPrice,
+                               VATPrice = subproduct.VATPrice,
+                               SumPrice = sale.Quantity * subproduct.SellPrice,
+                               PaymentMethod = sale.PaymentMethod,
+                               SaleDate = sale.SaleDate
+                           };
+
+        var merdegList = productQuery.ToList().Union(subProductQuery.ToList()).ToList();
+
+        return new SuccessDataResult<List<BillDto>>(merdegList);
     }
 }

@@ -13,8 +13,6 @@ public class ProductValidator : AbstractValidator<Product>
         RuleFor(p => p.MarketPrice).GreaterThanOrEqualTo(1).WithMessage(ValidationMessages.ProductMarketPriceGreater);
         RuleFor(p => p.SellPrice).GreaterThanOrEqualTo(1).WithMessage(ValidationMessages.ProductSellPriceGreater);
 
-        RuleFor(p => Convert.ToInt32(p.Quantity)).GreaterThanOrEqualTo(1).WithMessage(ValidationMessages.ProductQuantity);
-
         RuleFor(p => p.VATPrice).GreaterThanOrEqualTo(1).WithMessage(ValidationMessages.ProductVATPrice);
     }
 }

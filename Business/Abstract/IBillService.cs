@@ -12,5 +12,5 @@ public interface IBillService
     IDataResult<List<Bill>> GetAll();
     IDataResult<List<string>> GetBillIDs();
     IDataResult<Bill> GetByBillNumber(string billNumber);
-    IDataResult<List<BillDto>> GetAllAsDto(string billNumber, ISaleService saleService, List<Product> products, List<Customer> customers);
+    IDataResult<List<BillDto>> GetAllAsDto(string billNumber, ISaleService saleService, List<Product> products, List<Customer> customers, List<SubProduct> subProducts);
 }

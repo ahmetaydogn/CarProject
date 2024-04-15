@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
+using Business.Constans;
 using Business.ValidationRules.FluentValidator;
 using Core.Utilities.Results;
 using Core.Utilities.Validation;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 
 namespace Business.Concrete;
@@ -31,7 +33,7 @@ public class SubProductManager : ISubProductService
         _subProductDal.Update(subProduct);
         return new SuccessResult();
     }
-
+    
     public IResult Delete(SubProduct subProduct)
     {
         _subProductDal.Delete(subProduct);
