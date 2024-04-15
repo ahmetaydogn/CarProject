@@ -27,6 +27,7 @@ public partial class BillAddForm : BaseEditForm
         var result = billService.GetByBillNumber(billNumber);
         if (result.IsSuccess)
         {
+            BillNumber = billNumber;
             OldBill = result.Data;
             eventType = _eventType;
             btnSale.Enabled = false;
@@ -38,6 +39,7 @@ public partial class BillAddForm : BaseEditForm
     IBillService billService = new BillManager(new EfBillDal());
     Bill OldBill;
     EventType eventType = EventType.EntityInsert;
+    public string BillNumber;
 
 
     private void btnSale_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -121,10 +123,12 @@ public partial class BillAddForm : BaseEditForm
             btnSale.EditValue = OldBill.SaleId;
             calcPrice.EditValue = OldBill.Price;
             txtDescription.Text = OldBill.Description;
+            BillNumber = OldBill.BillId;
         }
         else if (eventType == EventType.EntityInsert)
         {
             txtBillNumber.Text = GeneralFunctions.GetRandomBillNumber(billService);
+            BillNumber = txtBillNumber.Text;
         }
         else
             Messages.ItMustBeEntityUpdate();
@@ -137,7 +141,10 @@ public partial class BillAddForm : BaseEditForm
             switch (component)
             {
                 case SpinEdit sedit:
-                    sedit.Value = 0;
+                    sedit.Value = 1;
+                    break;
+                case CalcEdit cedit:
+                    cedit.Value = 1;
                     break;
                 case MemoEdit medit:
                     medit.Text = null;
@@ -152,6 +159,9 @@ public partial class BillAddForm : BaseEditForm
         }
         OldBill = null;
         eventType = EventType.EntityInsert;
+
+        txtBillNumber.Text = GeneralFunctions.GetRandomBillNumber(billService);
+        BillNumber = txtBillNumber.Text;
     }
 
     public override void SendEntityToAdd()

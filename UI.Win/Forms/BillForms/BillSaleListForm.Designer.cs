@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraLayout.ColumnDefinition columnDefinition2 = new DevExpress.XtraLayout.ColumnDefinition();
+            DevExpress.XtraLayout.ColumnDefinition columnDefinition1 = new DevExpress.XtraLayout.ColumnDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition1 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition2 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition3 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition4 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition5 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition6 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition7 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition8 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition9 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition10 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition11 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition12 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition13 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition14 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition15 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition16 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition17 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition18 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition19 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition20 = new DevExpress.XtraLayout.RowDefinition();
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridBillSale = new DevExpress.XtraGrid.Views.Grid.GridView();
             gridBillId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,6 +49,7 @@
             gridQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
             gridSellPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             gridSumPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            gridProfit = new DevExpress.XtraGrid.Columns.GridColumn();
             gridPaymentMethod = new DevExpress.XtraGrid.Columns.GridColumn();
             gridSaleDate = new DevExpress.XtraGrid.Columns.GridColumn();
             myDataLayoutControl1 = new UserControls.MyDataLayoutControl();
@@ -112,7 +114,7 @@
             // 
             // gridBillSale
             // 
-            gridBillSale.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridBillId, gridSaleCustomerFullName, gridSaleCustomerPhone, gridSaleProductName, gridQuantity, gridSellPrice, gridSumPrice, gridPaymentMethod, gridSaleDate });
+            gridBillSale.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridBillId, gridSaleCustomerFullName, gridSaleCustomerPhone, gridSaleProductName, gridQuantity, gridSellPrice, gridSumPrice, gridProfit, gridPaymentMethod, gridSaleDate });
             gridBillSale.GridControl = gridControl1;
             gridBillSale.Name = "gridBillSale";
             gridBillSale.OptionsBehavior.Editable = false;
@@ -188,6 +190,16 @@
             gridSumPrice.VisibleIndex = 6;
             gridSumPrice.Width = 94;
             // 
+            // gridProfit
+            // 
+            gridProfit.Caption = "Kâr (Birim Başı)";
+            gridProfit.FieldName = "Profit";
+            gridProfit.MinWidth = 25;
+            gridProfit.Name = "gridProfit";
+            gridProfit.Visible = true;
+            gridProfit.VisibleIndex = 9;
+            gridProfit.Width = 94;
+            // 
             // gridPaymentMethod
             // 
             gridPaymentMethod.Caption = "Ödeme Şekli";
@@ -231,7 +243,7 @@
             // dateBillDate
             // 
             dateBillDate.EditValue = null;
-            dateBillDate.Location = new Point(142, 204);
+            dateBillDate.Location = new Point(142, 228);
             dateBillDate.MenuManager = ribbonControl1;
             dateBillDate.Name = "dateBillDate";
             dateBillDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -243,70 +255,88 @@
             // 
             // txtAllProfit
             // 
-            txtAllProfit.Location = new Point(142, 156);
+            txtAllProfit.Location = new Point(142, 180);
             txtAllProfit.MenuManager = ribbonControl1;
             txtAllProfit.Name = "txtAllProfit";
+            txtAllProfit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            txtAllProfit.Properties.MaskSettings.Set("mask", "c");
             txtAllProfit.Properties.ReadOnly = true;
+            txtAllProfit.Properties.UseMaskAsDisplayFormat = true;
             txtAllProfit.Size = new Size(187, 22);
             txtAllProfit.StyleController = myDataLayoutControl1;
             txtAllProfit.TabIndex = 10;
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(142, 228);
+            txtDescription.Location = new Point(142, 252);
             txtDescription.MenuManager = ribbonControl1;
             txtDescription.Name = "txtDescription";
             txtDescription.Properties.ReadOnly = true;
-            txtDescription.Size = new Size(187, 337);
+            txtDescription.Size = new Size(187, 313);
             txtDescription.StyleController = myDataLayoutControl1;
             txtDescription.TabIndex = 9;
             // 
             // txtAllTAX
             // 
-            txtAllTAX.Location = new Point(142, 108);
+            txtAllTAX.Location = new Point(142, 132);
             txtAllTAX.MenuManager = ribbonControl1;
             txtAllTAX.Name = "txtAllTAX";
+            txtAllTAX.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            txtAllTAX.Properties.MaskSettings.Set("mask", "c");
             txtAllTAX.Properties.ReadOnly = true;
+            txtAllTAX.Properties.UseMaskAsDisplayFormat = true;
             txtAllTAX.Size = new Size(187, 22);
             txtAllTAX.StyleController = myDataLayoutControl1;
             txtAllTAX.TabIndex = 8;
             // 
             // txtExciseTaxPrice
             // 
-            txtExciseTaxPrice.Location = new Point(142, 84);
+            txtExciseTaxPrice.Location = new Point(142, 108);
             txtExciseTaxPrice.MenuManager = ribbonControl1;
             txtExciseTaxPrice.Name = "txtExciseTaxPrice";
+            txtExciseTaxPrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            txtExciseTaxPrice.Properties.MaskSettings.Set("mask", "c");
             txtExciseTaxPrice.Properties.ReadOnly = true;
+            txtExciseTaxPrice.Properties.UseMaskAsDisplayFormat = true;
             txtExciseTaxPrice.Size = new Size(187, 22);
             txtExciseTaxPrice.StyleController = myDataLayoutControl1;
             txtExciseTaxPrice.TabIndex = 7;
             // 
             // txtAllVATPrice
             // 
-            txtAllVATPrice.Location = new Point(142, 60);
+            txtAllVATPrice.Location = new Point(142, 84);
             txtAllVATPrice.MenuManager = ribbonControl1;
             txtAllVATPrice.Name = "txtAllVATPrice";
+            txtAllVATPrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            txtAllVATPrice.Properties.MaskSettings.Set("mask", "c");
             txtAllVATPrice.Properties.ReadOnly = true;
+            txtAllVATPrice.Properties.UseMaskAsDisplayFormat = true;
             txtAllVATPrice.Size = new Size(187, 22);
             txtAllVATPrice.StyleController = myDataLayoutControl1;
             txtAllVATPrice.TabIndex = 6;
             // 
             // txtAllSellPrice
             // 
-            txtAllSellPrice.Location = new Point(142, 36);
+            txtAllSellPrice.Location = new Point(142, 60);
             txtAllSellPrice.MenuManager = ribbonControl1;
             txtAllSellPrice.Name = "txtAllSellPrice";
+            txtAllSellPrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            txtAllSellPrice.Properties.MaskSettings.Set("mask", "c");
             txtAllSellPrice.Properties.ReadOnly = true;
+            txtAllSellPrice.Properties.UseMaskAsDisplayFormat = true;
             txtAllSellPrice.Size = new Size(187, 22);
             txtAllSellPrice.StyleController = myDataLayoutControl1;
             txtAllSellPrice.TabIndex = 5;
             // 
             // txtAllMarketPrice
             // 
-            txtAllMarketPrice.Location = new Point(142, 12);
+            txtAllMarketPrice.Location = new Point(142, 36);
             txtAllMarketPrice.MenuManager = ribbonControl1;
             txtAllMarketPrice.Name = "txtAllMarketPrice";
+            txtAllMarketPrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            txtAllMarketPrice.Properties.MaskSettings.Set("mask", "c");
             txtAllMarketPrice.Properties.ReadOnly = true;
+            txtAllMarketPrice.Properties.UseMaskAsDisplayFormat = true;
             txtAllMarketPrice.Size = new Size(187, 22);
             txtAllMarketPrice.StyleController = myDataLayoutControl1;
             txtAllMarketPrice.TabIndex = 4;
@@ -318,30 +348,32 @@
             Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlItem2, layoutControlItem3, layoutControlItem4, layoutControlItem5, layoutControlItem6, layoutControlItem7, layoutControlItem8 });
             Root.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table;
             Root.Name = "Root";
-            columnDefinition2.SizeType = SizeType.Percent;
-            columnDefinition2.Width = 100D;
-            Root.OptionsTableLayoutGroup.ColumnDefinitions.AddRange(new DevExpress.XtraLayout.ColumnDefinition[] { columnDefinition2 });
-            rowDefinition11.Height = 24D;
-            rowDefinition11.SizeType = SizeType.Absolute;
-            rowDefinition12.Height = 24D;
-            rowDefinition12.SizeType = SizeType.Absolute;
-            rowDefinition13.Height = 24D;
-            rowDefinition13.SizeType = SizeType.Absolute;
-            rowDefinition14.Height = 24D;
-            rowDefinition14.SizeType = SizeType.Absolute;
-            rowDefinition15.Height = 24D;
-            rowDefinition15.SizeType = SizeType.Absolute;
-            rowDefinition16.Height = 24D;
-            rowDefinition16.SizeType = SizeType.Absolute;
-            rowDefinition17.Height = 24D;
-            rowDefinition17.SizeType = SizeType.Absolute;
-            rowDefinition18.Height = 24D;
-            rowDefinition18.SizeType = SizeType.Absolute;
-            rowDefinition19.Height = 24D;
-            rowDefinition19.SizeType = SizeType.Absolute;
-            rowDefinition20.Height = 100D;
-            rowDefinition20.SizeType = SizeType.Percent;
-            Root.OptionsTableLayoutGroup.RowDefinitions.AddRange(new DevExpress.XtraLayout.RowDefinition[] { rowDefinition11, rowDefinition12, rowDefinition13, rowDefinition14, rowDefinition15, rowDefinition16, rowDefinition17, rowDefinition18, rowDefinition19, rowDefinition20 });
+            columnDefinition1.SizeType = SizeType.Percent;
+            columnDefinition1.Width = 100D;
+            Root.OptionsTableLayoutGroup.ColumnDefinitions.AddRange(new DevExpress.XtraLayout.ColumnDefinition[] { columnDefinition1 });
+            rowDefinition1.Height = 24D;
+            rowDefinition1.SizeType = SizeType.Absolute;
+            rowDefinition2.Height = 24D;
+            rowDefinition2.SizeType = SizeType.Absolute;
+            rowDefinition3.Height = 24D;
+            rowDefinition3.SizeType = SizeType.Absolute;
+            rowDefinition4.Height = 24D;
+            rowDefinition4.SizeType = SizeType.Absolute;
+            rowDefinition5.Height = 24D;
+            rowDefinition5.SizeType = SizeType.Absolute;
+            rowDefinition6.Height = 24D;
+            rowDefinition6.SizeType = SizeType.Absolute;
+            rowDefinition7.Height = 24D;
+            rowDefinition7.SizeType = SizeType.Absolute;
+            rowDefinition8.Height = 24D;
+            rowDefinition8.SizeType = SizeType.Absolute;
+            rowDefinition9.Height = 24D;
+            rowDefinition9.SizeType = SizeType.Absolute;
+            rowDefinition10.Height = 24D;
+            rowDefinition10.SizeType = SizeType.Absolute;
+            rowDefinition11.Height = 100D;
+            rowDefinition11.SizeType = SizeType.Percent;
+            Root.OptionsTableLayoutGroup.RowDefinitions.AddRange(new DevExpress.XtraLayout.RowDefinition[] { rowDefinition1, rowDefinition2, rowDefinition3, rowDefinition4, rowDefinition5, rowDefinition6, rowDefinition7, rowDefinition8, rowDefinition9, rowDefinition10, rowDefinition11 });
             Root.Size = new Size(341, 577);
             Root.TextVisible = false;
             // 
@@ -352,8 +384,9 @@
             layoutControlItem1.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem1.AppearanceItemCaption.Options.UseForeColor = true;
             layoutControlItem1.Control = txtAllMarketPrice;
-            layoutControlItem1.Location = new Point(0, 0);
+            layoutControlItem1.Location = new Point(0, 24);
             layoutControlItem1.Name = "layoutControlItem1";
+            layoutControlItem1.OptionsTableLayoutItem.RowIndex = 1;
             layoutControlItem1.Size = new Size(321, 24);
             layoutControlItem1.Text = "Toplam Maliyet";
             layoutControlItem1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -367,9 +400,9 @@
             layoutControlItem2.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem2.AppearanceItemCaption.Options.UseForeColor = true;
             layoutControlItem2.Control = txtAllSellPrice;
-            layoutControlItem2.Location = new Point(0, 24);
+            layoutControlItem2.Location = new Point(0, 48);
             layoutControlItem2.Name = "layoutControlItem2";
-            layoutControlItem2.OptionsTableLayoutItem.RowIndex = 1;
+            layoutControlItem2.OptionsTableLayoutItem.RowIndex = 2;
             layoutControlItem2.Size = new Size(321, 24);
             layoutControlItem2.Text = "Toplam Satış Fiyatı";
             layoutControlItem2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -383,9 +416,9 @@
             layoutControlItem3.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem3.AppearanceItemCaption.Options.UseForeColor = true;
             layoutControlItem3.Control = txtAllVATPrice;
-            layoutControlItem3.Location = new Point(0, 48);
+            layoutControlItem3.Location = new Point(0, 72);
             layoutControlItem3.Name = "layoutControlItem3";
-            layoutControlItem3.OptionsTableLayoutItem.RowIndex = 2;
+            layoutControlItem3.OptionsTableLayoutItem.RowIndex = 3;
             layoutControlItem3.Size = new Size(321, 24);
             layoutControlItem3.Text = "Toplam KDV Vergisi";
             layoutControlItem3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -399,9 +432,9 @@
             layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem4.AppearanceItemCaption.Options.UseForeColor = true;
             layoutControlItem4.Control = txtExciseTaxPrice;
-            layoutControlItem4.Location = new Point(0, 72);
+            layoutControlItem4.Location = new Point(0, 96);
             layoutControlItem4.Name = "layoutControlItem4";
-            layoutControlItem4.OptionsTableLayoutItem.RowIndex = 3;
+            layoutControlItem4.OptionsTableLayoutItem.RowIndex = 4;
             layoutControlItem4.Size = new Size(321, 24);
             layoutControlItem4.Text = "Toplam Diğer Vergiler";
             layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -415,9 +448,9 @@
             layoutControlItem5.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem5.AppearanceItemCaption.Options.UseForeColor = true;
             layoutControlItem5.Control = txtAllTAX;
-            layoutControlItem5.Location = new Point(0, 96);
+            layoutControlItem5.Location = new Point(0, 120);
             layoutControlItem5.Name = "layoutControlItem5";
-            layoutControlItem5.OptionsTableLayoutItem.RowIndex = 4;
+            layoutControlItem5.OptionsTableLayoutItem.RowIndex = 5;
             layoutControlItem5.Size = new Size(321, 24);
             layoutControlItem5.Text = "Toplam Vergi";
             layoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -431,10 +464,10 @@
             layoutControlItem6.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem6.AppearanceItemCaption.Options.UseForeColor = true;
             layoutControlItem6.Control = txtDescription;
-            layoutControlItem6.Location = new Point(0, 216);
+            layoutControlItem6.Location = new Point(0, 240);
             layoutControlItem6.Name = "layoutControlItem6";
-            layoutControlItem6.OptionsTableLayoutItem.RowIndex = 9;
-            layoutControlItem6.Size = new Size(321, 341);
+            layoutControlItem6.OptionsTableLayoutItem.RowIndex = 10;
+            layoutControlItem6.Size = new Size(321, 317);
             layoutControlItem6.Text = "Açıklama";
             layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem6.TextSize = new Size(125, 20);
@@ -447,9 +480,9 @@
             layoutControlItem7.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem7.AppearanceItemCaption.Options.UseForeColor = true;
             layoutControlItem7.Control = txtAllProfit;
-            layoutControlItem7.Location = new Point(0, 144);
+            layoutControlItem7.Location = new Point(0, 168);
             layoutControlItem7.Name = "layoutControlItem7";
-            layoutControlItem7.OptionsTableLayoutItem.RowIndex = 6;
+            layoutControlItem7.OptionsTableLayoutItem.RowIndex = 7;
             layoutControlItem7.Size = new Size(321, 24);
             layoutControlItem7.Text = "Toplam Kazanç";
             layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -463,9 +496,9 @@
             layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem8.AppearanceItemCaption.Options.UseForeColor = true;
             layoutControlItem8.Control = dateBillDate;
-            layoutControlItem8.Location = new Point(0, 192);
+            layoutControlItem8.Location = new Point(0, 216);
             layoutControlItem8.Name = "layoutControlItem8";
-            layoutControlItem8.OptionsTableLayoutItem.RowIndex = 8;
+            layoutControlItem8.OptionsTableLayoutItem.RowIndex = 9;
             layoutControlItem8.Size = new Size(321, 24);
             layoutControlItem8.Text = "Fatura Tarihi";
             layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -543,5 +576,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridProfit;
     }
 }

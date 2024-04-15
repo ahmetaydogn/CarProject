@@ -15,6 +15,7 @@ public partial class BillDialogListForm : BaseDialogListForm
     {
         InitializeComponent();
         FillGrid();
+        base.HideAddButton();
     }
 
     IBillService billService = new BillManager(new EfBillDal());
@@ -22,10 +23,6 @@ public partial class BillDialogListForm : BaseDialogListForm
 
 
     // RibbonControl's Code
-    public override void AddEntity()
-    {
-        ShowEditForms<SaleAddForm>.ShowDialogEditForm();
-    }
 
     public override void RefreshGridControl()
     {

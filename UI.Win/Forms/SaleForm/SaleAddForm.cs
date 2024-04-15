@@ -8,6 +8,7 @@ using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
 using UI.Win.Forms.BillForms;
 using UI.Win.Forms.CarForms;
+using UI.Win.Forms.CarPartsForms;
 using UI.Win.Forms.CustomerForm;
 using UI.Win.Show;
 using UI.Win.Utilities;
@@ -19,6 +20,7 @@ public partial class SaleAddForm : BaseEditForm
     public SaleAddForm()
     {
         InitializeComponent();
+        ToggleProductAndSubProduct();
     }
 
     public SaleAddForm(int id, EventType _eventType, decimal sellPrice) : this()
@@ -30,6 +32,20 @@ public partial class SaleAddForm : BaseEditForm
             eventType = _eventType;
             productPrice = sellPrice;
             btnBill.Enabled = false;
+            FillGaps();
+        }
+    }
+
+    public SaleAddForm(int id, EventType _eventType, decimal sellPrice, bool _isGonnaAddProduct) : this()
+    {
+        var result = saleService.GetById(id);
+        if (result.IsSuccess)
+        {
+            OldSale = result.Data;
+            eventType = _eventType;
+            productPrice = sellPrice;
+            btnBill.Enabled = false;
+            isGonnaAddProduct = _isGonnaAddProduct;
             FillGaps();
         }
     }
@@ -69,51 +85,7 @@ public partial class SaleAddForm : BaseEditForm
     decimal productPrice;
     EventType eventType = EventType.EntityInsert;
     bool isAlreadyExistBillNumber = false;
-
-    private void btnProduct_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-    {
-        var frm = (CarDialogListForm)ShowListForms<CarDialogListForm>.ShowDialogListForm();
-        if (frm.DialogResult == DialogResult.OK)
-        {
-            btnProduct.EditValue = frm.returnProductId;
-            productPrice = frm.returnProductPrice;
-            calcPrice.Value = spnQuantity.Value * productPrice;
-        }
-    }
-
-    private void btnSubProduct_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-    {
-
-    }
-
-    private void btnCustomer_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-    {
-        var frm = (CustomerDialogListForm)ShowListForms<CustomerDialogListForm>.ShowDialogListForm();
-        if (frm.DialogResult == DialogResult.OK)
-            btnCustomer.EditValue = frm.returnCustomerId;
-    }
-
-    private void btnBill_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-    {
-        if (!isAlreadyExistBillNumber)
-        {
-            if (btnBill.Enabled)
-            {
-                var frm = (BillDialogListForm)ShowListForms<BillDialogListForm>.ShowDialogListForm();
-                if (frm.DialogResult == DialogResult.OK)
-                    btnBill.EditValue = frm.returnBillId;
-            }
-        }
-        else
-        {
-            btnBill.EditValue = billNumber;
-        }
-    }
-
-    private void spnQuantity_ValueChanged(object sender, EventArgs e)
-    {
-        calcPrice.Value = spnQuantity.Value * productPrice;
-    }
+    private bool isGonnaAddProduct = false;
 
 
     public override void Save()
@@ -179,8 +151,16 @@ public partial class SaleAddForm : BaseEditForm
     {
         if (eventType == EventType.EntityUpdate)
         {
-
-            btnProduct.EditValue = OldSale.ProductId;
+            if (isGonnaAddProduct)
+            {
+                btnProduct.EditValue = OldSale.ProductId;
+            }
+            else
+            {
+                tgsProductType.Toggle();
+                ToggleProductAndSubProduct();
+                btnSubProduct.EditValue = OldSale.SubProductId;
+            }
             btnCustomer.EditValue = OldSale.CustomerId;
             calcPrice.Value = OldSale.Price;
             cmbPaymentMethod.Text = OldSale.PaymentMethod;
@@ -207,10 +187,10 @@ public partial class SaleAddForm : BaseEditForm
             switch (component)
             {
                 case SpinEdit sedit:
-                    sedit.Value = 0;
+                    sedit.Value = 1;
                     break;
-                case ButtonEdit bedit:
-                    bedit.EditValue = null;
+                case CalcEdit cedit:
+                    cedit.Value = 1;
                     break;
                 case MemoEdit medit:
                     medit.Text = null;
@@ -262,8 +242,9 @@ public partial class SaleAddForm : BaseEditForm
         Sale s = new Sale
         {
             CustomerId = Convert.ToInt32(btnCustomer.EditValue),
-            ProductId = Convert.ToInt32(btnProduct.EditValue),
-            SaleDate = DateTime.Now,
+            ProductId = Convert.ToInt32(btnProduct.EditValue) == 0 ? null : Convert.ToInt32(btnProduct.EditValue),
+            SubProductId = Convert.ToInt32(btnSubProduct.EditValue) == 0 ? null : Convert.ToInt32(btnSubProduct.EditValue),
+            SaleDate = eventType == EventType.EntityInsert ? DateTime.Now : OldSale.SaleDate,
             PaymentMethod = cmbPaymentMethod.Text,
             Price = calcPrice.Value,
             Quantity = Convert.ToInt16(spnQuantity.Value),
@@ -283,4 +264,82 @@ public partial class SaleAddForm : BaseEditForm
 
         Close();
     }
+
+    private void ToggleProductAndSubProduct()
+    {
+        isGonnaAddProduct = !isGonnaAddProduct;
+
+        if (isGonnaAddProduct)
+        {
+            btnProduct.Enabled = true;
+            btnSubProduct.Enabled = false;
+            btnSubProduct.EditValue = null;
+        }
+        else
+        {
+            btnSubProduct.Enabled = true;
+            btnProduct.Enabled = false;
+            btnProduct.EditValue = null;
+        }
+
+        spnQuantity.Value = 0;
+        calcPrice.Value = 0;
+    }
+
+    private void toggleSwitch1_Toggled(object sender, EventArgs e)
+    {
+        ToggleProductAndSubProduct();
+    }
+
+    private void btnProduct_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+    {
+        var frm = (CarDialogListForm)ShowListForms<CarDialogListForm>.ShowDialogListForm();
+        if (frm.DialogResult == DialogResult.OK)
+        {
+            btnProduct.EditValue = frm.returnProductId;
+            productPrice = frm.returnProductPrice;
+            calcPrice.Value = spnQuantity.Value * productPrice;
+        }
+    }
+
+    private void btnSubProduct_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+    {
+        var frm = (CarPartDialogListForm)ShowListForms<CarPartDialogListForm>.ShowDialogListForm();
+        if (frm.DialogResult == DialogResult.OK)
+        {
+            btnSubProduct.EditValue = frm.returnSubProductId;
+            productPrice = frm.returnSubProductPrice;
+            calcPrice.Value = spnQuantity.Value * productPrice;
+        }
+    }
+
+    private void btnCustomer_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+    {
+        var frm = (CustomerDialogListForm)ShowListForms<CustomerDialogListForm>.ShowDialogListForm();
+        if (frm.DialogResult == DialogResult.OK)
+            btnCustomer.EditValue = frm.returnCustomerId;
+    }
+
+    private void btnBill_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+    {
+        if (!isAlreadyExistBillNumber)
+        {
+            if (btnBill.Enabled)
+            {
+                var frm = (BillDialogListForm)ShowListForms<BillDialogListForm>.ShowDialogListForm();
+                if (frm.DialogResult == DialogResult.OK)
+                    btnBill.EditValue = frm.returnBillId;
+            }
+        }
+        else
+        {
+            btnBill.EditValue = billNumber;
+        }
+    }
+
+    private void spnQuantity_ValueChanged(object sender, EventArgs e)
+    {
+        calcPrice.Value = spnQuantity.Value * productPrice;
+    }
+
 }

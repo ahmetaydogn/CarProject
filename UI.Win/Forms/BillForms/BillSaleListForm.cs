@@ -28,6 +28,7 @@ public partial class BillSaleListForm : BaseDialogListForm
     IBillService billService = new BillManager(new EfBillDal());
     ISaleService saleService = new SaleManager(new EfSaleDal());
     IProductService productService = new ProductManager(new EfProductDal());
+    ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
 
 
@@ -49,10 +50,11 @@ public partial class BillSaleListForm : BaseDialogListForm
     {
         var productList = productService.GetAll();
         var customerList = customerService.GetAll();
+        var subProductList = subProductService.GetAll();
 
         if (productList.IsSuccess && customerList.IsSuccess)
         {
-            var result = billService.GetAllAsDto(billNumber, saleService, productList.Data, customerList.Data);
+            var result = billService.GetAllAsDto(billNumber, saleService, productList.Data, customerList.Data, subProductList.Data);
             if (result.IsSuccess)
                 gridControl1.DataSource = result.Data;
         }
@@ -60,9 +62,20 @@ public partial class BillSaleListForm : BaseDialogListForm
 
     private void gridBillSale_DoubleClick(object sender, EventArgs e)
     {
+
         int saleId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("SaleId"));
-        int productId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("ProductId"));
-        ShowEditForms<SaleAddForm>.ShowDialogEditForm(saleId, EventType.EntityUpdate, productService.GetById(productId).Data.SellPrice, billNumber);
+        int? productId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("ProductId"));
+        int? subProductId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("SubProductId"));
+
+        if (subProductId == 0)
+        {
+            ShowEditForms<SaleAddForm>.ShowDialogEditForm(saleId, EventType.EntityUpdate, productService.GetById(Convert.ToInt32(productId)).Data.SellPrice, true);
+        }
+        else if (productId == 0)
+        {
+            ShowEditForms<SaleAddForm>.ShowDialogEditForm(saleId, EventType.EntityUpdate, subProductService.GetById(Convert.ToInt32(subProductId)).Data.SellPrice, false);
+        }
+
         FillGrid();
         FillGaps();
     }
@@ -80,15 +93,27 @@ public partial class BillSaleListForm : BaseDialogListForm
         var sales = saleService.GetAllByBillNumber(billNumber);
         if (sales.IsSuccess)
         {
-            Product p; 
+            Product p;
+            SubProduct sP;
             foreach (var sale in sales.Data)
             {
-                p = productService.GetById(sale.ProductId).Data;
-                totalMarketPrice += p.MarketPrice * sale.Quantity;
-                totalSellPrice += p.SellPrice * sale.Quantity;
-                totalVATPrice += p.VATPrice * sale.Quantity;
-                totalExcisePrice += p.ExciseDutyPrice * sale.Quantity;
-                totalProfit += p.Profit * sale.Quantity;
+                if (sale.SubProductId == null)
+                {
+                    p = productService.GetById((int)sale.ProductId).Data;
+                    totalMarketPrice += p.MarketPrice * sale.Quantity;
+                    totalSellPrice += p.SellPrice * sale.Quantity;
+                    totalVATPrice += p.VATPrice * sale.Quantity;
+                    totalExcisePrice += p.ExciseDutyPrice * sale.Quantity;
+                    totalProfit += p.Profit * sale.Quantity;
+                }
+                else if (sale.ProductId == null)
+                {
+                    sP = subProductService.GetById((int)sale.SubProductId).Data;
+                    totalMarketPrice += sP.MarketPrice * sale.Quantity;
+                    totalSellPrice += sP.SellPrice * sale.Quantity;
+                    totalVATPrice += sP.VATPrice * sale.Quantity;
+                    totalProfit += sP.Profit * sale.Quantity;
+                }
             }
 
             txtAllMarketPrice.Text = totalMarketPrice.ToString();
