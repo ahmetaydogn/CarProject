@@ -106,7 +106,6 @@ public partial class CarAddForm : BaseEditForm
             calcVATPrice.Value = OldProduct.VATPrice;
             cmbExciseDuty.Text = OldProduct.ExciseDuty;
             calcExciseDutyPrice.Value = OldProduct.ExciseDutyPrice;
-            spnProductQuantity.Value = OldProduct.Quantity;
             txtDescription.Text = OldProduct.ProductDescription;
             tgsProductSituation.IsOn = OldProduct.ProductSituation == "Sifir" ? false : true;
         }
@@ -121,7 +120,10 @@ public partial class CarAddForm : BaseEditForm
             switch (component)
             {
                 case SpinEdit sedit:
-                    sedit.Value = 0;
+                    sedit.Value = 1;
+                    break;
+                case CalcEdit cedit:
+                    cedit.Value = 1;
                     break;
                 case MemoEdit medit:
                     medit.Text = null;
@@ -176,7 +178,6 @@ public partial class CarAddForm : BaseEditForm
             VATPrice = calcVATPrice.Value,
             ExciseDuty = cmbExciseDuty.Text,
             ExciseDutyPrice = calcExciseDutyPrice.Value,
-            Quantity = Convert.ToInt16(spnProductQuantity.Value),
             ProductSituation = tgsProductSituation.IsOn == true ? "İkinci El" : "Sifir",
             ProductDescription = txtDescription.Text,
             Profit = CalculateProfit(),

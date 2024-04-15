@@ -37,6 +37,7 @@
             gridProductSituation = new DevExpress.XtraGrid.Columns.GridColumn();
             gridMarketPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             gridSellPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            gridProfit = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridProduct).BeginInit();
@@ -61,7 +62,7 @@
             // 
             // gridProduct
             // 
-            gridProduct.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridProductName, gridProductModel, gridProductKM, gridProductColor, gridProductSituation, gridMarketPrice, gridSellPrice });
+            gridProduct.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridProductName, gridProductModel, gridProductKM, gridProductColor, gridProductSituation, gridMarketPrice, gridSellPrice, gridProfit });
             gridProduct.GridControl = gridControl1;
             gridProduct.Name = "gridProduct";
             gridProduct.OptionsBehavior.Editable = false;
@@ -139,6 +140,16 @@
             gridSellPrice.VisibleIndex = 6;
             gridSellPrice.Width = 150;
             // 
+            // gridProfit
+            // 
+            gridProfit.Caption = "Kâr (Birim Başı)";
+            gridProfit.FieldName = "Profit";
+            gridProfit.MinWidth = 25;
+            gridProfit.Name = "gridProfit";
+            gridProfit.Visible = true;
+            gridProfit.VisibleIndex = 7;
+            gridProfit.Width = 94;
+            // 
             // CarDialogListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -167,5 +178,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridProductSituation;
         private DevExpress.XtraGrid.Columns.GridColumn gridMarketPrice;
         private DevExpress.XtraGrid.Columns.GridColumn gridSellPrice;
+        private DevExpress.XtraGrid.Columns.GridColumn gridProfit;
     }
 }
