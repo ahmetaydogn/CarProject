@@ -239,4 +239,9 @@ public partial class CarAddForm : BaseEditForm
     {
         ChangeTaxesComponents();
     }
+
+    private void spnProductQuantity_EditValueChanged(object sender, EventArgs e)
+    {
+        ChangeTaxesComponents();
+    }
 }

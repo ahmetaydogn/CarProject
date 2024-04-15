@@ -46,6 +46,7 @@
             DevExpress.XtraLayout.RowDefinition rowDefinition13 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition14 = new DevExpress.XtraLayout.RowDefinition();
             myDataLayoutControl1 = new UserControls.MyDataLayoutControl();
+            txtProfit = new DevExpress.XtraEditors.TextEdit();
             cmbVAT = new DevExpress.XtraEditors.ComboBoxEdit();
             calcVATPrice = new DevExpress.XtraEditors.CalcEdit();
             calcExciseDutyPrice = new DevExpress.XtraEditors.CalcEdit();
@@ -73,11 +74,11 @@
             layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            txtProfit = new DevExpress.XtraEditors.TextEdit();
             layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).BeginInit();
             myDataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)txtProfit.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cmbVAT.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)calcVATPrice.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)calcExciseDutyPrice.Properties).BeginInit();
@@ -105,7 +106,6 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtProfit.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem14).BeginInit();
             SuspendLayout();
             // 
@@ -139,6 +139,18 @@
             myDataLayoutControl1.Size = new Size(802, 462);
             myDataLayoutControl1.TabIndex = 1;
             myDataLayoutControl1.Text = "myDataLayoutControl1";
+            // 
+            // txtProfit
+            // 
+            txtProfit.Location = new Point(97, 300);
+            txtProfit.MenuManager = ribbonControl1;
+            txtProfit.Name = "txtProfit";
+            txtProfit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            txtProfit.Properties.MaskSettings.Set("mask", "c");
+            txtProfit.Properties.ReadOnly = true;
+            txtProfit.Size = new Size(151, 22);
+            txtProfit.StyleController = myDataLayoutControl1;
+            txtProfit.TabIndex = 27;
             // 
             // cmbVAT
             // 
@@ -201,6 +213,7 @@
             spnProductQuantity.Size = new Size(151, 22);
             spnProductQuantity.StyleController = myDataLayoutControl1;
             spnProductQuantity.TabIndex = 20;
+            spnProductQuantity.EditValueChanged += spnProductQuantity_EditValueChanged;
             // 
             // spnProductSellPrice
             // 
@@ -492,18 +505,6 @@
             layoutControlItem6.TextSize = new Size(80, 20);
             layoutControlItem6.TextToControlDistance = 5;
             // 
-            // txtProfit
-            // 
-            txtProfit.Location = new Point(97, 300);
-            txtProfit.MenuManager = ribbonControl1;
-            txtProfit.Name = "txtProfit";
-            txtProfit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            txtProfit.Properties.MaskSettings.Set("mask", "c");
-            txtProfit.Properties.ReadOnly = true;
-            txtProfit.Size = new Size(151, 22);
-            txtProfit.StyleController = myDataLayoutControl1;
-            txtProfit.TabIndex = 27;
-            // 
             // layoutControlItem14
             // 
             layoutControlItem14.AppearanceItemCaption.FontStyleDelta = FontStyle.Bold;
@@ -533,6 +534,7 @@
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).EndInit();
             myDataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)txtProfit.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)cmbVAT.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)calcVATPrice.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)calcExciseDutyPrice.Properties).EndInit();
@@ -560,7 +562,6 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem9).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtProfit.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem14).EndInit();
             ResumeLayout(false);
             PerformLayout();
