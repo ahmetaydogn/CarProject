@@ -14,8 +14,9 @@ public class Product : IEntity
     public decimal MarketPrice { get; set; }
     public decimal SellPrice { get; set; }
     public short Quantity { get; set; }
-    public byte VAT { get; set; }
+    public string VAT { get; set; }
     public decimal VATPrice { get; set; }
-    public byte ExciseDuty { get; set; }
+    public string ExciseDuty { get; set; }
     public decimal ExciseDutyPrice { get; set; }
+    public decimal Profit { get; set; }
 }
