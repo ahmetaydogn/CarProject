@@ -37,7 +37,9 @@
             DevExpress.XtraLayout.RowDefinition rowDefinition4 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition5 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition6 = new DevExpress.XtraLayout.RowDefinition();
+            DevExpress.XtraLayout.RowDefinition rowDefinition7 = new DevExpress.XtraLayout.RowDefinition();
             myDataLayoutControl1 = new UserControls.MyDataLayoutControl();
+            toggleSwitch1 = new DevExpress.XtraEditors.ToggleSwitch();
             btnBill = new DevExpress.XtraEditors.ButtonEdit();
             cmbPaymentMethod = new DevExpress.XtraEditors.ComboBoxEdit();
             calcPrice = new DevExpress.XtraEditors.CalcEdit();
@@ -51,9 +53,13 @@
             layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            btnSubProduct = new DevExpress.XtraEditors.ButtonEdit();
+            layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).BeginInit();
             myDataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)toggleSwitch1.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnBill.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cmbPaymentMethod.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)calcPrice.Properties).BeginInit();
@@ -67,16 +73,21 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnSubProduct.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem8).BeginInit();
             SuspendLayout();
             // 
             // ribbonControl1
             // 
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Size = new Size(486, 126);
+            ribbonControl1.Size = new Size(495, 126);
             ribbonControl1.Toolbar.ShowCustomizeItem = false;
             // 
             // myDataLayoutControl1
             // 
+            myDataLayoutControl1.Controls.Add(btnSubProduct);
+            myDataLayoutControl1.Controls.Add(toggleSwitch1);
             myDataLayoutControl1.Controls.Add(btnBill);
             myDataLayoutControl1.Controls.Add(cmbPaymentMethod);
             myDataLayoutControl1.Controls.Add(calcPrice);
@@ -88,13 +99,27 @@
             myDataLayoutControl1.Name = "myDataLayoutControl1";
             myDataLayoutControl1.OptionsFocus.EnableAutoTabOrder = false;
             myDataLayoutControl1.Root = Root;
-            myDataLayoutControl1.Size = new Size(486, 172);
+            myDataLayoutControl1.Size = new Size(495, 200);
             myDataLayoutControl1.TabIndex = 1;
             myDataLayoutControl1.Text = "myDataLayoutControl1";
             // 
+            // toggleSwitch1
+            // 
+            toggleSwitch1.Location = new Point(367, 12);
+            toggleSwitch1.MenuManager = ribbonControl1;
+            toggleSwitch1.Name = "toggleSwitch1";
+            toggleSwitch1.Properties.Appearance.Options.UseTextOptions = true;
+            toggleSwitch1.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            toggleSwitch1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
+            toggleSwitch1.Properties.OffText = "Off";
+            toggleSwitch1.Properties.OnText = "On";
+            toggleSwitch1.Size = new Size(116, 24);
+            toggleSwitch1.StyleController = myDataLayoutControl1;
+            toggleSwitch1.TabIndex = 11;
+            // 
             // btnBill
             // 
-            btnBill.Location = new Point(97, 132);
+            btnBill.Location = new Point(97, 156);
             btnBill.MenuManager = ribbonControl1;
             btnBill.Name = "btnBill";
             btnBill.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton() });
@@ -106,7 +131,7 @@
             // 
             // cmbPaymentMethod
             // 
-            cmbPaymentMethod.Location = new Point(97, 108);
+            cmbPaymentMethod.Location = new Point(97, 132);
             cmbPaymentMethod.MenuManager = ribbonControl1;
             cmbPaymentMethod.Name = "cmbPaymentMethod";
             cmbPaymentMethod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -118,7 +143,7 @@
             // 
             // calcPrice
             // 
-            calcPrice.Location = new Point(97, 84);
+            calcPrice.Location = new Point(97, 108);
             calcPrice.MenuManager = ribbonControl1;
             calcPrice.Name = "calcPrice";
             calcPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -129,7 +154,7 @@
             // spnQuantity
             // 
             spnQuantity.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            spnQuantity.Location = new Point(97, 60);
+            spnQuantity.Location = new Point(97, 84);
             spnQuantity.MenuManager = ribbonControl1;
             spnQuantity.Name = "spnQuantity";
             spnQuantity.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -141,7 +166,7 @@
             // 
             // btnCustomer
             // 
-            btnCustomer.Location = new Point(97, 36);
+            btnCustomer.Location = new Point(97, 60);
             btnCustomer.MenuManager = ribbonControl1;
             btnCustomer.Name = "btnCustomer";
             btnCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton() });
@@ -167,7 +192,7 @@
             // 
             Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             Root.GroupBordersVisible = false;
-            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlItem2, layoutControlItem3, layoutControlItem4, layoutControlItem5, layoutControlItem6 });
+            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlItem2, layoutControlItem3, layoutControlItem4, layoutControlItem5, layoutControlItem6, layoutControlItem7, layoutControlItem8 });
             Root.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table;
             Root.Name = "Root";
             columnDefinition1.SizeType = SizeType.Absolute;
@@ -189,8 +214,10 @@
             rowDefinition5.SizeType = SizeType.Absolute;
             rowDefinition6.Height = 24D;
             rowDefinition6.SizeType = SizeType.Absolute;
-            Root.OptionsTableLayoutGroup.RowDefinitions.AddRange(new DevExpress.XtraLayout.RowDefinition[] { rowDefinition1, rowDefinition2, rowDefinition3, rowDefinition4, rowDefinition5, rowDefinition6 });
-            Root.Size = new Size(486, 172);
+            rowDefinition7.Height = 24D;
+            rowDefinition7.SizeType = SizeType.Absolute;
+            Root.OptionsTableLayoutGroup.RowDefinitions.AddRange(new DevExpress.XtraLayout.RowDefinition[] { rowDefinition1, rowDefinition2, rowDefinition3, rowDefinition4, rowDefinition5, rowDefinition6, rowDefinition7 });
+            Root.Size = new Size(495, 200);
             Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -199,7 +226,7 @@
             layoutControlItem1.Location = new Point(0, 0);
             layoutControlItem1.Name = "layoutControlItem1";
             layoutControlItem1.Size = new Size(240, 24);
-            layoutControlItem1.Text = "Ürün";
+            layoutControlItem1.Text = "Araç";
             layoutControlItem1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem1.TextSize = new Size(80, 20);
             layoutControlItem1.TextToControlDistance = 5;
@@ -207,9 +234,9 @@
             // layoutControlItem2
             // 
             layoutControlItem2.Control = btnCustomer;
-            layoutControlItem2.Location = new Point(0, 24);
+            layoutControlItem2.Location = new Point(0, 48);
             layoutControlItem2.Name = "layoutControlItem2";
-            layoutControlItem2.OptionsTableLayoutItem.RowIndex = 1;
+            layoutControlItem2.OptionsTableLayoutItem.RowIndex = 2;
             layoutControlItem2.Size = new Size(240, 24);
             layoutControlItem2.Text = "Cari";
             layoutControlItem2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -219,9 +246,9 @@
             // layoutControlItem3
             // 
             layoutControlItem3.Control = spnQuantity;
-            layoutControlItem3.Location = new Point(0, 48);
+            layoutControlItem3.Location = new Point(0, 72);
             layoutControlItem3.Name = "layoutControlItem3";
-            layoutControlItem3.OptionsTableLayoutItem.RowIndex = 2;
+            layoutControlItem3.OptionsTableLayoutItem.RowIndex = 3;
             layoutControlItem3.Size = new Size(240, 24);
             layoutControlItem3.Text = "Miktar";
             layoutControlItem3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -231,9 +258,9 @@
             // layoutControlItem4
             // 
             layoutControlItem4.Control = calcPrice;
-            layoutControlItem4.Location = new Point(0, 72);
+            layoutControlItem4.Location = new Point(0, 96);
             layoutControlItem4.Name = "layoutControlItem4";
-            layoutControlItem4.OptionsTableLayoutItem.RowIndex = 3;
+            layoutControlItem4.OptionsTableLayoutItem.RowIndex = 4;
             layoutControlItem4.Size = new Size(240, 24);
             layoutControlItem4.Text = "Tutar";
             layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -243,9 +270,9 @@
             // layoutControlItem5
             // 
             layoutControlItem5.Control = cmbPaymentMethod;
-            layoutControlItem5.Location = new Point(0, 96);
+            layoutControlItem5.Location = new Point(0, 120);
             layoutControlItem5.Name = "layoutControlItem5";
-            layoutControlItem5.OptionsTableLayoutItem.RowIndex = 4;
+            layoutControlItem5.OptionsTableLayoutItem.RowIndex = 5;
             layoutControlItem5.Size = new Size(240, 24);
             layoutControlItem5.Text = "Ödeme Şekli";
             layoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
@@ -255,20 +282,54 @@
             // layoutControlItem6
             // 
             layoutControlItem6.Control = btnBill;
-            layoutControlItem6.Location = new Point(0, 120);
+            layoutControlItem6.Location = new Point(0, 144);
             layoutControlItem6.Name = "layoutControlItem6";
-            layoutControlItem6.OptionsTableLayoutItem.RowIndex = 5;
-            layoutControlItem6.Size = new Size(240, 32);
+            layoutControlItem6.OptionsTableLayoutItem.RowIndex = 6;
+            layoutControlItem6.Size = new Size(240, 36);
             layoutControlItem6.Text = "Fatura No";
             layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem6.TextSize = new Size(80, 20);
             layoutControlItem6.TextToControlDistance = 5;
             // 
+            // layoutControlItem7
+            // 
+            layoutControlItem7.Control = toggleSwitch1;
+            layoutControlItem7.Location = new Point(355, 0);
+            layoutControlItem7.Name = "layoutControlItem7";
+            layoutControlItem7.OptionsTableLayoutItem.ColumnIndex = 2;
+            layoutControlItem7.Size = new Size(120, 24);
+            layoutControlItem7.TextSize = new Size(0, 0);
+            layoutControlItem7.TextVisible = false;
+            // 
+            // btnSubProduct
+            // 
+            btnSubProduct.Location = new Point(97, 36);
+            btnSubProduct.MenuManager = ribbonControl1;
+            btnSubProduct.Name = "btnSubProduct";
+            btnSubProduct.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton() });
+            btnSubProduct.Properties.ReadOnly = true;
+            btnSubProduct.Size = new Size(151, 22);
+            btnSubProduct.StyleController = myDataLayoutControl1;
+            btnSubProduct.TabIndex = 12;
+            btnSubProduct.ButtonClick += btnSubProduct_ButtonClick;
+            // 
+            // layoutControlItem8
+            // 
+            layoutControlItem8.Control = btnSubProduct;
+            layoutControlItem8.Location = new Point(0, 24);
+            layoutControlItem8.Name = "layoutControlItem8";
+            layoutControlItem8.OptionsTableLayoutItem.RowIndex = 1;
+            layoutControlItem8.Size = new Size(240, 24);
+            layoutControlItem8.Text = "Araç Parça";
+            layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            layoutControlItem8.TextSize = new Size(80, 20);
+            layoutControlItem8.TextToControlDistance = 5;
+            // 
             // SaleAddForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(486, 298);
+            ClientSize = new Size(495, 326);
             Controls.Add(myDataLayoutControl1);
             Name = "SaleAddForm";
             Text = "SaleAddForm";
@@ -277,6 +338,7 @@
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).EndInit();
             myDataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)toggleSwitch1.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnBill.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)cmbPaymentMethod.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)calcPrice.Properties).EndInit();
@@ -290,6 +352,9 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem4).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnSubProduct.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem8).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -310,5 +375,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.ButtonEdit btnBill;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraEditors.ButtonEdit btnSubProduct;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     }
 }

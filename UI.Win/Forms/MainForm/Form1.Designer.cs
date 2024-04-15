@@ -34,8 +34,8 @@
             btnHome = new DevExpress.XtraBars.BarButtonItem();
             btnCarList = new DevExpress.XtraBars.BarButtonItem();
             btnCarAdd = new DevExpress.XtraBars.BarButtonItem();
-            btnCarIstatistics = new DevExpress.XtraBars.BarButtonItem();
-            btnCarReport = new DevExpress.XtraBars.BarButtonItem();
+            btnSubProductList = new DevExpress.XtraBars.BarButtonItem();
+            btnSubProductAdd = new DevExpress.XtraBars.BarButtonItem();
             btnCustomerList = new DevExpress.XtraBars.BarButtonItem();
             btnCustomerAdd = new DevExpress.XtraBars.BarButtonItem();
             btnCustomerIstatistics = new DevExpress.XtraBars.BarButtonItem();
@@ -85,7 +85,7 @@
             // 
             ribbonControl.EmptyAreaImageOptions.ImagePadding = new Padding(26, 24, 26, 24);
             ribbonControl.ExpandCollapseItem.Id = 0;
-            ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl.ExpandCollapseItem, btnHome, btnCarList, btnCarAdd, btnCarIstatistics, btnCarReport, btnCustomerList, btnCustomerAdd, btnCustomerIstatistics, btnPersonList, btnPersonAdd, btnPersonIstatistics, btnBrandList, btnBrandAdd, btnBrandIstatistics, btnCalculator, btnNews, btnCurrency, btnPasswordManage, btnAuthentication, btnReportMagic, btnBillList, btnBillAdd, btnSaleList, btnSaleAdd });
+            ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl.ExpandCollapseItem, btnHome, btnCarList, btnCarAdd, btnSubProductList, btnSubProductAdd, btnCustomerList, btnCustomerAdd, btnCustomerIstatistics, btnPersonList, btnPersonAdd, btnPersonIstatistics, btnBrandList, btnBrandAdd, btnBrandIstatistics, btnCalculator, btnNews, btnCurrency, btnPasswordManage, btnAuthentication, btnReportMagic, btnBillList, btnBillAdd, btnSaleList, btnSaleAdd });
             ribbonControl.Location = new Point(0, 0);
             ribbonControl.Margin = new Padding(3, 2, 3, 2);
             ribbonControl.MaxItemId = 27;
@@ -115,19 +115,19 @@
             btnCarAdd.ImageOptions.LargeImage = (Image)resources.GetObject("btnCarAdd.ImageOptions.LargeImage");
             btnCarAdd.Name = "btnCarAdd";
             // 
-            // btnCarIstatistics
+            // btnSubProductList
             // 
-            btnCarIstatistics.Caption = "Araç İstatistikleri";
-            btnCarIstatistics.Id = 6;
-            btnCarIstatistics.ImageOptions.LargeImage = (Image)resources.GetObject("btnCarIstatistics.ImageOptions.LargeImage");
-            btnCarIstatistics.Name = "btnCarIstatistics";
+            btnSubProductList.Caption = "Araç Parça Listesi";
+            btnSubProductList.Id = 6;
+            btnSubProductList.ImageOptions.LargeImage = (Image)resources.GetObject("btnCarIstatistics.ImageOptions.LargeImage");
+            btnSubProductList.Name = "btnSubProductList";
             // 
-            // btnCarReport
+            // btnSubProductAdd
             // 
-            btnCarReport.Caption = "Araç Raporları";
-            btnCarReport.Id = 7;
-            btnCarReport.ImageOptions.LargeImage = (Image)resources.GetObject("btnCarReport.ImageOptions.LargeImage");
-            btnCarReport.Name = "btnCarReport";
+            btnSubProductAdd.Caption = "Araç Parçası Ekle";
+            btnSubProductAdd.Id = 7;
+            btnSubProductAdd.ImageOptions.LargeImage = (Image)resources.GetObject("btnCarReport.ImageOptions.LargeImage");
+            btnSubProductAdd.Name = "btnSubProductAdd";
             // 
             // btnCustomerList
             // 
@@ -287,8 +287,8 @@
             // 
             // ribbonPageGroup8
             // 
-            ribbonPageGroup8.ItemLinks.Add(btnCarIstatistics);
-            ribbonPageGroup8.ItemLinks.Add(btnCarReport);
+            ribbonPageGroup8.ItemLinks.Add(btnSubProductList);
+            ribbonPageGroup8.ItemLinks.Add(btnSubProductAdd);
             ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
             // ribbonPage3
@@ -431,8 +431,8 @@
         private DevExpress.XtraBars.BarButtonItem btnHome;
         private DevExpress.XtraBars.BarButtonItem btnCarList;
         private DevExpress.XtraBars.BarButtonItem btnCarAdd;
-        private DevExpress.XtraBars.BarButtonItem btnCarIstatistics;
-        private DevExpress.XtraBars.BarButtonItem btnCarReport;
+        private DevExpress.XtraBars.BarButtonItem btnSubProductList;
+        private DevExpress.XtraBars.BarButtonItem btnSubProductAdd;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem btnCustomerList;
         private DevExpress.XtraBars.BarButtonItem btnCustomerAdd;

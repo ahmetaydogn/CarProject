@@ -81,6 +81,11 @@ public partial class SaleAddForm : BaseEditForm
         }
     }
 
+    private void btnSubProduct_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+    {
+
+    }
+
     private void btnCustomer_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
     {
         var frm = (CustomerDialogListForm)ShowListForms<CustomerDialogListForm>.ShowDialogListForm();
