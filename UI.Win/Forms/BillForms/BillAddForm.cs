@@ -83,7 +83,7 @@ public partial class BillAddForm : BaseEditForm
             }
             else
             {
-                SendEntityToAdd();
+                SendEntityToSaveAs();
             }
         }
         catch (ValidationException e)
@@ -188,6 +188,25 @@ public partial class BillAddForm : BaseEditForm
             Closing();
         }
     }
+
+    private void SendEntityToSaveAs()
+    {
+        Bill b = new Bill
+        {
+            BillId = GeneralFunctions.GetRandomBillNumber(billService),
+            SaleId = Convert.ToInt32(btnSale.EditValue),
+            Description = txtDescription.Text,
+            SaleDate = DateTime.Now,
+        };
+
+        var result = billService.Add(b);
+        if (result.IsSuccess)
+        {
+            Messages.SuccessMessage(result.Message);
+            Closing();
+        }
+    }
+
 
     private Bill CreateBill()
     {

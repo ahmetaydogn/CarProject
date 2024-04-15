@@ -39,7 +39,6 @@
             DevExpress.XtraLayout.RowDefinition rowDefinition8 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition9 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition10 = new DevExpress.XtraLayout.RowDefinition();
-            DevExpress.XtraLayout.RowDefinition rowDefinition11 = new DevExpress.XtraLayout.RowDefinition();
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridBillSale = new DevExpress.XtraGrid.Views.Grid.GridView();
             gridBillId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -232,6 +231,7 @@
             myDataLayoutControl1.Controls.Add(txtAllSellPrice);
             myDataLayoutControl1.Controls.Add(txtAllMarketPrice);
             myDataLayoutControl1.Dock = DockStyle.Right;
+            myDataLayoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem8 });
             myDataLayoutControl1.Location = new Point(891, 126);
             myDataLayoutControl1.Name = "myDataLayoutControl1";
             myDataLayoutControl1.OptionsFocus.EnableAutoTabOrder = false;
@@ -268,11 +268,11 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(142, 252);
+            txtDescription.Location = new Point(142, 228);
             txtDescription.MenuManager = ribbonControl1;
             txtDescription.Name = "txtDescription";
             txtDescription.Properties.ReadOnly = true;
-            txtDescription.Size = new Size(187, 313);
+            txtDescription.Size = new Size(187, 337);
             txtDescription.StyleController = myDataLayoutControl1;
             txtDescription.TabIndex = 9;
             // 
@@ -345,7 +345,7 @@
             // 
             Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             Root.GroupBordersVisible = false;
-            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlItem2, layoutControlItem3, layoutControlItem4, layoutControlItem5, layoutControlItem6, layoutControlItem7, layoutControlItem8 });
+            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlItem2, layoutControlItem3, layoutControlItem4, layoutControlItem5, layoutControlItem6, layoutControlItem7 });
             Root.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table;
             Root.Name = "Root";
             columnDefinition1.SizeType = SizeType.Percent;
@@ -369,11 +369,9 @@
             rowDefinition8.SizeType = SizeType.Absolute;
             rowDefinition9.Height = 24D;
             rowDefinition9.SizeType = SizeType.Absolute;
-            rowDefinition10.Height = 24D;
-            rowDefinition10.SizeType = SizeType.Absolute;
-            rowDefinition11.Height = 100D;
-            rowDefinition11.SizeType = SizeType.Percent;
-            Root.OptionsTableLayoutGroup.RowDefinitions.AddRange(new DevExpress.XtraLayout.RowDefinition[] { rowDefinition1, rowDefinition2, rowDefinition3, rowDefinition4, rowDefinition5, rowDefinition6, rowDefinition7, rowDefinition8, rowDefinition9, rowDefinition10, rowDefinition11 });
+            rowDefinition10.Height = 100D;
+            rowDefinition10.SizeType = SizeType.Percent;
+            Root.OptionsTableLayoutGroup.RowDefinitions.AddRange(new DevExpress.XtraLayout.RowDefinition[] { rowDefinition1, rowDefinition2, rowDefinition3, rowDefinition4, rowDefinition5, rowDefinition6, rowDefinition7, rowDefinition8, rowDefinition9, rowDefinition10 });
             Root.Size = new Size(341, 577);
             Root.TextVisible = false;
             // 
@@ -464,10 +462,10 @@
             layoutControlItem6.AppearanceItemCaption.Options.UseFont = true;
             layoutControlItem6.AppearanceItemCaption.Options.UseForeColor = true;
             layoutControlItem6.Control = txtDescription;
-            layoutControlItem6.Location = new Point(0, 240);
+            layoutControlItem6.Location = new Point(0, 216);
             layoutControlItem6.Name = "layoutControlItem6";
-            layoutControlItem6.OptionsTableLayoutItem.RowIndex = 10;
-            layoutControlItem6.Size = new Size(321, 317);
+            layoutControlItem6.OptionsTableLayoutItem.RowIndex = 9;
+            layoutControlItem6.Size = new Size(321, 341);
             layoutControlItem6.Text = "Açıklama";
             layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem6.TextSize = new Size(125, 20);
@@ -499,7 +497,7 @@
             layoutControlItem8.Location = new Point(0, 216);
             layoutControlItem8.Name = "layoutControlItem8";
             layoutControlItem8.OptionsTableLayoutItem.RowIndex = 9;
-            layoutControlItem8.Size = new Size(321, 24);
+            layoutControlItem8.Size = new Size(321, 341);
             layoutControlItem8.Text = "Fatura Tarihi";
             layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             layoutControlItem8.TextSize = new Size(125, 20);

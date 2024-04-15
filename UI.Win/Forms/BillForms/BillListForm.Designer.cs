@@ -45,6 +45,7 @@
             gridControl1.Size = new Size(800, 450);
             gridControl1.TabIndex = 0;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridBill });
+            gridControl1.KeyPress += gridControl1_KeyPress;
             // 
             // gridBill
             // 
