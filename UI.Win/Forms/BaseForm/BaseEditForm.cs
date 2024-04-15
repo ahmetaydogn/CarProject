@@ -57,4 +57,9 @@ public partial class BaseEditForm : Form
     public virtual void SendEntityToAdd() { }
     
     public virtual void SendEntityToUpdate() { }
+
+    public void HideDeleteButton() 
+    {
+        btnDelete.Visibility = BarItemVisibility.Never;
+    }
 }

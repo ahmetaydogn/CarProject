@@ -6,7 +6,6 @@ using Entities.Concrete;
 using FluentValidation;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
-using UI.Win.Forms.CarForms;
 using UI.Win.Utilities;
 
 namespace UI.Win.Forms.CustomerForm;
@@ -29,9 +28,23 @@ public partial class CustomerAddForm : BaseEditForm
         }
     }
 
+    public CustomerAddForm(int id, EventType _eventType, bool isOpenedFromDialog) : this()
+    {
+        var result = customerService.Get(id);
+        if (result.IsSuccess)
+        {
+            OldCustomer = result.Data;
+            eventType = _eventType;
+            FillGaps();
+            base.HideDeleteButton();
+            _isOpenedFromDialog = isOpenedFromDialog;
+        }
+    }
 
+    ISaleService saleService = new SaleManager(new EfSaleDal());
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
     Customer OldCustomer;
+    private readonly bool _isOpenedFromDialog;
     EventType eventType = EventType.EntityInsert;
 
 
@@ -81,6 +94,10 @@ public partial class CustomerAddForm : BaseEditForm
         }
         else
         {
+            var saleResult = saleService.GetAllByCustomer(OldCustomer.CustomerId);
+            if (saleResult.IsSuccess)
+                foreach (var sale in saleResult.Data)
+                    saleService.Delete(sale);
             var result = customerService.Delete(OldCustomer);
             if (result.IsSuccess)
             {

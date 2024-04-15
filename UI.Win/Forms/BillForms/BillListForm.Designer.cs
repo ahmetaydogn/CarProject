@@ -32,7 +32,6 @@
             gridBill = new DevExpress.XtraGrid.Views.Grid.GridView();
             gridBillId = new DevExpress.XtraGrid.Columns.GridColumn();
             gridDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            gridPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridBill).BeginInit();
             SuspendLayout();
@@ -49,7 +48,7 @@
             // 
             // gridBill
             // 
-            gridBill.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridBillId, gridDescription, gridPrice });
+            gridBill.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridBillId, gridDescription });
             gridBill.GridControl = gridControl1;
             gridBill.Name = "gridBill";
             gridBill.OptionsBehavior.Editable = false;
@@ -75,16 +74,6 @@
             gridDescription.VisibleIndex = 1;
             gridDescription.Width = 94;
             // 
-            // gridPrice
-            // 
-            gridPrice.Caption = "Fatura Tutarı";
-            gridPrice.FieldName = "Price";
-            gridPrice.MinWidth = 25;
-            gridPrice.Name = "gridPrice";
-            gridPrice.Visible = true;
-            gridPrice.VisibleIndex = 2;
-            gridPrice.Width = 94;
-            // 
             // BillListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -104,6 +93,5 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridBill;
         private DevExpress.XtraGrid.Columns.GridColumn gridBillId;
         private DevExpress.XtraGrid.Columns.GridColumn gridDescription;
-        private DevExpress.XtraGrid.Columns.GridColumn gridPrice;
     }
 }

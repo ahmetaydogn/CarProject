@@ -65,13 +65,6 @@
             ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPage6 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             btnMainPage = new DevExpress.XtraBars.BarButtonItem();
@@ -90,7 +83,7 @@
             ribbonControl.MaxItemId = 27;
             ribbonControl.Name = "ribbonControl";
             ribbonControl.OptionsMenuMinWidth = 289;
-            ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1, ribbonPage2, ribbonPage3, ribbonPage4, ribbonPage5, ribbonPage6, ribbonPage7 });
+            ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1, ribbonPage2, ribbonPage3, ribbonPage4, ribbonPage7 });
             ribbonControl.Size = new Size(972, 193);
             // 
             // btnHome
@@ -313,7 +306,7 @@
             // 
             // ribbonPage4
             // 
-            ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup4, ribbonPageGroup10 });
+            ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup4 });
             ribbonPage4.Name = "ribbonPage4";
             ribbonPage4.Text = "Personeller";
             // 
@@ -322,47 +315,6 @@
             ribbonPageGroup4.ItemLinks.Add(btnPersonList);
             ribbonPageGroup4.ItemLinks.Add(btnPersonAdd);
             ribbonPageGroup4.Name = "ribbonPageGroup4";
-            // 
-            // ribbonPageGroup10
-            // 
-            ribbonPageGroup10.ItemLinks.Add(btnPersonIstatistics);
-            ribbonPageGroup10.Name = "ribbonPageGroup10";
-            // 
-            // ribbonPage5
-            // 
-            ribbonPage5.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup5, ribbonPageGroup11 });
-            ribbonPage5.Name = "ribbonPage5";
-            ribbonPage5.Text = "Markalar";
-            // 
-            // ribbonPageGroup5
-            // 
-            ribbonPageGroup5.ItemLinks.Add(btnBrandList);
-            ribbonPageGroup5.ItemLinks.Add(btnBrandAdd);
-            ribbonPageGroup5.Name = "ribbonPageGroup5";
-            // 
-            // ribbonPageGroup11
-            // 
-            ribbonPageGroup11.ItemLinks.Add(btnBrandIstatistics);
-            ribbonPageGroup11.Name = "ribbonPageGroup11";
-            // 
-            // ribbonPage6
-            // 
-            ribbonPage6.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup6, ribbonPageGroup12 });
-            ribbonPage6.Name = "ribbonPage6";
-            ribbonPage6.Text = "Araçlar";
-            // 
-            // ribbonPageGroup6
-            // 
-            ribbonPageGroup6.ItemLinks.Add(btnCalculator);
-            ribbonPageGroup6.ItemLinks.Add(btnNews);
-            ribbonPageGroup6.ItemLinks.Add(btnCurrency);
-            ribbonPageGroup6.Name = "ribbonPageGroup6";
-            // 
-            // ribbonPageGroup12
-            // 
-            ribbonPageGroup12.ItemLinks.Add(btnPasswordManage);
-            ribbonPageGroup12.ItemLinks.Add(btnAuthentication);
-            ribbonPageGroup12.Name = "ribbonPageGroup12";
             // 
             // ribbonPage7
             // 
@@ -386,7 +338,7 @@
             // 
             xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // Form1
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -394,7 +346,7 @@
             Controls.Add(ribbonControl);
             IsMdiContainer = true;
             Margin = new Padding(3, 2, 3, 2);
-            Name = "Form1";
+            Name = "MainForm";
             Ribbon = ribbonControl;
             Text = "Ahmet Aydoğan - Car Project";
             WindowState = FormWindowState.Maximized;
@@ -415,10 +367,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage5;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage6;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage7;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.BarButtonItem btnMainPage;
@@ -434,17 +382,14 @@
         private DevExpress.XtraBars.BarButtonItem btnPersonList;
         private DevExpress.XtraBars.BarButtonItem btnPersonAdd;
         private DevExpress.XtraBars.BarButtonItem btnPersonIstatistics;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.BarButtonItem btnBrandList;
         private DevExpress.XtraBars.BarButtonItem btnBrandAdd;
         private DevExpress.XtraBars.BarButtonItem btnBrandIstatistics;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraBars.BarButtonItem btnCalculator;
         private DevExpress.XtraBars.BarButtonItem btnNews;
         private DevExpress.XtraBars.BarButtonItem btnCurrency;
         private DevExpress.XtraBars.BarButtonItem btnPasswordManage;
         private DevExpress.XtraBars.BarButtonItem btnAuthentication;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.BarButtonItem btnReportMagic;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem btnBillList;

@@ -70,6 +70,24 @@ public class SaleManager : ISaleService
         return new SuccessDataResult<Sale>(result);
     }
 
+    public IDataResult<List<Sale>> GetAllByProductId(int productId)
+    {
+        var result = _saleDal.GetAll(s => s.ProductId == productId).ToList();
+        return new SuccessDataResult<List<Sale>>(result);
+    }
+
+    public IDataResult<List<Sale>> GetAllBySubProductId(int subProductId)
+    {
+        var result = _saleDal.GetAll(s => s.SubProductId == subProductId).ToList();
+        return new SuccessDataResult<List<Sale>>(result);
+    }
+
+    public IDataResult<List<Sale>> GetAllBySubCustomerId(int customerId)
+    {
+        var result = _saleDal.GetAll(s => s.CustomerId == customerId).ToList();
+        return new SuccessDataResult<List<Sale>>(result);
+    }
+
     public IDataResult<List<SaleDto>> GetAllAsDto(List<Product> products, List<Customer> customers, List<SubProduct> subProducts)
     {
         var sales = GetAll();

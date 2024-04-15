@@ -48,7 +48,7 @@ public partial class CustomerDialogListForm : BaseDialogListForm
     private void gridCustomer_DoubleClick(object sender, EventArgs e)
     {
         int customerId = Convert.ToInt32(gridCustomer.GetFocusedRowCellValue("CustomerId"));
-        ShowEditForms<CustomerAddForm>.ShowDialogEditForm(customerId, EventType.EntityUpdate);
+        ShowEditForms<CustomerAddForm>.ShowDialogEditForm(customerId, EventType.EntityUpdate, true);
     }
 
     private void gridControl1_KeyPress_1(object sender, KeyPressEventArgs e)

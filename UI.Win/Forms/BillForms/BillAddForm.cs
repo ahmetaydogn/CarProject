@@ -49,9 +49,7 @@ public partial class BillAddForm : BaseEditForm
             var frm = (SaleDialogListForm)ShowListForms<SaleDialogListForm>.ShowDialogListForm();
             if (frm.DialogResult == DialogResult.OK)
             {
-                var sale = saleService.GetById(frm.returnSaleId);
                 btnSale.EditValue = frm.returnSaleId;
-                calcPrice.Value = sale.Data.Price;
             }
         }
     }
@@ -102,6 +100,10 @@ public partial class BillAddForm : BaseEditForm
         }
         else
         {
+            var saleResult = saleService.GetAllByBillNumber(OldBill.BillId);
+            if (saleResult.IsSuccess)
+                foreach (var sale in saleResult.Data)
+                    saleService.Delete(sale);
             var result = billService.Delete(OldBill);
             if (result.IsSuccess)
             {
@@ -121,7 +123,6 @@ public partial class BillAddForm : BaseEditForm
         {
             txtBillNumber.Text = OldBill.BillId;
             btnSale.EditValue = OldBill.SaleId;
-            calcPrice.EditValue = OldBill.Price;
             txtDescription.Text = OldBill.Description;
             BillNumber = OldBill.BillId;
         }
@@ -194,7 +195,6 @@ public partial class BillAddForm : BaseEditForm
         {
             BillId = txtBillNumber.Text,
             SaleId = Convert.ToInt32(btnSale.EditValue),
-            Price = Convert.ToDecimal(calcPrice.Value),
             Description = txtDescription.Text,
             SaleDate = DateTime.Now,
         };

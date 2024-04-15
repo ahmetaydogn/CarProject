@@ -2,6 +2,7 @@
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.Design;
 using Entities.Concrete;
 using FluentValidation;
 using UI.Win.Enums;
@@ -28,9 +29,25 @@ public partial class CarPartsAddForm : BaseEditForm
         }
     }
 
+    public CarPartsAddForm(int id, EventType _eventType, bool _isOpenedFromDialog) : this()
+    {
+        var result = subProductService.GetById(id);
+        if (result.IsSuccess)
+        {
+            OldSubProduct = result.Data;
+            eventType = _eventType;
+            FillGaps();
+            base.HideDeleteButton();
+            isOpenedFromDialog = _isOpenedFromDialog;
+        }
+    }
+    
+
+    ISaleService saleService = new SaleManager(new EfSaleDal());
     ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
     SubProduct OldSubProduct;
     EventType eventType = EventType.EntityInsert;
+    private readonly bool isOpenedFromDialog;
 
 
     public override void Save()
@@ -79,6 +96,10 @@ public partial class CarPartsAddForm : BaseEditForm
         }
         else
         {
+            var saleResult = saleService.GetAllByCustomer(OldSubProduct.SubProductId);
+            if (saleResult.IsSuccess)
+                foreach (var sale in saleResult.Data)
+                    saleService.Delete(sale);
             var result = subProductService.Delete(OldSubProduct);
             if (result.IsSuccess)
             {

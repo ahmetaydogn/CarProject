@@ -49,7 +49,7 @@ public partial class CarPartDialogListForm : BaseDialogListForm
     private void gridCarPart_DoubleClick(object sender, EventArgs e)
     {
         int productId = Convert.ToInt32(gridCarPart.GetFocusedRowCellValue("SubProductId"));
-        ShowEditForms<CarPartsAddForm>.ShowDialogEditForm(productId, EventType.EntityUpdate);
+        ShowEditForms<CarPartsAddForm>.ShowDialogEditForm(productId, EventType.EntityUpdate, true);
     }
 
     private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)

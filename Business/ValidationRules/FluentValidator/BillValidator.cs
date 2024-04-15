@@ -7,6 +7,6 @@ public class BillValidator : AbstractValidator<Bill>
 {
     public BillValidator()
     {
-        RuleFor(b => b.Price).GreaterThanOrEqualTo(1).WithMessage(ValidationMessages.BillPriceGreater);
+        RuleFor(b => b.SaleId).NotEmpty().WithMessage(ValidationMessages.BillHasToBeSaleToAdd);
     }
 }
