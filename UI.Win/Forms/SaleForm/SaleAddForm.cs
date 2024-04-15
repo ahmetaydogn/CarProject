@@ -56,12 +56,19 @@ public partial class SaleAddForm : BaseEditForm
         btnBill.Enabled = false;
     }
 
+    public SaleAddForm(bool isAlreadyExistBillNumber, string _billNumber) : this()
+    {
+        this.isAlreadyExistBillNumber = isAlreadyExistBillNumber;
+        billNumber = _billNumber;
+        btnBill.EditValue = billNumber;
+    }
+
     string billNumber;
     ISaleService saleService = new SaleManager(new EfSaleDal());
     Sale OldSale;
     decimal productPrice;
     EventType eventType = EventType.EntityInsert;
-
+    bool isAlreadyExistBillNumber = false;
 
     private void btnProduct_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
     {
@@ -83,11 +90,18 @@ public partial class SaleAddForm : BaseEditForm
 
     private void btnBill_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
     {
-        if (btnBill.Enabled)
+        if (!isAlreadyExistBillNumber)
         {
-            var frm = (BillDialogListForm)ShowListForms<BillDialogListForm>.ShowDialogListForm();
-            if (frm.DialogResult == DialogResult.OK)
-                btnBill.EditValue = frm.returnBillId;
+            if (btnBill.Enabled)
+            {
+                var frm = (BillDialogListForm)ShowListForms<BillDialogListForm>.ShowDialogListForm();
+                if (frm.DialogResult == DialogResult.OK)
+                    btnBill.EditValue = frm.returnBillId;
+            }
+        }
+        else
+        {
+            btnBill.EditValue = billNumber;
         }
     }
 

@@ -20,12 +20,14 @@ public partial class SaleDialogListForm : BaseDialogListForm
     IProductService productService = new ProductManager(new EfProductDal());
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
     public int returnSaleId;
+    private readonly bool isAlreadyExistBillNumber = true;
 
 
     // RibbonControl's Code
     public override void AddEntity()
     {
-        ShowEditForms<SaleAddForm>.ShowDialogEditForm();
+        string billNumber = gridSale.GetFocusedRowCellValue("BillNumber").ToString();
+        ShowEditForms<SaleAddForm>.ShowDialogEditForm(isAlreadyExistBillNumber, billNumber);
     }
 
     public override void RefreshGridControl()

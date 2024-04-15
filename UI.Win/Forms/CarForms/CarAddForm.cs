@@ -64,7 +64,7 @@ public partial class CarAddForm : BaseEditForm
             {
                 SendEntityToAdd();
             }
-        } 
+        }
         catch (ValidationException e)
         {
             Messages.ErrorMessage(e.Message);
@@ -102,8 +102,10 @@ public partial class CarAddForm : BaseEditForm
             txtProductColor.Text = OldProduct.ProductColor;
             spnProductMarketPrice.Value = OldProduct.MarketPrice;
             spnProductSellPrice.Value = OldProduct.SellPrice;
-            spnProductVAT.Value = OldProduct.VAT;
-            spnProductVATPrice.Value = OldProduct.VATPrice;
+            cmbVAT.Text = OldProduct.VAT;
+            calcVATPrice.Value = OldProduct.VATPrice;
+            cmbExciseDuty.Text = OldProduct.ExciseDuty;
+            calcExciseDutyPrice.Value = OldProduct.ExciseDutyPrice;
             spnProductQuantity.Value = OldProduct.Quantity;
             txtDescription.Text = OldProduct.ProductDescription;
             tgsProductSituation.IsOn = OldProduct.ProductSituation == "Sifir" ? false : true;
@@ -170,11 +172,14 @@ public partial class CarAddForm : BaseEditForm
             ProductColor = txtProductColor.Text,
             MarketPrice = spnProductMarketPrice.Value,
             SellPrice = spnProductSellPrice.Value,
-            VAT = Convert.ToByte(spnProductVAT.Value),
-            VATPrice = spnProductVATPrice.Value,
+            VAT = cmbVAT.Text,
+            VATPrice = calcVATPrice.Value,
+            ExciseDuty = cmbExciseDuty.Text,
+            ExciseDutyPrice = calcExciseDutyPrice.Value,
             Quantity = Convert.ToInt16(spnProductQuantity.Value),
             ProductSituation = tgsProductSituation.IsOn == true ? "İkinci El" : "Sifir",
-            ProductDescription = txtDescription.Text
+            ProductDescription = txtDescription.Text,
+            Profit = CalculateProfit(),
         };
 
         return p;
@@ -189,5 +194,49 @@ public partial class CarAddForm : BaseEditForm
         }
 
         Close();
+    }
+
+    private decimal CalculateProfit()
+    {
+        var marketPrice = spnProductMarketPrice.Value;
+        var sellPrice = spnProductSellPrice.Value;
+        var vatPercent = Convert.ToInt32(cmbVAT.EditValue);
+        var excisePercent = Convert.ToInt32(cmbExciseDuty.EditValue);
+
+        // Kazanç = Satış Fiyatı - (Alış Fiyatı + Kdv + Ötv) - Sanırım böyle :D
+        var profit = sellPrice - ((marketPrice + (marketPrice * vatPercent / 100)) + (marketPrice * excisePercent / 100));
+        return profit;
+    }
+
+    private void ChangeTaxesComponents()
+    {
+        var marketPrice = spnProductMarketPrice.Value;
+        var vatPercent = Convert.ToInt32(cmbVAT.EditValue);
+        var excisePercent = Convert.ToInt32(cmbExciseDuty.EditValue);
+
+        calcVATPrice.Value = marketPrice * vatPercent / 100;
+        calcExciseDutyPrice.Value = marketPrice * excisePercent / 100;
+
+        txtProfit.Text = Convert.ToInt32(CalculateProfit()).ToString();
+    }
+
+    private void spnProductMarketPrice_EditValueChanged(object sender, EventArgs e)
+    {
+        ChangeTaxesComponents();
+    }
+
+    private void spnProductSellPrice_EditValueChanged(object sender, EventArgs e)
+    {
+        ChangeTaxesComponents();
+    }
+
+    private void cmbVAT_EditValueChanged(object sender, EventArgs e)
+    {
+        ChangeTaxesComponents();
+    }
+
+    private void cmbExciseDuty_EditValueChanged(object sender, EventArgs e)
+    {
+        ChangeTaxesComponents();
     }
 }

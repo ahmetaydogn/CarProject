@@ -111,7 +111,7 @@
             // 
             // gridMarketPrice
             // 
-            gridMarketPrice.Caption = "Fiyat (KDV Hariç)";
+            gridMarketPrice.Caption = "Alış Fiyatı";
             gridMarketPrice.DisplayFormat.FormatString = "#.00 TL";
             gridMarketPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             gridMarketPrice.FieldName = "MarketPrice";
@@ -123,7 +123,7 @@
             // 
             // gridSellPrice
             // 
-            gridSellPrice.Caption = "Fiyat (KDV Dahil)";
+            gridSellPrice.Caption = "Satış Fiyatı";
             gridSellPrice.FieldName = "SellPrice";
             gridSellPrice.MinWidth = 25;
             gridSellPrice.Name = "gridSellPrice";
