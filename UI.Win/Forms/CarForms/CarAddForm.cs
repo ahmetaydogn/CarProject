@@ -175,6 +175,7 @@ public partial class CarAddForm : BaseEditForm
     {
         Product newProduct = CreateProduct();
         newProduct.ProductId = OldProduct.ProductId;
+        newProduct.ProductAddDate = OldProduct.ProductAddDate;
 
         var result = productService.Update(newProduct);
         if (result.IsSuccess)
@@ -200,6 +201,7 @@ public partial class CarAddForm : BaseEditForm
             ExciseDutyPrice = calcExciseDutyPrice.Value,
             ProductSituation = tgsProductSituation.IsOn == true ? "İkinci El" : "Sifir",
             ProductDescription = txtDescription.Text,
+            ProductAddDate = DateTime.Now,
             Profit = CalculateProfit(),
         };
 

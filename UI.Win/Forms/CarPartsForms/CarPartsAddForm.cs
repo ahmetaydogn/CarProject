@@ -169,6 +169,7 @@ public partial class CarPartsAddForm : BaseEditForm
     {
         SubProduct newSubProduct = CreateProduct();
         newSubProduct.SubProductId = OldSubProduct.SubProductId;
+        newSubProduct.SubProductAddDate = OldSubProduct.SubProductAddDate;
 
         var result = subProductService.Update(newSubProduct);
         if (result.IsSuccess)
@@ -188,6 +189,7 @@ public partial class CarPartsAddForm : BaseEditForm
             VAT = cmbVAT.Text,
             VATPrice = calcVATPrice.Value,
             SubProductDescription = txtDescription.Text,
+            SubProductAddDate = DateTime.Now,
             Profit = CalculateProfit(),
         };
 

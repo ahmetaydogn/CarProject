@@ -13,6 +13,7 @@ public interface ISaleService
     IDataResult<List<Sale>> GetAllByProduct(int productId);
     IDataResult<List<Sale>> GetAllByCustomer(int customerId);
     IDataResult<Sale> GetById(int id);
+    IDataResult<List<Sale>> GetAllOrderByDate();
     IDataResult<List<Sale>> GetAllByBillNumber(string billNumber);
     IDataResult<List<Sale>> GetAllByProductId(int productId);
     IDataResult<List<Sale>> GetAllBySubProductId(int subProductId);

@@ -9,5 +9,6 @@ public interface IProductService
     IResult Update(Product product);
     IResult Delete(Product product);
     IDataResult<List<Product>> GetAll();
+    IDataResult<List<Product>> GetAllOrderByDate();
     IDataResult<Product> GetById(int id);
 }

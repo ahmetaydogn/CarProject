@@ -1,3 +1,4 @@
+using Autofac;
 namespace UI.Win
 {
     internal static class Program

@@ -88,11 +88,17 @@ public class SaleManager : ISaleService
         return new SuccessDataResult<List<Sale>>(result);
     }
 
+    public IDataResult<List<Sale>> GetAllOrderByDate()
+    {
+        var result = _saleDal.GetAll().OrderBy(s => s.SaleDate).ToList();
+        return new SuccessDataResult<List<Sale>>(result);
+    }
+
     public IDataResult<List<SaleDto>> GetAllAsDto(List<Product> products, List<Customer> customers, List<SubProduct> subProducts)
     {
-        var sales = GetAll();
+        var sales = _saleDal.GetAll();
 
-        var productQuery = from sale in sales.Data
+        var productQuery = from sale in sales
                     join customer in customers
                     on sale.CustomerId equals customer.CustomerId
                     join product in products
@@ -114,7 +120,7 @@ public class SaleManager : ISaleService
                         BillNumber = sale.BillNumber,
                     };
 
-        var subProductQuery = from sale in sales.Data
+        var subProductQuery = from sale in sales
                     join customer in customers
                     on sale.CustomerId equals customer.CustomerId
                     join subproduct in subProducts

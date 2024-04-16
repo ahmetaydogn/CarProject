@@ -17,5 +17,6 @@ public class Product : IEntity
     public decimal VATPrice { get; set; }
     public string ExciseDuty { get; set; }
     public decimal ExciseDutyPrice { get; set; }
+    public DateTime? ProductAddDate { get; set; }
     public decimal Profit { get; set; }
 }

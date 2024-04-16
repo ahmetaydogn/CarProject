@@ -46,6 +46,12 @@ public class SubProductManager : ISubProductService
         return new SuccessDataResult<List<SubProduct>>(result);
     }
 
+    public IDataResult<List<SubProduct>> GetAllOrderByDate()
+    {
+        var result = _subProductDal.GetAll().OrderBy(sP => sP.SubProductAddDate).ToList();
+        return new SuccessDataResult<List<SubProduct>>(result);
+    }
+
     public IDataResult<SubProduct> GetById(int id)
     {
         var result = _subProductDal.GetAll(p => p.SubProductId == id).FirstOrDefault();

@@ -11,5 +11,6 @@ public class SubProduct : IEntity
     public decimal SellPrice { get; set; }
     public string VAT { get; set; }
     public decimal VATPrice { get; set; }
+    public DateTime? SubProductAddDate { get; set; }
     public decimal Profit { get; set; }
 }

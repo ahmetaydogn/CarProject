@@ -33,7 +33,6 @@
             gridCustomerFullName = new DevExpress.XtraGrid.Columns.GridColumn();
             gridCustomerPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             gridProductName = new DevExpress.XtraGrid.Columns.GridColumn();
-            gridProductModel = new DevExpress.XtraGrid.Columns.GridColumn();
             gridSaleDate = new DevExpress.XtraGrid.Columns.GridColumn();
             gridQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
             gridPrice = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,7 +56,7 @@
             // 
             // gridSale
             // 
-            gridSale.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridCustomerFullName, gridCustomerPhone, gridProductName, gridProductModel, gridSaleDate, gridQuantity, gridPrice, gridProfit, gridPaymentMethod, gridBillNumber });
+            gridSale.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridCustomerFullName, gridCustomerPhone, gridProductName, gridSaleDate, gridQuantity, gridPrice, gridProfit, gridPaymentMethod, gridBillNumber });
             gridSale.GridControl = gridControl1;
             gridSale.Name = "gridSale";
             gridSale.OptionsBehavior.Editable = false;
@@ -89,18 +88,8 @@
             gridProductName.MinWidth = 25;
             gridProductName.Name = "gridProductName";
             gridProductName.Visible = true;
-            gridProductName.VisibleIndex = 3;
+            gridProductName.VisibleIndex = 2;
             gridProductName.Width = 94;
-            // 
-            // gridProductModel
-            // 
-            gridProductModel.Caption = "Araç Modeli";
-            gridProductModel.FieldName = "ProductModel";
-            gridProductModel.MinWidth = 25;
-            gridProductModel.Name = "gridProductModel";
-            gridProductModel.Visible = true;
-            gridProductModel.VisibleIndex = 2;
-            gridProductModel.Width = 94;
             // 
             // gridSaleDate
             // 
@@ -109,7 +98,7 @@
             gridSaleDate.MinWidth = 25;
             gridSaleDate.Name = "gridSaleDate";
             gridSaleDate.Visible = true;
-            gridSaleDate.VisibleIndex = 4;
+            gridSaleDate.VisibleIndex = 3;
             gridSaleDate.Width = 94;
             // 
             // gridQuantity
@@ -119,7 +108,7 @@
             gridQuantity.MinWidth = 25;
             gridQuantity.Name = "gridQuantity";
             gridQuantity.Visible = true;
-            gridQuantity.VisibleIndex = 5;
+            gridQuantity.VisibleIndex = 4;
             gridQuantity.Width = 94;
             // 
             // gridPrice
@@ -129,7 +118,7 @@
             gridPrice.MinWidth = 25;
             gridPrice.Name = "gridPrice";
             gridPrice.Visible = true;
-            gridPrice.VisibleIndex = 6;
+            gridPrice.VisibleIndex = 5;
             gridPrice.Width = 94;
             // 
             // gridProfit
@@ -139,7 +128,7 @@
             gridProfit.MinWidth = 25;
             gridProfit.Name = "gridProfit";
             gridProfit.Visible = true;
-            gridProfit.VisibleIndex = 7;
+            gridProfit.VisibleIndex = 6;
             gridProfit.Width = 94;
             // 
             // gridPaymentMethod
@@ -149,7 +138,7 @@
             gridPaymentMethod.MinWidth = 25;
             gridPaymentMethod.Name = "gridPaymentMethod";
             gridPaymentMethod.Visible = true;
-            gridPaymentMethod.VisibleIndex = 8;
+            gridPaymentMethod.VisibleIndex = 7;
             gridPaymentMethod.Width = 94;
             // 
             // gridBillNumber
@@ -159,7 +148,7 @@
             gridBillNumber.MinWidth = 25;
             gridBillNumber.Name = "gridBillNumber";
             gridBillNumber.Visible = true;
-            gridBillNumber.VisibleIndex = 9;
+            gridBillNumber.VisibleIndex = 8;
             gridBillNumber.Width = 94;
             // 
             // SaleListForm
@@ -185,7 +174,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridQuantity;
         private DevExpress.XtraGrid.Columns.GridColumn gridPrice;
         private DevExpress.XtraGrid.Columns.GridColumn gridPaymentMethod;
-        private DevExpress.XtraGrid.Columns.GridColumn gridProductModel;
         private DevExpress.XtraGrid.Columns.GridColumn gridProfit;
         private DevExpress.XtraGrid.Columns.GridColumn gridCustomerPhone;
         private DevExpress.XtraGrid.Columns.GridColumn gridBillNumber;
