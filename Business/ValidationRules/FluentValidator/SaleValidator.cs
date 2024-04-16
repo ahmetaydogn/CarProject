@@ -15,6 +15,8 @@ public class SaleValidator : AbstractValidator<Sale>
         RuleFor(s => s.Price).GreaterThanOrEqualTo(1).WithMessage(ValidationMessages.SalePriceGreaterThan);
         
         RuleFor(s => s.PaymentMethod).NotEmpty().WithMessage(ValidationMessages.SalePaymentMethodCantBeEmpty);
+
+        RuleFor(s => s.BillNumber).NotEmpty().WithMessage(ValidationMessages.BillNumber);
     }
 
     private bool BothOfThemNull(int? productId, int? subProductId)

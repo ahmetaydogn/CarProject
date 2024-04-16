@@ -6,7 +6,6 @@ using Entities.Concrete;
 using FluentValidation;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
-using UI.Win.Forms.CustomerForm;
 using UI.Win.Forms.SaleForm;
 using UI.Win.Show;
 using UI.Win.Utilities;

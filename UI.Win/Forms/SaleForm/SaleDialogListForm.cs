@@ -4,7 +4,6 @@ using DataAccess.Concrete.EntityFramework;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
 using UI.Win.Forms.BillForms;
-using UI.Win.Forms.CarForms;
 using UI.Win.Show;
 
 namespace UI.Win.Forms.SaleForm;

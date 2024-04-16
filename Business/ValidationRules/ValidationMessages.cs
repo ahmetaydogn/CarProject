@@ -31,4 +31,5 @@ public static class ValidationMessages
     public static string SaleQuantityGreaterThan = "Miktar 1'e eşit veya büyük olmalıdır.";
     public static string SalePriceGreaterThan = "Tutar 1'e eşit veya büyük olmalıdır.";
     public static string SalePaymentMethodCantBeEmpty = "Ödeme Yöntemi boş bırakılamaz";
+    public static string BillNumber = "Fatura No boş bırakılamaz.";
 }
