@@ -302,7 +302,6 @@
             ribbonPageGroup13.ItemLinks.Add(btnSaleList);
             ribbonPageGroup13.ItemLinks.Add(btnSaleAdd);
             ribbonPageGroup13.Name = "ribbonPageGroup13";
-            ribbonPageGroup13.Text = "ribbonPageGroup13";
             // 
             // ribbonPage4
             // 

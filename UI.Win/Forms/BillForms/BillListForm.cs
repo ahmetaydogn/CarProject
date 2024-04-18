@@ -2,7 +2,6 @@
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using UI.Win.Enums;
-using UI.Win.Forms.CustomerForm;
 using UI.Win.Show;
 
 namespace UI.Win.Forms.BillForms;
@@ -15,8 +14,13 @@ public partial class BillListForm : Form
         FillGrid();
     }
 
-    IBillService billService = new BillManager(new EfBillDal());
+    #region VARIABLES
 
+    IBillService billService = new BillManager(new EfBillDal());
+    
+    #endregion
+
+    // Fill the GridControl
     public void FillGrid()
     {
         var result = billService.GetAll();
@@ -24,6 +28,7 @@ public partial class BillListForm : Form
             gridControl1.DataSource = result.Data;
     }
 
+    // Event Functions
     private void gridBill_DoubleClick(object sender, EventArgs e)
     {
         string billId = gridBill.GetFocusedRowCellValue("BillId").ToString();

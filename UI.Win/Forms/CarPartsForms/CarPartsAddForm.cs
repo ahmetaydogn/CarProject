@@ -40,7 +40,8 @@ public partial class CarPartsAddForm : BaseEditForm
             isOpenedFromDialog = _isOpenedFromDialog;
         }
     }
-    
+
+    #region VARIABLES
 
     ISaleService saleService = new SaleManager(new EfSaleDal());
     ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
@@ -48,7 +49,9 @@ public partial class CarPartsAddForm : BaseEditForm
     EventType eventType = EventType.EntityInsert;
     private readonly bool isOpenedFromDialog;
 
+    #endregion
 
+    // Public Functions
     public override void Save()
     {
         try
@@ -178,6 +181,8 @@ public partial class CarPartsAddForm : BaseEditForm
         }
     }
 
+
+    // Private Functions
     private SubProduct CreateProduct()
     {
         SubProduct p = new SubProduct
@@ -226,6 +231,7 @@ public partial class CarPartsAddForm : BaseEditForm
         txtProfit.Text = Convert.ToInt32(CalculateProfit()).ToString();
     }
 
+    // Event Functions
     private void spnSellPrice_EditValueChanged(object sender, EventArgs e)
     {
         ChangeTaxesComponents();

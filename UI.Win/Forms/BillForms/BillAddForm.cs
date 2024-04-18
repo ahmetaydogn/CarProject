@@ -40,19 +40,7 @@ public partial class BillAddForm : BaseEditForm
     EventType eventType = EventType.EntityInsert;
     public string BillNumber;
 
-
-    private void btnSale_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-    {
-        if (btnSale.Enabled)
-        {
-            var frm = (SaleDialogListForm)ShowListForms<SaleDialogListForm>.ShowDialogListForm();
-            if (frm.DialogResult == DialogResult.OK)
-            {
-                btnSale.EditValue = frm.returnSaleId;
-            }
-        }
-    }
-
+    // Public virtual functions
     public override void Save()
     {
         try
@@ -188,6 +176,8 @@ public partial class BillAddForm : BaseEditForm
         }
     }
 
+
+    // Private Functions
     private void SendEntityToSaveAs()
     {
         Bill b = new Bill
@@ -205,7 +195,6 @@ public partial class BillAddForm : BaseEditForm
             Closing();
         }
     }
-
 
     private Bill CreateBill()
     {
@@ -230,4 +219,22 @@ public partial class BillAddForm : BaseEditForm
 
         Close();
     }
+
+
+    // Event Functions
+    private void btnSale_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+    {
+        if (btnSale.Enabled)
+        {
+            var frm = (SaleDialogListForm)ShowListForms<SaleDialogListForm>.ShowDialogListForm();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                var sale = saleService.GetById(frm.returnSaleId);
+                sale.Data.BillNumber = BillNumber;
+                saleService.Update(sale.Data);
+                btnSale.EditValue = frm.returnSaleId;
+            }
+        }
+    }
+
 }

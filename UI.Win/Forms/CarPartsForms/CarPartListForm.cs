@@ -15,8 +15,13 @@ public partial class CarPartListForm : Form
         FillGrid();
     }
 
+    #region VARIABLES
+
     ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
 
+    #endregion
+
+    // Public Functions
     public void FillGrid()
     {
         var result = subProductService.GetAll();
@@ -24,6 +29,8 @@ public partial class CarPartListForm : Form
             gridControl1.DataSource = result.Data;
     }
 
+    
+    // Private Functions
     private void gridCarPart_DoubleClick(object sender, EventArgs e)
     {
         int subProductId = Convert.ToInt32(gridCarPart.GetFocusedRowCellValue("SubProductId"));

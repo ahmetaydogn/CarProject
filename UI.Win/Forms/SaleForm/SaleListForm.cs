@@ -2,7 +2,6 @@
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using UI.Win.Enums;
-using UI.Win.Forms.CarForms;
 using UI.Win.Show;
 
 namespace UI.Win.Forms.SaleForm;
@@ -15,11 +14,16 @@ public partial class SaleListForm : Form
         FillGrid();
     }
 
+    #region VARIABLES
+    
     ISaleService saleService = new SaleManager(new EfSaleDal());
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
     IProductService productService = new ProductManager(new EfProductDal());
     ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
 
+    #endregion
+
+    // Public Functions
     public void FillGrid()
     {
         var customerList = customerService.GetAll();
@@ -33,6 +37,7 @@ public partial class SaleListForm : Form
         }
     }
 
+    // Event Functions
     private void gridControl1_DoubleClick(object sender, EventArgs e)
     {
         int saleId = Convert.ToInt32(gridSale.GetFocusedRowCellValue("SaleId"));

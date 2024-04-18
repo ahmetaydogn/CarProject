@@ -14,8 +14,13 @@ public partial class CustomerListForm : Form
         FillGrid();
     }
 
+    #region VARIABLES
+
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
 
+    #endregion
+
+    // Public Funcitons
     public void FillGrid()
     {
         var result = customerService.GetAll();
@@ -23,6 +28,8 @@ public partial class CustomerListForm : Form
             gridControl1.DataSource = result.Data;
     }
 
+
+    // Event Functions
     private void gridControl1_DoubleClick(object sender, EventArgs e)
     {
         int customerId = Convert.ToInt32(gridCustomer.GetFocusedRowCellValue("CustomerId"));

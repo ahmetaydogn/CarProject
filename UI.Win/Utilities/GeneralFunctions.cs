@@ -20,4 +20,10 @@ public static class GeneralFunctions
         }
         return  newBillID.ToString();
     }
+    public static string Strip(this string s, char character)
+    {
+        s = s.Replace(character.ToString(), "");
+
+        return s;
+    }
 }

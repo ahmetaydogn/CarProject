@@ -94,7 +94,7 @@ public class SaleManager : ISaleService
         return new SuccessDataResult<List<Sale>>(result);
     }
 
-    public IDataResult<List<SaleDto>> GetAllAsDto(List<Product> products, List<Customer> customers, List<SubProduct> subProducts)
+    public IDataResult<List<SaleDto>> GetAllAsDto(List<Product> products, List<Customer> customers, List<SubProduct> subProducts, string billNumber)
     {
         var sales = _saleDal.GetAll();
 
@@ -143,6 +143,7 @@ public class SaleManager : ISaleService
                     };
 
         var mergedList = productQuery.ToList().Union(subProductQuery.ToList());
+        mergedList = billNumber == null ? mergedList.ToList() : mergedList.Where(m => m.BillNumber == billNumber).ToList();
         return new SuccessDataResult<List<SaleDto>>(mergedList.ToList());
     }
 }

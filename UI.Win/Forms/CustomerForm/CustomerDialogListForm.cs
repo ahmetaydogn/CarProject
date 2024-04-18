@@ -16,11 +16,15 @@ public partial class CustomerDialogListForm : BaseDialogListForm
         FillGrid();
     }
 
+    #region VARIABLES
+
     public int returnCustomerId;
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
+    
+    #endregion
 
 
-    // RibbonControl's Code
+    // RibbonControl's Code - Public Functions
     public override void AddEntity()
     {
         ShowEditForms<CarAddForm>.ShowDialogEditForm();
@@ -36,7 +40,6 @@ public partial class CustomerDialogListForm : BaseDialogListForm
         SelectFocusedEntity();
     }
 
-
     // GridControl's Code
     public void FillGrid()
     {
@@ -45,6 +48,15 @@ public partial class CustomerDialogListForm : BaseDialogListForm
             gridControl1.DataSource = result.Data;
     }
 
+
+    // Private Functions
+    private void SelectFocusedEntity()
+    {
+        returnCustomerId = Convert.ToInt32(gridCustomer.GetFocusedRowCellValue("CustomerId"));
+        this.DialogResult = DialogResult.OK;
+    }
+
+    // Event Functions
     private void gridCustomer_DoubleClick(object sender, EventArgs e)
     {
         int customerId = Convert.ToInt32(gridCustomer.GetFocusedRowCellValue("CustomerId"));
@@ -52,14 +64,6 @@ public partial class CustomerDialogListForm : BaseDialogListForm
     }
 
     private void gridControl1_KeyPress_1(object sender, KeyPressEventArgs e)
-    {
-        returnCustomerId = Convert.ToInt32(gridCustomer.GetFocusedRowCellValue("CustomerId"));
-        this.DialogResult = DialogResult.OK;
-    }
-
-
-    // Other Functions
-    private void SelectFocusedEntity()
     {
         returnCustomerId = Convert.ToInt32(gridCustomer.GetFocusedRowCellValue("CustomerId"));
         this.DialogResult = DialogResult.OK;

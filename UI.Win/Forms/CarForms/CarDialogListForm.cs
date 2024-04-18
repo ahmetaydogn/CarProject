@@ -1,7 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DevExpress.XtraDialogs.Internal;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
 using UI.Win.Show;
@@ -16,12 +15,16 @@ public partial class CarDialogListForm : BaseDialogListForm
         FillGrid();
     }
 
+    #region VARIABLES
+
     IProductService productService = new ProductManager(new EfProductDal());
     public int returnProductId;
     public decimal returnProductPrice;
 
+    #endregion
 
-    // RibbonControl's Code
+
+    // RibbonControl's Code - Public Functions
     public override void AddEntity()
     {
         ShowEditForms<CarAddForm>.ShowDialogEditForm();
@@ -36,9 +39,7 @@ public partial class CarDialogListForm : BaseDialogListForm
     {
         SelectFocusedEntity();
     }
-
-
-
+    
     // GridControl's Code
     public void FillGrid()
     {
@@ -47,6 +48,16 @@ public partial class CarDialogListForm : BaseDialogListForm
             gridControl1.DataSource = result.Data;
     }
 
+
+    // Private Functions
+    private void SelectFocusedEntity()
+    {
+        returnProductId = Convert.ToInt32(gridProduct.GetFocusedRowCellValue("ProductId"));
+        returnProductPrice = productService.GetById(returnProductId).Data.SellPrice;
+        this.DialogResult = DialogResult.OK;
+    }
+
+    // Event Functions
     private void gridProduct_DoubleClick(object sender, EventArgs e)
     {
         int productId = Convert.ToInt32(gridProduct.GetFocusedRowCellValue("ProductId"));
@@ -56,14 +67,5 @@ public partial class CarDialogListForm : BaseDialogListForm
     private void gridControl1_KeyPress_1(object sender, KeyPressEventArgs e)
     {
         SelectFocusedEntity();
-    }
-
-
-    // Other Functions
-    private void SelectFocusedEntity()
-    {
-        returnProductId = Convert.ToInt32(gridProduct.GetFocusedRowCellValue("ProductId"));
-        returnProductPrice = productService.GetById(returnProductId).Data.SellPrice;
-        this.DialogResult = DialogResult.OK;
     }
 }

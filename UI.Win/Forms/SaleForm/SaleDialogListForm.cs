@@ -5,6 +5,7 @@ using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
 using UI.Win.Forms.BillForms;
 using UI.Win.Show;
+using UI.Win.Utilities;
 
 namespace UI.Win.Forms.SaleForm;
 
@@ -16,15 +17,20 @@ public partial class SaleDialogListForm : BaseDialogListForm
         FillGrid();
     }
 
+    #region VARIABLES
+
     ISaleService saleService = new SaleManager(new EfSaleDal());
     IProductService productService = new ProductManager(new EfProductDal());
     ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
     public int returnSaleId;
     private readonly bool isAlreadyExistBillNumber = true;
+    private readonly string billNumber;
+
+    #endregion
 
 
-    // RibbonControl's Code
+    // RibbonControl's Code - Public Functions
     public override void AddEntity()
     {
         if (Application.OpenForms["BillAddForm"] != null)
@@ -45,8 +51,6 @@ public partial class SaleDialogListForm : BaseDialogListForm
         SelectFocusedEntity();
     }
 
-
-
     // GridControl's Code
     public void FillGrid()
     {
@@ -57,10 +61,21 @@ public partial class SaleDialogListForm : BaseDialogListForm
         {
             var result = saleService.GetAllAsDto(productList.Data, customerList.Data, subProductList.Data);
             if (result.IsSuccess)
-                gridControl1.DataSource = result.Data;
+            {
+                gridControl1.DataSource = result.Data.Where(x => x.BillNumber.Strip(' ') == "").ToList();
+            }
         }
     }
 
+
+    // Private Functions
+    private void SelectFocusedEntity()
+    {
+        returnSaleId = Convert.ToInt32(gridSale.GetFocusedRowCellValue("SaleId"));
+        this.DialogResult = DialogResult.OK;
+    }
+
+    // Event Functions
     private void gridSale_DoubleClick(object sender, EventArgs e)
     {
         int saleId = Convert.ToInt32(gridSale.GetFocusedRowCellValue("SaleId"));
@@ -81,13 +96,5 @@ public partial class SaleDialogListForm : BaseDialogListForm
     private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
     {
         SelectFocusedEntity();
-    }
-
-
-    // Other Functions
-    private void SelectFocusedEntity()
-    {
-        returnSaleId = Convert.ToInt32(gridSale.GetFocusedRowCellValue("SaleId"));
-        this.DialogResult = DialogResult.OK;
     }
 }

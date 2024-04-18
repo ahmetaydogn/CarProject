@@ -79,6 +79,8 @@ public partial class SaleAddForm : BaseEditForm
         btnBill.EditValue = billNumber;
     }
 
+    #region VARIABLES
+
     string billNumber;
     ISaleService saleService = new SaleManager(new EfSaleDal());
     Sale OldSale;
@@ -87,7 +89,10 @@ public partial class SaleAddForm : BaseEditForm
     bool isAlreadyExistBillNumber = false;
     private bool isGonnaAddProduct = false;
 
+    #endregion
 
+
+    // Public Functions
     public override void Save()
     {
         try
@@ -237,6 +242,8 @@ public partial class SaleAddForm : BaseEditForm
         }
     }
 
+
+    // Private Functions
     private Sale CreateSale()
     {
         Sale s = new Sale
@@ -286,6 +293,7 @@ public partial class SaleAddForm : BaseEditForm
         calcPrice.Value = 0;
     }
 
+    // Event Functions
     private void toggleSwitch1_Toggled(object sender, EventArgs e)
     {
         ToggleProductAndSubProduct();

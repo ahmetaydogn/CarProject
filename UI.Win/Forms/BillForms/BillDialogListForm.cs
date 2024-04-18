@@ -3,8 +3,6 @@ using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
-using UI.Win.Forms.CarForms;
-using UI.Win.Forms.SaleForm;
 using UI.Win.Show;
 
 namespace UI.Win.Forms.BillForms;
@@ -18,12 +16,14 @@ public partial class BillDialogListForm : BaseDialogListForm
         base.HideAddButton();
     }
 
+    #region VARIABLES
+
     IBillService billService = new BillManager(new EfBillDal());
     public int returnBillId;
 
+    #endregion
 
-    // RibbonControl's Code
-
+    // RibbonControl's Code - Public Functions
     public override void RefreshGridControl()
     {
         FillGrid();
@@ -34,7 +34,6 @@ public partial class BillDialogListForm : BaseDialogListForm
         SelectFocusedEntity();
     }
 
-
     // GridControl's Code
     public void FillGrid()
     {
@@ -43,6 +42,16 @@ public partial class BillDialogListForm : BaseDialogListForm
             gridControl1.DataSource = result.Data;
     }
 
+
+    // Private Functions
+    private void SelectFocusedEntity()
+    {
+        returnBillId = Convert.ToInt32(gridBill.GetFocusedRowCellValue("BillId"));
+        this.DialogResult = DialogResult.OK;
+    }
+
+
+    // Event Functions
     private void gridBill_DoubleClick(object sender, EventArgs e)
     {
         string billId = gridBill.GetFocusedRowCellValue("BillId").ToString();
@@ -52,13 +61,5 @@ public partial class BillDialogListForm : BaseDialogListForm
     private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
     {
         SelectFocusedEntity();
-    }
-
-
-    // Other Functions
-    private void SelectFocusedEntity()
-    {
-        returnBillId = Convert.ToInt32(gridBill.GetFocusedRowCellValue("BillId"));
-        this.DialogResult = DialogResult.OK;
     }
 }

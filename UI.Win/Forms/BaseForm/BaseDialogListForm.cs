@@ -35,6 +35,8 @@ public partial class BaseDialogListForm : Form
             Close();
     }
 
+
+    // Virtual Functions
     public virtual void SelectEntity() { }
 
     public virtual void RefreshGridControl() { }

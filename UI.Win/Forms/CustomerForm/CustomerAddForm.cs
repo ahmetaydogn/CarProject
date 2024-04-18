@@ -41,13 +41,18 @@ public partial class CustomerAddForm : BaseEditForm
         }
     }
 
+    #region VARIABLES
+
     ISaleService saleService = new SaleManager(new EfSaleDal());
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
     Customer OldCustomer;
     private readonly bool _isOpenedFromDialog;
     EventType eventType = EventType.EntityInsert;
 
+    #endregion
 
+
+    // Public Functions
     public override void Save()
     {
         try
@@ -173,6 +178,8 @@ public partial class CustomerAddForm : BaseEditForm
         }
     }
 
+
+    // Private Functions
     private Customer CreateCustomer()
     {
         Customer c = new Customer

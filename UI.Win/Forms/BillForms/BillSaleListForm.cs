@@ -1,7 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DevExpress.XtraGrid.Views.Grid;
 using Entities.Concrete;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
@@ -24,13 +23,16 @@ public partial class BillSaleListForm : BaseDialogListForm
         RefreshGridControl();
     }
 
+    #region VARIABLES
+
     private readonly string billNumber;
     IBillService billService = new BillManager(new EfBillDal());
     ISaleService saleService = new SaleManager(new EfSaleDal());
     IProductService productService = new ProductManager(new EfProductDal());
     ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
-
+    
+    #endregion
 
     // RibbonControl's Code
     public override void AddEntity()
@@ -44,8 +46,7 @@ public partial class BillSaleListForm : BaseDialogListForm
         FillGaps();
     }
 
-
-    // GridControl's Code
+    // Fill the GridControl
     public void FillGrid()
     {
         var productList = productService.GetAll();
@@ -59,27 +60,6 @@ public partial class BillSaleListForm : BaseDialogListForm
                 gridControl1.DataSource = result.Data;
         }
     }
-
-    private void gridBillSale_DoubleClick(object sender, EventArgs e)
-    {
-
-        int saleId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("SaleId"));
-        int? productId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("ProductId"));
-        int? subProductId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("SubProductId"));
-
-        if (subProductId == 0)
-        {
-            ShowEditForms<SaleAddForm>.ShowDialogEditForm(saleId, EventType.EntityUpdate, productService.GetById(Convert.ToInt32(productId)).Data.SellPrice, true);
-        }
-        else if (productId == 0)
-        {
-            ShowEditForms<SaleAddForm>.ShowDialogEditForm(saleId, EventType.EntityUpdate, subProductService.GetById(Convert.ToInt32(subProductId)).Data.SellPrice, false);
-        }
-
-        FillGrid();
-        FillGaps();
-    }
-
 
     // Fill Components
     public void FillGaps()
@@ -124,5 +104,27 @@ public partial class BillSaleListForm : BaseDialogListForm
             txtAllProfit.Text = totalProfit.ToString();
             txtDescription.Text = billService.GetByBillNumber(billNumber).Data.Description;
         }
+    }
+
+
+    // Event Functions
+    private void gridBillSale_DoubleClick(object sender, EventArgs e)
+    {
+
+        int saleId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("SaleId"));
+        int? productId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("ProductId"));
+        int? subProductId = Convert.ToInt32(gridBillSale.GetFocusedRowCellValue("SubProductId"));
+
+        if (subProductId == 0)
+        {
+            ShowEditForms<SaleAddForm>.ShowDialogEditForm(saleId, EventType.EntityUpdate, productService.GetById(Convert.ToInt32(productId)).Data.SellPrice, true);
+        }
+        else if (productId == 0)
+        {
+            ShowEditForms<SaleAddForm>.ShowDialogEditForm(saleId, EventType.EntityUpdate, subProductService.GetById(Convert.ToInt32(subProductId)).Data.SellPrice, false);
+        }
+
+        FillGrid();
+        FillGaps();
     }
 }

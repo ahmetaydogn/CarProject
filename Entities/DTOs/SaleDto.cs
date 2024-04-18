@@ -14,5 +14,5 @@ public class SaleDto : IDto
     public decimal Price { get; set; }
     public decimal Profit { get; set; }
     public string PaymentMethod { get; set; }
-    public string BillNumber { get; set; }
+    public string? BillNumber { get; set; }
 }

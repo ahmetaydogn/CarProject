@@ -15,12 +15,16 @@ public partial class CarPartDialogListForm : BaseDialogListForm
         FillGrid();
     }
 
+    #region VARIABLES
+
     ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
     public int returnSubProductId;
     public decimal returnSubProductPrice;
 
+    #endregion
 
-    // RibbonControl's Code
+
+    // RibbonControl's Code - Public Functions
     public override void AddEntity()
     {
         ShowEditForms<CarPartsAddForm>.ShowDialogEditForm();
@@ -36,8 +40,6 @@ public partial class CarPartDialogListForm : BaseDialogListForm
         SelectFocusedEntity();
     }
 
-
-
     // GridControl's Code
     public void FillGrid()
     {
@@ -46,6 +48,16 @@ public partial class CarPartDialogListForm : BaseDialogListForm
             gridControl1.DataSource = result.Data;
     }
 
+
+    // Private Functions
+    private void SelectFocusedEntity()
+    {
+        returnSubProductId = Convert.ToInt32(gridCarPart.GetFocusedRowCellValue("SubProductId"));
+        returnSubProductPrice = subProductService.GetById(returnSubProductId).Data.SellPrice;
+        this.DialogResult = DialogResult.OK;
+    }
+
+    // Event Functions
     private void gridCarPart_DoubleClick(object sender, EventArgs e)
     {
         int productId = Convert.ToInt32(gridCarPart.GetFocusedRowCellValue("SubProductId"));
@@ -55,14 +67,5 @@ public partial class CarPartDialogListForm : BaseDialogListForm
     private void gridControl1_KeyPress(object sender, KeyPressEventArgs e)
     {
         SelectFocusedEntity();
-    }
-
-
-    // Other Functions
-    private void SelectFocusedEntity()
-    {
-        returnSubProductId = Convert.ToInt32(gridCarPart.GetFocusedRowCellValue("SubProductId"));
-        returnSubProductPrice = subProductService.GetById(returnSubProductId).Data.SellPrice;
-        this.DialogResult = DialogResult.OK;
     }
 }

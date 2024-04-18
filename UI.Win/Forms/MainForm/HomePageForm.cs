@@ -12,11 +12,16 @@ public partial class HomePageForm : Form
         FillAllGrid();
     }
 
+    #region VARIABLES
+
     ISaleService saleService = new SaleManager(new EfSaleDal());
     IProductService productService = new ProductManager(new EfProductDal());
     ISubProductService subProductService = new SubProductManager(new EfSubProductDal());
     ICustomerService customerService = new CustomerManager(new EfCustomerDal());
 
+    #endregion
+
+    // Public Functions
     public void FillAllGrid()
     {
         var customerList = customerService.GetAll();

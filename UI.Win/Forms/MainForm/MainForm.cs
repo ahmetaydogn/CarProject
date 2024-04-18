@@ -19,23 +19,7 @@ namespace UI.Win
             EventsLoad();
         }
 
-        public MainForm(IProductService productService, ISubProductService subProductService, IBillService billService, ICustomerService customerServicce, ISaleService saleService)
-        {
-            InitializeComponent();
-            EventsLoad();
-            this.productService = productService;
-            this.subProductService = subProductService;
-            this.billService = billService;
-            this.customerService = customerServicce;
-            this.saleService = saleService;
-        }
-
-        IProductService productService;
-        ISubProductService subProductService;
-        IBillService billService;
-        ICustomerService customerService;
-        ISaleService saleService;
-
+        // Private Functions - Event Loader
         private void EventsLoad()
         {
             foreach (var item in ribbonControl.Items)

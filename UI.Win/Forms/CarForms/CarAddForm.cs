@@ -2,8 +2,7 @@
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DevExpress.XtraEditors;
-using DevExpress.XtraReports.Design;
-using Entities.Concrete;
+using Entities.Concrete;x
 using FluentValidation;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;
@@ -42,13 +41,17 @@ public partial class CarAddForm : BaseEditForm
         }
     }
 
+    #region VARIABLES
+
     ISaleService saleService = new SaleManager(new EfSaleDal());
     IProductService productService = new ProductManager(new EfProductDal());
     Product OldProduct;
     EventType eventType = EventType.EntityInsert;
     private readonly bool isOpenedFromDialog;
 
+    #endregion
 
+    // Public Functions
     public override void Save()
     {
         try
@@ -185,6 +188,8 @@ public partial class CarAddForm : BaseEditForm
         }
     }
 
+
+    // Private Functions
     private Product CreateProduct()
     {
         Product p = new Product
@@ -243,6 +248,7 @@ public partial class CarAddForm : BaseEditForm
         txtProfit.Text = Convert.ToInt32(CalculateProfit()).ToString();
     }
 
+    // Event Functions -> Too Bad xd
     private void spnProductMarketPrice_EditValueChanged(object sender, EventArgs e)
     {
         ChangeTaxesComponents();
