@@ -82,7 +82,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(gridControl1);
             Name = "BillListForm";
-            Text = "BillListForm";
+            Text = "Fatura Formu";
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridBill).EndInit();
             ResumeLayout(false);

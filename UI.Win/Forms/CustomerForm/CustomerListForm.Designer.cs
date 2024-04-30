@@ -116,7 +116,7 @@
             ClientSize = new Size(1082, 603);
             Controls.Add(gridControl1);
             Name = "CustomerListForm";
-            Text = "CustomerListForm";
+            Text = "Cari Formu";
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridCustomer).EndInit();
             ResumeLayout(false);

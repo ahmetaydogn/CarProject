@@ -158,7 +158,7 @@
             ClientSize = new Size(905, 450);
             Controls.Add(gridControl1);
             Name = "SaleListForm";
-            Text = "SaleListForm";
+            Text = "Satış Formu";
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridSale).EndInit();
             ResumeLayout(false);

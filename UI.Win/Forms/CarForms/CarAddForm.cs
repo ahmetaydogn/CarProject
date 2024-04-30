@@ -2,7 +2,7 @@
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DevExpress.XtraEditors;
-using Entities.Concrete;x
+using Entities.Concrete;
 using FluentValidation;
 using UI.Win.Enums;
 using UI.Win.Forms.BaseForm;

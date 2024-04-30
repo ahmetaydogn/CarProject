@@ -101,7 +101,7 @@
             Controls.Add(gridControl1);
             Name = "BillDialogListForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "BillDialogListForm";
+            Text = "Fatura Diyalog Formu";
             Controls.SetChildIndex(ribbonControl1, 0);
             Controls.SetChildIndex(gridControl1, 0);
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();

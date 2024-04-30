@@ -31,6 +31,10 @@ namespace UI.Win
                         break;
                 }
             }
+
+            var form = new HomePageForm();
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void ButtonsClick(object sender, ItemClickEventArgs e)

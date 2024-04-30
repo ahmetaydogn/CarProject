@@ -503,7 +503,7 @@
             ClientSize = new Size(802, 588);
             Controls.Add(myDataLayoutControl1);
             Name = "CarAddForm";
-            Text = "CarAddForm";
+            Text = "Araç Ekleme Formu";
             Controls.SetChildIndex(ribbonControl1, 0);
             Controls.SetChildIndex(myDataLayoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();

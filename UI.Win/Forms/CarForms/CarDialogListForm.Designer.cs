@@ -157,7 +157,7 @@
             ClientSize = new Size(1232, 703);
             Controls.Add(gridControl1);
             Name = "CarDialogListForm";
-            Text = "CarDialogListForm";
+            Text = "Araç Diyalog Formu";
             Controls.SetChildIndex(ribbonControl1, 0);
             Controls.SetChildIndex(gridControl1, 0);
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();

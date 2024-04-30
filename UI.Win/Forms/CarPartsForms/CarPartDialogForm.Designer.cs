@@ -35,8 +35,8 @@
             gridSellPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             gridVAT = new DevExpress.XtraGrid.Columns.GridColumn();
             gridVATPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            gridSubProductDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             gridProfit = new DevExpress.XtraGrid.Columns.GridColumn();
+            gridSubProductDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridCarPart).BeginInit();
@@ -117,16 +117,6 @@
             gridVATPrice.VisibleIndex = 4;
             gridVATPrice.Width = 94;
             // 
-            // gridSubProductDescription
-            // 
-            gridSubProductDescription.Caption = "Açıklama";
-            gridSubProductDescription.FieldName = "SubProductDescription";
-            gridSubProductDescription.MinWidth = 25;
-            gridSubProductDescription.Name = "gridSubProductDescription";
-            gridSubProductDescription.Visible = true;
-            gridSubProductDescription.VisibleIndex = 5;
-            gridSubProductDescription.Width = 94;
-            // 
             // gridProfit
             // 
             gridProfit.Caption = "Kâr (Birim Başı)";
@@ -137,6 +127,16 @@
             gridProfit.VisibleIndex = 6;
             gridProfit.Width = 94;
             // 
+            // gridSubProductDescription
+            // 
+            gridSubProductDescription.Caption = "Açıklama";
+            gridSubProductDescription.FieldName = "SubProductDescription";
+            gridSubProductDescription.MinWidth = 25;
+            gridSubProductDescription.Name = "gridSubProductDescription";
+            gridSubProductDescription.Visible = true;
+            gridSubProductDescription.VisibleIndex = 5;
+            gridSubProductDescription.Width = 94;
+            // 
             // CarPartDialogListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -144,7 +144,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(gridControl1);
             Name = "CarPartDialogListForm";
-            Text = "CarPartDialogForm";
+            Text = "Araç Parçası Diyalog Formu";
             Controls.SetChildIndex(ribbonControl1, 0);
             Controls.SetChildIndex(gridControl1, 0);
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();

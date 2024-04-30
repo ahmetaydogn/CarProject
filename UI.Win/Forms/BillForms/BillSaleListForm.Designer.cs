@@ -60,6 +60,7 @@
             txtAllVATPrice = new DevExpress.XtraEditors.TextEdit();
             txtAllSellPrice = new DevExpress.XtraEditors.TextEdit();
             txtAllMarketPrice = new DevExpress.XtraEditors.TextEdit();
+            layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             Root = new DevExpress.XtraLayout.LayoutControlGroup();
             layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -68,7 +69,6 @@
             layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridBillSale).BeginInit();
@@ -83,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)txtAllVATPrice.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtAllSellPrice.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtAllMarketPrice.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Root).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).BeginInit();
@@ -91,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem8).BeginInit();
             SuspendLayout();
             // 
             // ribbonControl1
@@ -341,6 +341,22 @@
             txtAllMarketPrice.StyleController = myDataLayoutControl1;
             txtAllMarketPrice.TabIndex = 4;
             // 
+            // layoutControlItem8
+            // 
+            layoutControlItem8.AppearanceItemCaption.FontStyleDelta = FontStyle.Bold;
+            layoutControlItem8.AppearanceItemCaption.ForeColor = Color.Maroon;
+            layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
+            layoutControlItem8.AppearanceItemCaption.Options.UseForeColor = true;
+            layoutControlItem8.Control = dateBillDate;
+            layoutControlItem8.Location = new Point(0, 216);
+            layoutControlItem8.Name = "layoutControlItem8";
+            layoutControlItem8.OptionsTableLayoutItem.RowIndex = 9;
+            layoutControlItem8.Size = new Size(321, 341);
+            layoutControlItem8.Text = "Fatura Tarihi";
+            layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            layoutControlItem8.TextSize = new Size(125, 20);
+            layoutControlItem8.TextToControlDistance = 5;
+            // 
             // Root
             // 
             Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -487,22 +503,6 @@
             layoutControlItem7.TextSize = new Size(125, 20);
             layoutControlItem7.TextToControlDistance = 5;
             // 
-            // layoutControlItem8
-            // 
-            layoutControlItem8.AppearanceItemCaption.FontStyleDelta = FontStyle.Bold;
-            layoutControlItem8.AppearanceItemCaption.ForeColor = Color.Maroon;
-            layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
-            layoutControlItem8.AppearanceItemCaption.Options.UseForeColor = true;
-            layoutControlItem8.Control = dateBillDate;
-            layoutControlItem8.Location = new Point(0, 216);
-            layoutControlItem8.Name = "layoutControlItem8";
-            layoutControlItem8.OptionsTableLayoutItem.RowIndex = 9;
-            layoutControlItem8.Size = new Size(321, 341);
-            layoutControlItem8.Text = "Fatura Tarihi";
-            layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            layoutControlItem8.TextSize = new Size(125, 20);
-            layoutControlItem8.TextToControlDistance = 5;
-            // 
             // BillSaleListForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -512,7 +512,7 @@
             Controls.Add(gridControl1);
             Name = "BillSaleListForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "BillSaleListForm";
+            Text = "Fatura Satış Formu";
             Controls.SetChildIndex(ribbonControl1, 0);
             Controls.SetChildIndex(gridControl1, 0);
             Controls.SetChildIndex(myDataLayoutControl1, 0);
@@ -530,6 +530,7 @@
             ((System.ComponentModel.ISupportInitialize)txtAllVATPrice.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtAllSellPrice.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtAllMarketPrice.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem8).EndInit();
             ((System.ComponentModel.ISupportInitialize)Root).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem1).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).EndInit();
@@ -538,7 +539,6 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem8).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

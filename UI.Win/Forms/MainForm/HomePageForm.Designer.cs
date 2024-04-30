@@ -582,7 +582,7 @@
             ClientSize = new Size(890, 581);
             Controls.Add(myDataLayoutControl1);
             Name = "HomePageForm";
-            Text = "HomePageForm";
+            Text = "Ana Sayfa";
             ((System.ComponentModel.ISupportInitialize)myDataLayoutControl1).EndInit();
             myDataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridCarPartControl).EndInit();
